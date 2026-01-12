@@ -394,6 +394,7 @@
             font-size: 1.1em;
         }
 
+
         .social-links a:hover {
             background: var(--deep-purple);
             color: white;
@@ -515,13 +516,25 @@
             max-width: 1300px;
             margin: 0 auto;
         }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 in a row */
+    gap: 35px; /* slightly tighter */
+    align-items: stretch;
+}
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-        }
+@media (max-width: 1100px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* tablet */
+    }
+}
 
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* mobile */
+        gap: 30px;
+    }
+}
         .project-card {
             background: var(--cream);
             border-radius: 50px;
@@ -1052,20 +1065,7 @@
                         </div>
                         <h3>VirtualCare App</h3>
                         <p>Research-driven improvements to provider search, communication, and appointment scheduling during the COVID-19 pandemic.</p>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">+15%</span>
-                                <span class="stat-label">User Satisfaction</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">-30%</span>
-                                <span class="stat-label">Search Time</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">30</span>
-                                <span class="stat-label">Participants</span>
-                            </div>
-                        </div>
+                    
                         <span class="project-link">View Case Study →</span>
                     </div>
                 </a>
@@ -1083,25 +1083,31 @@
                         </div>
                         <h3>NISRA Accessibility Redesign</h3>
                         <p>Comprehensive accessibility audit and redesign for Northern Illinois Special Recreation Association's digital platform.</p>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">85%</span>
-                                <span class="stat-label">WCAG Compliance</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">+40%</span>
-                                <span class="stat-label">Sign-ups</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">12</span>
-                                <span class="stat-label">Months</span>
-                            </div>
-                        </div>
+                    
                         <span class="project-link">View Case Study →</span>
                     </div>
                 </a>
-            </div>
+                <!-- NISRA IA Project (NEW) -->
+<a href="case-study3.html" class="project-card fade-in">
+    <div class="project-image" style="background: linear-gradient(135deg, var(--pastel-peach), var(--pastel-lavender));">
+        🧭
+    </div>
+    <div class="project-content">
+        <div class="project-tags">
+            <span class="tag">Information Architecture</span>
+            <span class="tag">Card Sorting</span>
+            <span class="tag">Tree Testing</span>
         </div>
+        <h3>NISRA Mobile Navigation (IA)</h3>
+        <p>Redesigned mobile navigation and sitemap using card sorting, tree testing, and first-click testing to reduce confusion and improve task completion.</p>
+
+        <span class="project-link">View Case Study →</span>
+    </div>
+</a>
+            </div>
+        
+        </div>
+        
     </section>
 
     <!-- Skills Section -->
@@ -1190,6 +1196,17 @@
             <div class="contact-box fade-in">
                 <h3>Get in Touch</h3>
                 <p>Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                <a href="mailto:katrina@example.com" class="btn btn-primary">Send Me an Email</a>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-method-icon">💼</div>
+                        <a href="https://www.linkedin.com/in/katrina-peli/" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-method-icon">📧</div>
+                        <a href="mailto:katrina@katvpeli.com">Email</a>
+                    </div>
+            
                     </div>
                 </div>
             </div>
