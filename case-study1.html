@@ -862,6 +862,18 @@
     top: 110px; /* below your sticky nav */
   }
 }
+/* Visual Performance Comparison: 2 cards per row */
+.comparison-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Mobile: stack */
+@media (max-width: 768px){
+  .comparison-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -1522,7 +1534,16 @@
                     </ul>
                 </div>
                 <div>
+                    
                     <h3>Research Plan</h3>
+                    <!-- RIGHT: your image -->
+  <div class="qual-research-image">
+    <img
+      src="https://i.ibb.co/0yj6TDyp/Katrina-Peli-UX-Portfolio.png"
+      alt="Qualitative research interview insights"
+      loading="lazy"
+    />
+  </div>
                     <p><strong>Approach:</strong> Qualitative and mixed-methods research</p>
                     <p><strong>Participants:</strong> 30 total (10 interviews, 20 usability test participants)</p>
                     <p><strong>Tools Used:</strong> Zoom, Miro, Figma (for collaborating with designers), Excel, pen-and-paper affinity mapping</p>
@@ -1964,7 +1985,7 @@
   <!-- Visual Comparison Graphs -->
   <h3 style="margin-top: 50px;">Visual Performance Comparison</h3>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+<div class="comparison-grid" style="display: grid; gap: 0px; margin: 40px 0;">
     <!-- Graph 1: Task Completion Rate -->
     <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <h4 style="color: #1e293b; margin-bottom: 25px; font-size: 1.1em;">Task Completion Rate</h4>
@@ -2078,18 +2099,6 @@
     </div>
   </div>
 
-  <div class="quote">
-    "The new filters made it so much easier to find the exact provider I needed. I found someone in under 2 minutes."
-  </div>
-
-  <div class="quote">
-    "Before this app, I often gave up on scheduling appointments because it was too frustrating. Now, I can easily find a provider and book in minutes."
-  </div>
-
-  <div class="highlight-box">
-    <p><strong>Key Learning:</strong> Moving a filter from hidden to visible increased task success by 20%. Small UI details have outsized impact on user experience.</p>
-  </div>
-</div>
 
             <div class="quote">
                 "The new filters made it so much easier to find the exact provider I needed. I found someone in under 2 minutes."
