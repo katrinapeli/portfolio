@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -320,7 +318,8 @@
             box-shadow: 0 35px 80px rgba(74, 144, 226, 0.4);
         }
 
-      .phone-screen {
+      /* iPhone 17-style screen */
+.phone-screen {
   width: 100%;
   height: 100%;
   background: #f5f5f5;
@@ -329,8 +328,7 @@
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-
-      .phone-notch {
+.phone-notch {
   position: absolute;
   top: 8px;
   left: 50%;
@@ -875,6 +873,226 @@
     grid-template-columns: 1fr;
   }
 }
+
+  /* Journey Map Styles */
+  .journey-map {
+    display: grid;
+    grid-template-columns: 140px repeat(5, 1fr);
+    gap: 1px;
+    background: #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+  
+  .journey-header {
+    background: #f8fafc;
+  }
+  
+  .journey-stage-header {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+    padding: 14px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.85em;
+    line-height: 1.4;
+  }
+  
+  .journey-row-label {
+    background: #f1f5f9;
+    padding: 12px;
+    font-weight: 700;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+  }
+  
+  .journey-cell {
+    background: white;
+    padding: 12px;
+    color: #475569;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+  
+  .journey-cell.pain {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.88em;
+  }
+  
+  .journey-emotion {
+    background: white;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  .emotion-point {
+    font-size: 1.8em;
+    transition: transform 0.2s ease;
+  }
+  
+  .emotion-point:hover {
+    transform: scale(1.2);
+  }
+  
+  @media (max-width: 768px) {
+    .journey-map {
+      grid-template-columns: 1fr;
+      font-size: 0.85em;
+    }
+    .journey-stage-header {
+      padding: 10px;
+    }
+    .journey-row-label {
+      background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 8px 12px;
+    }
+  }
+
+  /* Define Phase styles (scoped + avoids persona-header collisions) */
+  .define-persona-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    margin-top: 14px;
+  }
+  .define-persona-top {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .define-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 32px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .define-quickfacts {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 260px;
+    flex: 0 1 320px;
+  }
+  .define-pill {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color:#36465f;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.92em;
+  }
+
+  .define-details {
+    margin-top: 14px;
+  }
+  .define-details summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #4A90E2;
+    list-style: none;
+    margin-top: 10px;
+  }
+  .define-details summary::-webkit-details-marker { display:none; }
+  .define-details summary::after {
+    content: " ▾";
+    font-weight: 800;
+  }
+  details[open] summary::after { content: " ▴"; }
+
+  .define-details-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .define-detail-box {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .define-detail-title {
+    font-weight: 800;
+    color:#315082;
+    margin-bottom: 6px;
+  }
+  .define-detail-text {
+    color:#475569;
+    font-size: 0.95em;
+    line-height: 1.6;
+  }
+
+  
+  .define-btn {
+    margin-top: 12px;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* Modal */
+  .define-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    z-index: 5000;
+  }
+  .define-modal-content {
+    max-width: 1100px;
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    padding: 14px;
+    position: relative;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.35);
+  }
+  .define-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    cursor: pointer;
+    font-weight: 900;
+  }
+
+  @media (max-width: 768px) {
+    .define-quickfacts { min-width: 100%; }
+  }
 
     </style>
 </head>
@@ -1734,148 +1952,72 @@
           <div class="define-pill"><strong>Pain:</strong> Confusing provider search, overwhelming information, outdated providers</div>
         </div>
       </div>
+    </div>
 
-
-          </div>
+    <!-- User Journey Map (Compact) -->
+    <div style="margin-top: 40px;">
+      <h3>User Journey Map</h3>
+      <p style="color:#64748b; margin-bottom: 20px;">Sarah's experience using VirtualCare to find and connect with a therapist</p>
+      
+      <div class="journey-map">
+        <!-- Stage Headers -->
+        <div class="journey-header"></div>
+        <div class="journey-stage-header">🔍<br>Awareness</div>
+        <div class="journey-stage-header">📱<br>Search</div>
+        <div class="journey-stage-header">📅<br>Book</div>
+        <div class="journey-stage-header">🎥<br>Session</div>
+        <div class="journey-stage-header">💬<br>Follow-up</div>
+        
+        <!-- Actions Row -->
+        <div class="journey-row-label">Actions</div>
+        <div class="journey-cell">Realizes need for anxiety support</div>
+        <div class="journey-cell">Searches for therapists who accept insurance</div>
+        <div class="journey-cell">Reviews profiles, books appointment</div>
+        <div class="journey-cell">Attends video session</div>
+        <div class="journey-cell">Messages therapist, schedules next visit</div>
+        
+        <!-- Touchpoints Row -->
+        <div class="journey-row-label">Touchpoints</div>
+        <div class="journey-cell">Friend referral, Google search</div>
+        <div class="journey-cell">VirtualCare app, provider profiles</div>
+        <div class="journey-cell">Booking interface, email confirmation</div>
+        <div class="journey-cell">Video call, in-app chat</div>
+        <div class="journey-cell">App notifications, calendar sync</div>
+        
+        <!-- Emotion Row with Graph -->
+        <div class="journey-row-label">Emotion</div>
+        <div class="journey-emotion">
+          <div class="emotion-point sad">😟</div>
+          <span style="font-size:0.75em; color:#64748b;">Anxious, hopeful</span>
         </div>
-      </details>
+        <div class="journey-emotion">
+          <div class="emotion-point neutral">😐</div>
+          <span style="font-size:0.75em; color:#64748b;">Cautiously optimistic</span>
+        </div>
+        <div class="journey-emotion">
+          <div class="emotion-point happy">😊</div>
+          <span style="font-size:0.75em; color:#64748b;">Excited, nervous</span>
+        </div>
+        <div class="journey-emotion">
+          <div class="emotion-point happy">😌</div>
+          <span style="font-size:0.75em; color:#64748b;">Relieved, supported</span>
+        </div>
+        <div class="journey-emotion">
+          <div class="emotion-point happy">😊</div>
+          <span style="font-size:0.75em; color:#64748b;">Confident, hopeful</span>
+        </div>
+        
+        <!-- Pain Points Row -->
+        <div class="journey-row-label">Pain Points</div>
+        <div class="journey-cell pain">Overwhelmed by options, unsure where to start</div>
+        <div class="journey-cell pain">Unclear if providers accept insurance</div>
+        <div class="journey-cell pain">Worried about technical issues</div>
+        <div class="journey-cell pain">Privacy concerns about video</div>
+        <div class="journey-cell pain">Forgetting to schedule follow-ups</div>
+      </div>
     </div>
-  
-    </div>
-
-<style>
-  /* Define Phase styles (scoped + avoids persona-header collisions) */
-  .define-persona-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    margin-top: 14px;
-  }
-  .define-persona-top {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  .define-avatar {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size: 32px;
-    color: white;
-    flex-shrink: 0;
-  }
-  .define-quickfacts {
-    display:flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 260px;
-    flex: 0 1 320px;
-  }
-  .define-pill {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    color:#36465f;
-    padding: 10px 12px;
-    border-radius: 12px;
-    font-size: 0.92em;
-  }
-
-  .define-details {
-    margin-top: 14px;
-  }
-  .define-details summary {
-    cursor: pointer;
-    font-weight: 700;
-    color: #4A90E2;
-    list-style: none;
-    margin-top: 10px;
-  }
-  .define-details summary::-webkit-details-marker { display:none; }
-  .define-details summary::after {
-    content: " ▾";
-    font-weight: 800;
-  }
-  details[open] summary::after { content: " ▴"; }
-
-  .define-details-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-    margin-top: 14px;
-  }
-  .define-detail-box {
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 14px;
-  }
-  .define-detail-title {
-    font-weight: 800;
-    color:#315082;
-    margin-bottom: 6px;
-  }
-  .define-detail-text {
-    color:#475569;
-    font-size: 0.95em;
-    line-height: 1.6;
-  }
-
-  
-  .define-btn {
-    margin-top: 12px;
-    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-    color: white;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  /* Modal */
-  .define-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(15,23,42,0.65);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    z-index: 5000;
-  }
-  .define-modal-content {
-    max-width: 1100px;
-    width: 100%;
-    background: white;
-    border-radius: 16px;
-    padding: 14px;
-    position: relative;
-    box-shadow: 0 20px 70px rgba(0,0,0,0.35);
-  }
-  .define-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    background: white;
-    cursor: pointer;
-    font-weight: 900;
-  }
-
-  @media (max-width: 768px) {
-    .define-quickfacts { min-width: 100%; }
-  }
-</style>
+  </div>
+</div>
 
         <!-- Ideate Phase -->
         <div class="section scroll-reveal">
@@ -2113,7 +2255,7 @@
             <div class="highlight-box">
                 <p><strong>Key Learning:</strong> Moving a filter from hidden to visible increased task success by 20%. Small UI details have outsized impact on user experience.</p>
             </div>
-     
+        </div>
 
         <!-- Final Results -->
         <div class="section scroll-reveal" id="results">
@@ -2133,15 +2275,10 @@
                     <div class="stat-number">+25%</div>
                     <div class="stat-label">Task Success</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">-20%</div>
-                    <div class="stat-label">Support Calls</div>
-                </div>
             </div>
 
             <h3>Business Impact</h3>
             <ul style="font-size: 1.1em;">
-                <li><strong>Operational Efficiency:</strong> 20% fewer support calls saved ~15 staff hours/week</li>
                 <li><strong>Provider Productivity:</strong> Async messaging reduced unnecessary phone calls</li>
                 <li><strong>Patient Retention:</strong> Platform abandonment down 18%</li>
                 <li><strong>Resource Utilization:</strong> Missed appointments decreased 12%</li>
