@@ -1443,71 +1443,164 @@
                         <p style="margin-top: 15px;"><strong>What I Did:</strong> Grouped insights from all 20 research sessions (10 contextual inquiries + 10 interviews) into themes. Developed user persona (Jane Doe) to represent primary user needs. Mapped user journey highlighting pain points.</p>
                         <p style="margin-top: 10px;"><strong>Journey Insights:</strong> Users struggled to read program details (text too small), low contrast made it difficult to see form content clearly, users couldn't complete sign-up form (labels missing or unclear)</p>
                         
-                        <!-- Affinity Map Visual -->
-                        <div style="margin-top: 25px; background: white; padding: 20px; border-radius: 10px; border: 2px solid #c79edb;">
-                            <h5 style="color: #4a5568; margin-bottom: 15px; text-align: center;">🗂️ Affinity Mapping: Research Themes</h5>
-                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
-                                <!-- Trouble using website -->
-                                <div>
-                                    <div style="font-weight: bold; color: #4a5568; margin-bottom: 10px; font-size: 0.9em;">Trouble using website</div>
-                                    <div style="background: #ffd7d7; padding: 12px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #e74c3c; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Difficult to navigate with low contrast</div>
-                                    </div>
-                                    <div style="background: #ffd7d7; padding: 12px; border-radius: 6px; border-left: 3px solid #e74c3c; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Challenges finding program info</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Features needed -->
-                                <div>
-                                    <div style="font-weight: bold; color: #4a5568; margin-bottom: 10px; font-size: 0.9em;">Features needed</div>
-                                    <div style="background: #fff4cc; padding: 12px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #f39c12; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Improved navigation and user-friendly interface</div>
-                                    </div>
-                                    <div style="background: #fff4cc; padding: 12px; border-radius: 6px; border-left: 3px solid #f39c12; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Accessibility features like screen reader</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Current site info -->
-                                <div>
-                                    <div style="font-weight: bold; color: #4a5568; margin-bottom: 10px; font-size: 0.9em;">Current site info</div>
-                                    <div style="background: #d4f4dd; padding: 12px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #27ae60; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Using search with assistive technology</div>
-                                    </div>
-                                    <div style="background: #d4f4dd; padding: 12px; border-radius: 6px; border-left: 3px solid #27ae60; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Limited access due to compatibility</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Feelings about site -->
-                                <div>
-                                    <div style="font-weight: bold; color: #4a5568; margin-bottom: 10px; font-size: 0.9em;">Feelings about site</div>
-                                    <div style="background: #f3e8f8; padding: 12px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #c79edb; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Frustrated with the lack of access</div>
-                                    </div>
-                                    <div style="background: #f3e8f8; padding: 12px; border-radius: 6px; border-left: 3px solid #c79edb; min-height: 60px;">
-                                        <div style="font-size: 0.85em; color: #2c3e50;">Disappointed with the excessive effort</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Key Themes Summary -->
-                            <div style="background: white; border: 2px solid #c79edb; border-radius: 10px; padding: 20px;">
-                                <div style="font-weight: bold; color: #4a5568; margin-bottom: 15px; font-size: 1em;">📌 Key Themes Identified:</div>
-                                <div style="margin-bottom: 10px;">
-                                    <span style="color: #e74c3c; font-weight: bold;">• Text Unreadable:</span>
-                                    <span style="color: #4a5568; margin-left: 8px;">Size and contrast made content inaccessible</span>
-                                </div>
-                                <div style="margin-bottom: 10px;">
-                                    <span style="color: #e74c3c; font-weight: bold;">• Forms Confusing:</span>
-                                    <span style="color: #4a5568; margin-left: 8px;">Missing labels caused errors and abandonment</span>
-                                </div>
-                                <div>
-                                    <span style="color: #e74c3c; font-weight: bold;">• Lack of Confidence:</span>
-                                    <span style="color: #4a5568; margin-left: 8px;">Users required assistance to complete basic tasks</span>
-                                </div>
-                            </div>
+                    <!-- Compact Fixed-Width Affinity Map with More Detail -->
+<div style="margin-top: 25px; background: white; padding: 20px; border-radius: 10px; border: 2px solid #c79edb; max-width: 900px; margin-left: auto; margin-right: auto;">
+    <h5 style="color: #4a5568; margin-bottom: 15px; text-align: center; font-size: 1em;">🗂️ Affinity Mapping: Research Themes</h5>
+    <p style="text-align: center; color: #718096; font-size: 0.75em; margin-bottom: 15px;">Grouped insights from 20 research sessions (10 contextual inquiries + 10 interviews)</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 15px; max-width: 850px; margin-left: auto; margin-right: auto;">
+        <!-- Column 1: Trouble using the website -->
+        <div>
+            <div style="background: linear-gradient(135deg, #ffd7d7, #ffb3b3); padding: 6px; border-radius: 6px 6px 0 0; font-weight: bold; color: #2c3e50; font-size: 0.7em; text-align: center; border: 2px solid #e74c3c; border-bottom: none;">
+                Trouble using website
+            </div>
+            <div style="border: 2px solid #e74c3c; border-top: none; border-radius: 0 0 6px 6px; padding: 6px; background: #fff;">
+                <div style="background: #ffd7d7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #e74c3c; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Difficult to navigate with low contrast and poor readability</div>
+                </div>
+                <div style="background: #ffd7d7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #e74c3c; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Challenges in finding program information</div>
+                </div>
+                <div style="background: #ffd7d7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #e74c3c; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Issues with loading pages or accessing content</div>
+                </div>
+                <div style="background: #ffd7d7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #e74c3c; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Difficulties completing forms or registration</div>
+                </div>
+                <div style="background: #ffd7d7; padding: 7px; border-radius: 4px; border-left: 2px solid #e74c3c; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Text too small, making reading nearly impossible</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Column 2: Features needed -->
+        <div>
+            <div style="background: linear-gradient(135deg, #fff4cc, #ffe699); padding: 6px; border-radius: 6px 6px 0 0; font-weight: bold; color: #2c3e50; font-size: 0.7em; text-align: center; border: 2px solid #f39c12; border-bottom: none;">
+                Features to make easier
+            </div>
+            <div style="border: 2px solid #f39c12; border-top: none; border-radius: 0 0 6px 6px; padding: 6px; background: #fff;">
+                <div style="background: #fff4cc; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #f39c12; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Improved navigation and user-friendly interface</div>
+                </div>
+                <div style="background: #fff4cc; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #f39c12; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Accessibility features like screen reader compatibility</div>
+                </div>
+                <div style="background: #fff4cc; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #f39c12; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Clear and organized information layout</div>
+                </div>
+                <div style="background: #fff4cc; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #f39c12; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Search function for easier content retrieval</div>
+                </div>
+                <div style="background: #fff4cc; padding: 7px; border-radius: 4px; border-left: 2px solid #f39c12; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Text resizing options for better readability</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Column 3: Current site info -->
+        <div>
+            <div style="background: linear-gradient(135deg, #d4f4dd, #a8e6b7); padding: 6px; border-radius: 6px 6px 0 0; font-weight: bold; color: #2c3e50; font-size: 0.7em; text-align: center; border: 2px solid #27ae60; border-bottom: none;">
+                Current website info
+            </div>
+            <div style="border: 2px solid #27ae60; border-top: none; border-radius: 0 0 6px 6px; padding: 6px; background: #fff;">
+                <div style="background: #d4f4dd; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #27ae60; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Using a search with assistive technology</div>
+                </div>
+                <div style="background: #d4f4dd; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #27ae60; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Limited access due to compatibility issues</div>
+                </div>
+                <div style="background: #d4f4dd; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #27ae60; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Assistance from caregiver or family member</div>
+                </div>
+                <div style="background: #d4f4dd; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #27ae60; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Reliance on external tools or software</div>
+                </div>
+                <div style="background: #d4f4dd; padding: 7px; border-radius: 4px; border-left: 2px solid #27ae60; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Dependence on alternative formats like phone calls</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Column 4: Feelings -->
+        <div>
+            <div style="background: linear-gradient(135deg, #f3e8f8, #e5d4f5); padding: 6px; border-radius: 6px 6px 0 0; font-weight: bold; color: #2c3e50; font-size: 0.7em; text-align: center; border: 2px solid #c79edb; border-bottom: none;">
+                Feelings about site
+            </div>
+            <div style="border: 2px solid #c79edb; border-top: none; border-radius: 0 0 6px 6px; padding: 6px; background: #fff;">
+                <div style="background: #f3e8f8; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #c79edb; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Frustrated with the lack of accessibility</div>
+                </div>
+                <div style="background: #f3e8f8; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #c79edb; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Confused by the layout and organization</div>
+                </div>
+                <div style="background: #f3e8f8; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #c79edb; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Disappointed with excessive effort required</div>
+                </div>
+                <div style="background: #f3e8f8; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #c79edb; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Annoyed with the website technology</div>
+                </div>
+                <div style="background: #f3e8f8; padding: 7px; border-radius: 4px; border-left: 2px solid #c79edb; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Desire for a more intuitive experience</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Column 5: Walkthrough -->
+        <div>
+            <div style="background: linear-gradient(135deg, #d4e9f7, #a8d5f0); padding: 6px; border-radius: 6px 6px 0 0; font-weight: bold; color: #2c3e50; font-size: 0.7em; text-align: center; border: 2px solid #3498db; border-bottom: none;">
+                Walkthrough using site
+            </div>
+            <div style="border: 2px solid #3498db; border-top: none; border-radius: 0 0 6px 6px; padding: 6px; background: #fff;">
+                <div style="background: #d4e9f7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #3498db; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Navigating multiple pages to find information</div>
+                </div>
+                <div style="background: #d4e9f7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #3498db; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Clicking on buttons and links to explore content</div>
+                </div>
+                <div style="background: #d4e9f7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #3498db; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Sometimes needing to ask for help or support</div>
+                </div>
+                <div style="background: #d4e9f7; padding: 7px; border-radius: 4px; margin-bottom: 5px; border-left: 2px solid #3498db; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Struggling with the homepage or menu navigation</div>
+                </div>
+                <div style="background: #d4e9f7; padding: 7px; border-radius: 4px; border-left: 2px solid #3498db; min-height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="font-size: 0.65em; color: #2c3e50; line-height: 1.4;">Difficulties in locating specific details quickly</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Compact Key Themes Summary -->
+    <div style="background: white; border: 2px solid #c79edb; border-radius: 10px; padding: 15px; max-width: 850px; margin-left: auto; margin-right: auto;">
+        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 12px; font-size: 0.9em; text-align: center;">📌 Key Themes Identified from Affinity Mapping</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="background: linear-gradient(135deg, #fff5f5, #fee); padding: 10px; border-radius: 8px; border-left: 3px solid #e74c3c;">
+                <div style="margin-bottom: 4px;">
+                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.85em;">• Text Unreadable</span>
+                </div>
+                <span style="color: #4a5568; font-size: 0.75em;">Small font size and low contrast made content inaccessible</span>
+            </div>
+            <div style="background: linear-gradient(135deg, #fff5f5, #fee); padding: 10px; border-radius: 8px; border-left: 3px solid #e74c3c;">
+                <div style="margin-bottom: 4px;">
+                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.85em;">• Forms Confusing</span>
+                </div>
+                <span style="color: #4a5568; font-size: 0.75em;">Missing labels caused errors and form abandonment</span>
+            </div>
+            <div style="background: linear-gradient(135deg, #fff5f5, #fee); padding: 10px; border-radius: 8px; border-left: 3px solid #e74c3c;">
+                <div style="margin-bottom: 4px;">
+                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.85em;">• Lack of Confidence</span>
+                </div>
+                <span style="color: #4a5568; font-size: 0.75em;">Users required assistance to complete basic tasks</span>
+            </div>
+            <div style="background: linear-gradient(135deg, #fff5f5, #fee); padding: 10px; border-radius: 8px; border-left: 3px solid #e74c3c;">
+                <div style="margin-bottom: 4px;">
+                    <span style="color: #e74c3c; font-weight: bold; font-size: 0.85em;">• Screen Reader Issues</span>
+                </div>
+                <span style="color: #4a5568; font-size: 0.75em;">Poor semantic HTML broke assistive technology</span>
+            </div>
+        </div>
+    </div>
+
                         </div>
                     </div>
                 </div>
