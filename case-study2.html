@@ -1680,157 +1680,155 @@
                         </div>
             
                     </div>
-                      
         <!-- Two Column Layout -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
-            <!-- Left Column: Tasks & Findings -->
-            <div>
-                <div style="background: white; padding: 20px; border-radius: 10px; border: 2px solid #c79edb; margin-bottom: 20px;">
-                    <h5 style="color: #4a5568; margin-bottom: 15px; font-size: 1em; border-bottom: 2px solid #c79edb; padding-bottom: 8px;">Tasks Given to Participants</h5>
-                    <ul style="margin: 0; padding-left: 20px; color: #2c3e50; line-height: 1.8;">
-                        <li style="margin-bottom: 10px; font-size: 0.9em;">Increase text size using new resize feature</li>
-                        <li style="margin-bottom: 10px; font-size: 0.9em;">Read program description with updated contrast</li>
-                        <li style="font-size: 0.9em;">Complete the sign-up form</li>
-                    </ul>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
+    
+    <!-- Left Column: Tasks & Findings -->
+    <div>
+        <!-- Tasks Box -->
+        <div style="background: white; padding: 20px; border-radius: 10px; border: 2px solid #c79edb; margin-bottom: 20px;">
+            <h5 style="color: #4a5568; margin-bottom: 15px; font-size: 1em; border-bottom: 2px solid #c79edb; padding-bottom: 8px;">Tasks Given to Participants</h5>
+            <ul style="margin: 0; padding-left: 20px; color: #2c3e50; line-height: 1.8;">
+                <li style="margin-bottom: 10px; font-size: 0.9em;">Increase text size using new resize feature</li>
+                <li style="margin-bottom: 10px; font-size: 0.9em;">Read program description with updated contrast</li>
+                <li style="font-size: 0.9em;">Complete the sign-up form</li>
+            </ul>
+        </div>
+        
+        <!-- Testing Results Box -->
+        <div style="background: white; padding: 20px; border-radius: 10px; border: 2px solid #27ae60;">
+            <h5 style="color: #4a5568; margin-bottom: 15px; font-size: 1em; border-bottom: 2px solid #27ae60; padding-bottom: 8px;">Testing Results & Iterations</h5>
+            
+            <!-- Success Rates -->
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="font-weight: bold; color: #4a5568; margin-bottom: 10px; font-size: 0.95em;">Success Rates (10 participants)</div>
+                <div style="margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                        <span style="font-size: 0.85em; color: #4a5568;">Task 1: Use text resize</span>
+                        <span style="font-size: 0.85em;"><span style="color: #e74c3c; font-weight: 600;">60%</span> → <span style="color: #27ae60; font-weight: 600;">100%</span></span>
+                    </div>
+                    <div style="background: #e9ecef; height: 6px; border-radius: 3px; overflow: hidden;">
+                        <div style="background: linear-gradient(90deg, #e74c3c 60%, #27ae60 60%); width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                        <span style="font-size: 0.85em; color: #4a5568;">Task 2: Read with new contrast</span>
+                        <span style="font-size: 0.85em;"><span style="color: #e74c3c; font-weight: 600;">80%</span> → <span style="color: #27ae60; font-weight: 600;">100%</span></span>
+                    </div>
+                    <div style="background: #e9ecef; height: 6px; border-radius: 3px; overflow: hidden;">
+                        <div style="background: linear-gradient(90deg, #e74c3c 80%, #27ae60 80%); width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                        <span style="font-size: 0.85em; color: #4a5568;">Task 3: Complete sign-up form</span>
+                        <span style="font-size: 0.85em;"><span style="color: #e74c3c; font-weight: 600;">40%</span> → <span style="color: #27ae60; font-weight: 600;">80%</span></span>
+                    </div>
+                    <div style="background: #e9ecef; height: 6px; border-radius: 3px; overflow: hidden;">
+                        <div style="background: linear-gradient(90deg, #e74c3c 40%, #27ae60 40% 80%, transparent 80%); width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #f0fdf4; padding: 12px; border-radius: 8px; border-left: 4px solid #27ae60; margin-bottom: 15px;">
+                <div style="font-size: 0.85em; color: #27ae60; font-weight: 600;">
+                    ✓ Testing validated our solutions worked before launch
+                </div>
+            </div>
+            
+            <div style="color: #2c3e50; line-height: 1.7;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 0.9em;">Issues Found & Fixed:</div>
+                <div style="margin-bottom: 12px; font-size: 0.85em;">
+                    <strong style="color: #e74c3c;">Issue:</strong> Some users unsure how to use text resizing<br>
+                    <strong style="color: #27ae60;">→ Fix:</strong> Added clear label "Resize Text" with visual A A A
+                </div>
+                <div style="margin-bottom: 12px; font-size: 0.85em;">
+                    <strong style="color: #e74c3c;">Issue:</strong> Some form labels still needed improvement<br>
+                    <strong style="color: #27ae60;">→ Fix:</strong> Reworded to "First Name" instead of "Name"
+                </div>
+                <div style="margin-bottom: 12px; font-size: 0.85em;">
+                    <strong style="color: #e74c3c;">Issue:</strong> Certain text/background still had low contrast<br>
+                    <strong style="color: #27ae60;">→ Fix:</strong> Adjusted colors to meet WCAG 2.0 AA (7.05:1)
+                </div>
+                <div style="font-size: 0.85em;">
+                    <strong style="color: #e74c3c;">Issue:</strong> Form validation messages unclear<br>
+                    <strong style="color: #27ae60;">→ Fix:</strong> Made messages more visible and descriptive
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Column: Prototype Mockup -->
+    <div>
+        <div style="background: white; padding: 15px; border-radius: 10px; border: 3px solid #3498db; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);">
+            <div style="text-align: center; color: #3498db; font-weight: bold; margin-bottom: 12px; font-size: 0.9em;">📱 Improved Prototype</div>
+            
+            <!-- Prototype Container -->
+            <div style="border: 2px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #f8f9fa;">
+                <!-- Header with Text Resize -->
+                <div style="background: linear-gradient(135deg, #6b46c1 0%, #553c9a 100%); padding: 15px; position: relative;">
+                    <div style="color: white; font-weight: bold; font-size: 1em; margin-bottom: 8px;">NISRA</div>
+                    <div style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 6px; display: flex; align-items: center; gap: 6px; border: 2px solid #27ae60;">
+                        <span style="font-size: 0.7em; color: #2c3e50; font-weight: 600;">Resize Text</span>
+                        <span style="font-size: 0.8em; color: #2c3e50;">A</span>
+                        <span style="font-size: 0.95em; color: #2c3e50; font-weight: bold;">A</span>
+                        <span style="font-size: 1.1em; color: #2c3e50; font-weight: bold;">A</span>
+                    </div>
                 </div>
                 
-            <div style="background: white; padding: 20px; border-radius: 10px; border: 2px solid #27ae60;">
-    <h5 style="color: #4a5568; margin-bottom: 15px; font-size: 1em; border-bottom: 2px solid #27ae60; padding-bottom: 8px;">Testing Results & Iterations</h5>
-    
-    <!-- NEW: Round 1 vs Round 2 Comparison -->
-    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-        <div style="font-weight: bold; color: #4a5568; margin-bottom: 10px; font-size: 0.95em;">Success Rates (10 participants)</div>
-        <div style="margin-bottom: 10px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="font-size: 0.85em; color: #4a5568;">Task 1: Use text resize</span>
-                <span style="font-size: 0.85em;"><span style="color: #e74c3c; font-weight: 600;">60%</span> → <span style="color: #27ae60; font-weight: 600;">100%</span></span>
-            </div>
-            <div style="background: #e9ecef; height: 6px; border-radius: 3px; overflow: hidden;">
-                <div style="background: linear-gradient(90deg, #e74c3c 60%, #27ae60 60%); width: 100%; height: 100%;"></div>
-            </div>
-        </div>
-        <div style="margin-bottom: 10px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="font-size: 0.85em; color: #4a5568;">Task 2: Read with new contrast</span>
-                <span style="font-size: 0.85em;"><span style="color: #e74c3c; font-weight: 600;">80%</span> → <span style="color: #27ae60; font-weight: 600;">100%</span></span>
-            </div>
-            <div style="background: #e9ecef; height: 6px; border-radius: 3px; overflow: hidden;">
-                <div style="background: linear-gradient(90deg, #e74c3c 80%, #27ae60 80%); width: 100%; height: 100%;"></div>
-            </div>
-        </div>
-        <div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="font-size: 0.85em; color: #4a5568;">Task 3: Complete sign-up form</span>
-                <span style="font-size: 0.85em;"><span style="color: #e74c3c; font-weight: 600;">40%</span> → <span style="color: #27ae60; font-weight: 600;">80%</span></span>
-            </div>
-            <div style="background: #e9ecef; height: 6px; border-radius: 3px; overflow: hidden;">
-                <div style="background: linear-gradient(90deg, #e74c3c 40%, #27ae60 40% 80%, transparent 80%); width: 100%; height: 100%;"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div style="background: #f0fdf4; padding: 12px; border-radius: 8px; border-left: 4px solid #27ae60; margin-bottom: 15px;">
-        <div style="font-size: 0.85em; color: #27ae60; font-weight: 600;">
-            ✓ Testing validated our solutions worked before launch
-        </div>
-    </div>
-    
-    <div style="color: #2c3e50; line-height: 1.7;">
-        <div style="font-weight: bold; margin-bottom: 10px; font-size: 0.9em;">Issues Found & Fixed:</div>
-        <div style="margin-bottom: 12px; font-size: 0.85em;">
-            <strong style="color: #e74c3c;">Issue:</strong> Some users unsure how to use text resizing<br>
-            <strong style="color: #27ae60;">→ Fix:</strong> Added clear label "Resize Text" with visual A A A
-        </div>
-        <div style="margin-bottom: 12px; font-size: 0.85em;">
-            <strong style="color: #e74c3c;">Issue:</strong> Some form labels still needed improvement<br>
-            <strong style="color: #27ae60;">→ Fix:</strong> Reworded to "First Name" instead of "Name"
-        </div>
-        <div style="margin-bottom: 12px; font-size: 0.85em;">
-            <strong style="color: #e74c3c;">Issue:</strong> Certain text/background still had low contrast<br>
-            <strong style="color: #27ae60;">→ Fix:</strong> Adjusted colors to meet WCAG 2.0 AA (7.05:1)
-        </div>
-        <div style="font-size: 0.85em;">
-            <strong style="color: #e74c3c;">Issue:</strong> Form validation messages unclear<br>
-            <strong style="color: #27ae60;">→ Fix:</strong> Made messages more visible and descriptive
-        </div>
-    </div>
-</div>
-                 </div> 
-            <!-- Right Column: Prototype Mockup -->
-            <div>
-                <div style="background: white; padding: 15px; border-radius: 10px; border: 3px solid #3498db; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);">
-                    <div style="text-align: center; color: #3498db; font-weight: bold; margin-bottom: 12px; font-size: 0.9em;">📱 Improved Prototype</div>
-                    
-                    <!-- Prototype Container -->
-                    <div style="border: 2px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #f8f9fa;">
-                        <!-- Header with Text Resize -->
-                        <div style="background: linear-gradient(135deg, #6b46c1 0%, #553c9a 100%); padding: 15px; position: relative;">
-                            <div style="color: white; font-weight: bold; font-size: 1em; margin-bottom: 8px;">NISRA</div>
-                            <div style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 6px; display: flex; align-items: center; gap: 6px; border: 2px solid #27ae60;">
-                                <span style="font-size: 0.7em; color: #2c3e50; font-weight: 600;">Resize Text</span>
-                                <span style="font-size: 0.8em; color: #2c3e50;">A</span>
-                                <span style="font-size: 0.95em; color: #2c3e50; font-weight: bold;">A</span>
-                                <span style="font-size: 1.1em; color: #2c3e50; font-weight: bold;">A</span>
-                            </div>
+                <!-- Sign-Up Form with Clear Labels -->
+                <div style="padding: 15px; background: #f8f9fa;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #3498db;">
+                        <div style="color: #2c3e50; font-weight: bold; font-size: 0.85em; margin-bottom: 12px;">Sign Up for Programs</div>
+                        
+                        <!-- Form Field 1 -->
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #2c3e50; font-size: 0.75em; font-weight: 600; margin-bottom: 4px;">
+                                First and Last Name *
+                            </label>
+                            <input type="text" style="width: 100%; padding: 8px; border: 2px solid #cbd5e0; border-radius: 5px; font-size: 0.75em;" placeholder="Enter your full name">
                         </div>
                         
+                        <!-- Form Field 2 -->
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #2c3e50; font-size: 0.75em; font-weight: 600; margin-bottom: 4px;">
+                                Email Address *
+                            </label>
+                            <input type="email" style="width: 100%; padding: 8px; border: 2px solid #cbd5e0; border-radius: 5px; font-size: 0.75em;" placeholder="your.email@example.com">
+                        </div>
                         
-                        <!-- Sign-Up Form with Clear Labels -->
-                        <div style="padding: 15px; background: #f8f9fa;">
-                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #3498db;">
-                                <div style="color: #2c3e50; font-weight: bold; font-size: 0.85em; margin-bottom: 12px;">Sign Up for Programs</div>
-                                
-                                <!-- Form Field 1 -->
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; color: #2c3e50; font-size: 0.75em; font-weight: 600; margin-bottom: 4px;">
-                                        First and Last Name *
-                                    </label>
-                                    <input type="text" style="width: 100%; padding: 8px; border: 2px solid #cbd5e0; border-radius: 5px; font-size: 0.75em;" placeholder="Enter your full name">
-                                </div>
-                                
-                                <!-- Form Field 2 -->
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; color: #2c3e50; font-size: 0.75em; font-weight: 600; margin-bottom: 4px;">
-                                        Email Address *
-                                    </label>
-                                    <input type="email" style="width: 100%; padding: 8px; border: 2px solid #cbd5e0; border-radius: 5px; font-size: 0.75em;" placeholder="your.email@example.com">
-                                </div>
-                                
-                                <!-- Form Field 3 -->
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; color: #2c3e50; font-size: 0.75em; font-weight: 600; margin-bottom: 4px;">
-                                        Phone Number for Contact *
-                                    </label>
-                                    <input type="tel" style="width: 100%; padding: 8px; border: 2px solid #cbd5e0; border-radius: 5px; font-size: 0.75em;" placeholder="(555) 123-4567">
-                                </div>
-                                
-                                <!-- Validation Message -->
-                                <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 5px; padding: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                                    <span style="font-size: 1em;">⚠️</span>
-                                    <span style="color: #856404; font-size: 0.7em; font-weight: 600;">Please fill in all required fields marked with *</span>
-                                </div>
-                                
-                                <!-- Submit Button -->
-                                <button style="width: 100%; background: linear-gradient(135deg, #27ae60 0%, #229954 100%); color: white; padding: 10px; border: none; border-radius: 6px; font-size: 0.8em; font-weight: bold; cursor: pointer; box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);">
-                                    Submit Registration
-                                </button>
-                                
-                                <div style="margin-top: 10px; text-align: center;">
-                                    <span style="display: inline-block; padding: 4px 8px; background: #27ae60; color: white; border-radius: 4px; font-size: 0.65em; font-weight: 600;">
-                                        ✓ Clear Labels & Good Contrast
-                                    </span>
-                                </div>
-                            </div>
+                        <!-- Form Field 3 -->
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #2c3e50; font-size: 0.75em; font-weight: 600; margin-bottom: 4px;">
+                                Phone Number for Contact *
+                            </label>
+                            <input type="tel" style="width: 100%; padding: 8px; border: 2px solid #cbd5e0; border-radius: 5px; font-size: 0.75em;" placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <!-- Validation Message -->
+                        <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 5px; padding: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1em;">⚠️</span>
+                            <span style="color: #856404; font-size: 0.7em; font-weight: 600;">Please fill in all required fields marked with *</span>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button style="width: 100%; background: linear-gradient(135deg, #27ae60 0%, #229954 100%); color: white; padding: 10px; border: none; border-radius: 6px; font-size: 0.8em; font-weight: bold; cursor: pointer; box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);">
+                            Submit Registration
+                        </button>
+                        
+                        <div style="margin-top: 10px; text-align: center;">
+                            <span style="display: inline-block; padding: 4px 8px; background: #27ae60; color: white; border-radius: 4px; font-size: 0.65em; font-weight: 600;">
+                                ✓ Clear Labels & Good Contrast
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-                </div>
-            </div>
-        </div>
+    
+</div> <!-- End of two-column grid -->
 
         <!-- User Persona -->
         <div class="section">
