@@ -2348,67 +2348,139 @@ Patients were getting stuck before they could access care. Missing filters, uncl
 
     <div class="comparison-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin: 40px 0;">
 
-        <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 2em; margin-bottom: 10px;">🔍</div>
-                <h4 style="color: #1e293b; margin: 0; font-size: 1.05em;">Task 1: Find Provider</h4>
-                <p style="font-size: 0.8em; color: #64748b; margin-top: 5px;">Average time to complete</p>
-            </div>
+<h2 class="sr-only">Usability testing task performance results comparing Round 1 and Round 2</h2>
 
-            <p><strong>Round 1:</strong> 4.5 min</p>
-            <p><strong>Round 2:</strong> 3.15 min</p>
+<div style="padding: 1rem 0;">
+  <p style="font-size: 14px; color: var(--color-text-secondary); margin: 0 0 1.5rem;">Task performance: Round 1 (n=10), Round 2 (n=10)</p>
 
-            <div style="padding: 12px; background: #dcfce7; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.8em; color: #16a34a; font-weight: 700;">30% less time</div>
-            </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px;">
+
+    <div style="background: var(--color-background-primary); padding: 24px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary);">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="font-size: 20px; margin-bottom: 8px;">&#128269;</div>
+        <p style="font-weight: 500; font-size: 14px; color: var(--color-text-primary); margin: 0;">Task 1: Find provider</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 4px 0 0;">Average time to complete</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Round 1</span>
+            <span style="font-size: 12px; color: #c0392b; font-weight: 700;">4.5 min</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #e74c3c, #c0392b); height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">4.5 min</div>
+          </div>
         </div>
-
-        <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 2em; margin-bottom: 10px;">💬</div>
-                <h4 style="color: #1e293b; margin: 0; font-size: 1.05em;">Task 2: Send Message</h4>
-                <p style="font-size: 0.8em; color: #64748b; margin-top: 5px;">Task completion rate</p>
-            </div>
-
-            <p><strong>Round 1:</strong> 55%</p>
-            <p><strong>Round 2:</strong> 90%</p>
-
-            <div style="padding: 12px; background: #dcfce7; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.8em; color: #16a34a; font-weight: 700;">+35 pp messaging success</div>
-            </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Round 2</span>
+            <span style="font-size: 12px; color: #059669; font-weight: 700;">3.15 min</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #10b981, #059669); height: 100%; width: 70%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">3.15 min</div>
+          </div>
         </div>
-
-        <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 2em; margin-bottom: 10px;">📅</div>
-                <h4 style="color: #1e293b; margin: 0; font-size: 1.05em;">Task 3: Book Appointment</h4>
-                <p style="font-size: 0.8em; color: #64748b; margin-top: 5px;">Task completion rate</p>
-            </div>
-
-            <p><strong>Round 1:</strong> 50%</p>
-            <p><strong>Round 2:</strong> 88%</p>
-
-            <div style="padding: 12px; background: #dcfce7; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.8em; color: #16a34a; font-weight: 700;">+38 pp booking success</div>
-            </div>
-        </div>
-
-        <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 2em; margin-bottom: 10px;">😊</div>
-                <h4 style="color: #1e293b; margin: 0; font-size: 1.05em;">User Satisfaction</h4>
-                <p style="font-size: 0.8em; color: #64748b; margin-top: 5px;">Follow-up survey</p>
-            </div>
-
-            <p><strong>Before:</strong> 65%</p>
-            <p><strong>After:</strong> 80%</p>
-
-            <div style="padding: 12px; background: #dcfce7; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.8em; color: #16a34a; font-weight: 700;">+15 pp user satisfaction</div>
-            </div>
-        </div>
+      </div>
+      <div style="padding: 10px; background: #dcfce7; border-radius: 8px; text-align: center;">
+        <span style="font-size: 12px; color: #16a34a; font-weight: 700;">30% less time</span>
+      </div>
     </div>
 
+    <div style="background: var(--color-background-primary); padding: 24px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary);">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="font-size: 20px; margin-bottom: 8px;">&#128172;</div>
+        <p style="font-weight: 500; font-size: 14px; color: var(--color-text-primary); margin: 0;">Task 2: Send message</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 4px 0 0;">Successful completion rate</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Round 1</span>
+            <span style="font-size: 12px; color: #c0392b; font-weight: 700;">55%</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #e74c3c, #c0392b); height: 100%; width: 55%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">55%</div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Round 2</span>
+            <span style="font-size: 12px; color: #059669; font-weight: 700;">90%</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #10b981, #059669); height: 100%; width: 90%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">90%</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 10px; background: #dcfce7; border-radius: 8px; text-align: center;">
+        <span style="font-size: 12px; color: #16a34a; font-weight: 700;">+35 pp messaging success</span>
+      </div>
+    </div>
+
+    <div style="background: var(--color-background-primary); padding: 24px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary);">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="font-size: 20px; margin-bottom: 8px;">&#128197;</div>
+        <p style="font-weight: 500; font-size: 14px; color: var(--color-text-primary); margin: 0;">Task 3: Book appointment</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 4px 0 0;">Successful completion rate</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Round 1</span>
+            <span style="font-size: 12px; color: #c0392b; font-weight: 700;">50%</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #e74c3c, #c0392b); height: 100%; width: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">50%</div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Round 2</span>
+            <span style="font-size: 12px; color: #059669; font-weight: 700;">88%</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #10b981, #059669); height: 100%; width: 88%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">88%</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 10px; background: #dcfce7; border-radius: 8px; text-align: center;">
+        <span style="font-size: 12px; color: #16a34a; font-weight: 700;">+38 pp booking success</span>
+      </div>
+    </div>
+
+    <div style="background: var(--color-background-primary); padding: 24px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary);">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="font-size: 20px; margin-bottom: 8px;">&#128522;</div>
+        <p style="font-weight: 500; font-size: 14px; color: var(--color-text-primary); margin: 0;">User satisfaction</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 4px 0 0;">Post-launch survey (n=60)</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">Before</span>
+            <span style="font-size: 12px; color: #c0392b; font-weight: 700;">65%</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #e74c3c, #c0392b); height: 100%; width: 65%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">65%</div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 500;">After</span>
+            <span style="font-size: 12px; color: #059669; font-weight: 700;">80%</span>
+          </div>
+          <div style="background: #f1f5f9; height: 30px; border-radius: 6px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #10b981, #059669); height: 100%; width: 80%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">80%</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 10px; background: #dcfce7; border-radius: 8px; text-align: center;">
+        <span style="font-size: 12px; color: #16a34a; font-weight: 700;">+15 pp user satisfaction</span>
+      </div>
+    </div>
+
+    </div>
+</div>
     <div style="background: linear-gradient(135deg, #BBDEFB 0%, #E3F2FD 100%); padding: 25px; border-radius: 12px; margin-top: 30px; border-left: 4px solid #4A90E2;">
         <h4 style="color: #1e293b; margin-bottom: 15px;">Key Findings from Usability Testing</h4>
         <ul style="margin: 0; color: #475569; line-height: 1.8;">
@@ -2419,11 +2491,11 @@ Patients were getting stuck before they could access care. Missing filters, uncl
     </div>
 
     <div class="quote" style="margin-top: 30px;">
-        "The new filters made it so much easier to find the exact provider I needed. I found someone in under 2 minutes."
+        "The new filters made it so much easier to find the exact provider I needed. I found someone in under 2 minutes." Participant 1
     </div>
 
     <div class="quote">
-        "I love that I can message my doctor directly in the app."
+        "I love that I can message my doctor directly in the app." - Participant 2
     </div>
 </div>
 <!-- Final Results -->
