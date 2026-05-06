@@ -27,9 +27,9 @@
             font-family: 'DM Sans', sans-serif;
             background: var(--bg);
             color: #1a1a2e;
-            line-height: 1.55;
+            line-height: 1.5;
             padding-top: 58px;
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         /* ── NAV ── */
@@ -69,9 +69,9 @@
         /* ── SECTION BASE ── */
         .section {
             background: var(--white);
-            padding: 32px 36px;
+            padding: 28px 32px;
             border-radius: var(--section-radius);
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             box-shadow: 0 3px 16px rgba(107,77,158,0.07);
         }
         .section h2 {
@@ -90,38 +90,40 @@
 
         /* ── HERO ── */
         .hero {
-            background: linear-gradient(135deg, #e8d5f5 0%, #c79edb 55%, #a07abf 100%);
+            background: linear-gradient(135deg, #f3e8fb 0%, #e0c8f0 55%, #c9a8d8 100%);
             padding: 40px 44px;
             border-radius: var(--section-radius);
             margin-bottom: 18px;
-            box-shadow: 0 8px 30px rgba(107,77,158,0.18);
+            box-shadow: 0 8px 30px rgba(107,77,158,0.15);
         }
         .hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 36px; align-items: center; max-width: 1060px; margin: 0 auto; }
         .hero-tag {
             display: inline-block;
-            background: rgba(255,255,255,0.28);
+            background: rgba(107,77,158,0.15);
             padding: 4px 14px; border-radius: 20px;
-            color: white; font-size: 0.72em; font-weight: 600;
+            color: #4a2d7a; font-size: 0.72em; font-weight: 700;
             letter-spacing: 1px; margin-bottom: 14px;
+            border: 1px solid rgba(107,77,158,0.3);
         }
-        .hero h1 { font-family: 'DM Serif Display', serif; font-size: 1.75em; color: white; margin-bottom: 12px; line-height: 1.25; }
-        .hero-subtitle { font-size: 0.9em; color: rgba(255,255,255,0.92); margin-bottom: 18px; line-height: 1.6; }
+        .hero h1 { font-family: 'DM Serif Display', serif; font-size: 1.75em; color: #1a1a2e; margin-bottom: 12px; line-height: 1.25; }
+        .hero-subtitle { font-size: 0.9em; color: #3d2860; margin-bottom: 18px; line-height: 1.6; font-weight: 500; }
         .hero-author {
             display: inline-block;
-            background: rgba(255,255,255,0.22);
+            background: rgba(255,255,255,0.6);
             padding: 7px 16px; border-radius: 8px;
             margin-bottom: 18px;
+            border: 1px solid rgba(107,77,158,0.2);
         }
-        .hero-author strong { color: white; font-size: 0.95em; }
-        .hero-author span { color: rgba(255,255,255,0.88); font-size: 0.88em; }
+        .hero-author strong { color: #1a1a2e; font-size: 0.95em; }
+        .hero-author span { color: #4a5568; font-size: 0.88em; }
         .hero-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .meta-item {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.55);
             padding: 9px 14px; border-radius: 8px;
-            backdrop-filter: blur(8px);
+            border: 1px solid rgba(107,77,158,0.15);
         }
-        .meta-item strong { display:block; color:white; font-size:0.7em; margin-bottom:2px; letter-spacing:.5px; }
-        .meta-item span { color:rgba(255,255,255,0.95); font-size:0.82em; }
+        .meta-item strong { display:block; color:#4a2d7a; font-size:0.7em; margin-bottom:2px; letter-spacing:.5px; }
+        .meta-item span { color:#1a1a2e; font-size:0.82em; }
 
         /* browser mockup in hero */
         .browser-wrap { background:white; border-radius:8px; box-shadow:0 12px 36px rgba(0,0,0,0.2); overflow:hidden; border:1px solid #d0d0d0; }
@@ -206,8 +208,9 @@
         .process-panel.active { display:block; }
         .panel-inner { background:white; padding:18px; border-radius:10px; border-left:3px solid var(--purple-light); }
         .panel-inner h4 { color:#1a1a2e; margin-bottom:12px; font-size:1em; font-weight:700; }
-        .tool-pill { display:inline-block; background:linear-gradient(135deg,#f3e8f8,#e5d4f5); padding:4px 10px; border-radius:6px; font-size:0.78em; margin:0 5px 6px 0; color:#1a1a2e; }
-        .method-pill { display:inline-block; background:linear-gradient(135deg,#f8f0ff,#ead4fe); padding:4px 10px; border-radius:6px; font-size:0.78em; margin:0 5px 6px 0; color:#1a1a2e; }
+        .pills-row { display:flex; flex-wrap:nowrap; gap:5px; overflow-x:auto; margin-bottom:10px; align-items:center; padding-bottom:2px; }
+        .tool-pill { display:inline-block; background:linear-gradient(135deg,#f3e8f8,#e5d4f5); padding:3px 9px; border-radius:5px; font-size:0.76em; white-space:nowrap; color:#1a1a2e; flex-shrink:0; }
+        .method-pill { display:inline-block; background:linear-gradient(135deg,#f8f0ff,#ead4fe); padding:3px 9px; border-radius:5px; font-size:0.76em; white-space:nowrap; color:#1a1a2e; flex-shrink:0; }
 
         /* contrast bar chart */
         .contrast-row { display:grid; grid-template-columns:140px 1fr 60px; gap:10px; align-items:center; padding:10px 0; border-bottom:1px solid #e9ecef; }
@@ -308,9 +311,9 @@
         .learning-card p  { color:#4a5568; line-height:1.6; font-size:0.84em; }
 
         /* ── CONCLUSION ── */
-        .conclusion { background:linear-gradient(135deg,var(--purple-light),var(--purple-mid),var(--purple-dark)); padding:44px 36px; border-radius:var(--section-radius); text-align:center; color:white; box-shadow:0 8px 30px rgba(107,77,158,0.18); margin-bottom:28px; }
+        .conclusion { background:linear-gradient(135deg,var(--purple-light),var(--purple-mid),var(--purple-dark)); padding:44px 36px; border-radius:var(--section-radius); color:white; box-shadow:0 8px 30px rgba(107,77,158,0.18); margin-bottom:28px; }
         .conclusion h2 { font-family:'DM Serif Display',serif; font-size:1.6em; color:white; margin-bottom:16px; }
-        .conclusion p { font-size:0.92em; line-height:1.75; max-width:780px; margin:0 auto 12px; }
+        .conclusion p { font-size:0.88em; line-height:1.65; margin:0 0 10px 0; }
 
         /* next steps */
         .next-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
@@ -393,9 +396,9 @@
         <span> &nbsp;|&nbsp; UX Researcher</span>
       </div>
       <div class="hero-meta-grid">
-        <div class="meta-item"><strong>ORGANIZATION</strong><span>NISRA — Northern Illinois Special Recreation Association</span></div>
+        <div class="meta-item"><strong>ORGANIZATION</strong><span>Northern Illinois Special Recreation Association (NISRA)</span></div>
         <div class="meta-item"><strong>ROLE</strong><span>UX Researcher</span></div>
-        <div class="meta-item"><strong>DURATION</strong><span>May 2025 – August 2025</span></div>
+        <div class="meta-item"><strong>DURATION</strong><span>May 2025 - August 2025</span></div>
         <div class="meta-item"><strong>TEAM</strong><span>Marketing Director + Web Developer</span></div>
       </div>
     </div>
@@ -404,25 +407,45 @@
       <div style="background:#d8d8d8;border-radius:10px 10px 0 0;padding:8px 8px 0 8px;width:100%;max-width:360px;box-shadow:0 16px 40px rgba(0,0,0,0.25);">
         <div style="text-align:center;margin-bottom:5px;"><div style="width:5px;height:5px;background:#aaa;border-radius:50%;display:inline-block;"></div></div>
         <div style="background:#f5f5f5;border-radius:5px 5px 0 0;overflow:hidden;border:1.5px solid #ccc;border-bottom:none;">
+          <!-- Safari bar -->
+          <div style="background:#f0f0f0;padding:4px 8px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #ddd;">
+            <div style="display:flex;gap:3px;"><div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div><div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div><div style="width:7px;height:7px;border-radius:50%;background:#28ca42;"></div></div>
+            <div style="flex:1;background:white;border-radius:4px;padding:2px 8px;font-size:0.35em;color:#888;text-align:center;border:1px solid #ddd;">nisra.org/programs</div>
+          </div>
           <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
-            <div style="color:white;font-weight:700;font-size:0.65em;">NISRA</div>
+            <div style="line-height:1.2;"><div style="color:white;font-weight:700;font-size:0.65em;">NISRA</div><div style="color:rgba(255,255,255,0.8);font-size:0.34em;">Enriching lives of people with disabilities</div></div>
             <div style="display:flex;gap:7px;color:rgba(255,255,255,0.9);font-size:0.38em;"><span>Home</span><span style="border-bottom:1px solid white;font-weight:700;">Programs</span><span>About</span><span>Contact</span></div>
           </div>
-          <div style="background:#47a1bc;padding:7px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.58em;letter-spacing:1px;">PROGRAMS — Fall / Winter 2025</span></div>
-          <div style="background:#EEEEEE;padding:9px;">
-            <div style="background:white;padding:8px;border-radius:4px;margin-bottom:5px;">
-              <div style="color:#8a8a8a;font-size:0.52em;font-weight:700;margin-bottom:2px;">Weekly Programs</div>
-              <div style="color:#999;font-size:0.42em;line-height:1.4;margin-bottom:6px;">NISRA offers accessible programs for all ability levels and ages year-round.</div>
-              <div style="color:#8a8a8a;font-size:0.52em;font-weight:700;margin-bottom:2px;">Cultural Arts</div>
-              <div style="color:#999;font-size:0.42em;line-height:1.4;margin-bottom:6px;">Pottery, painting, and music with professional artists.</div>
-              <div style="color:#8a8a8a;font-size:0.52em;font-weight:700;margin-bottom:2px;">Athletics &amp; Sports</div>
-              <div style="color:#999;font-size:0.42em;line-height:1.4;margin-bottom:6px;">Basketball, swimming, Special Olympics participation.</div>
-              <div style="color:#8a8a8a;font-size:0.52em;font-weight:700;margin-bottom:2px;">Special Events</div>
-              <div style="color:#999;font-size:0.42em;line-height:1.4;">Community events for fun, friendship, and inclusion.</div>
+          <div style="background:#47a1bc;padding:7px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.58em;letter-spacing:1px;">PROGRAMS - Fall / Winter 2025</span></div>
+          <div style="background:#EEEEEE;padding:8px;display:grid;grid-template-columns:1.8fr 1fr;gap:5px;">
+            <div>
+              <div style="background:white;padding:7px;border-radius:4px;margin-bottom:4px;">
+                <div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:2px;">Weekly Programs</div>
+                <div style="color:#999;font-size:0.38em;line-height:1.3;margin-bottom:2px;">Accessible programs for all ability levels throughout the year.</div>
+                <div style="color:#999;font-size:0.34em;">Mon-Fri | Ages 5+</div>
+              </div>
+              <div style="background:white;padding:7px;border-radius:4px;margin-bottom:4px;">
+                <div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:2px;">Cultural Arts</div>
+                <div style="color:#999;font-size:0.38em;line-height:1.3;">Pottery, painting, music with professional artists.</div>
+              </div>
+              <div style="background:white;padding:7px;border-radius:4px;">
+                <div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:2px;">Athletics &amp; Sports</div>
+                <div style="color:#999;font-size:0.38em;line-height:1.3;">Basketball, swimming, Special Olympics.</div>
+              </div>
             </div>
-            <div style="background:#fff5f5;border:1px solid #e74c3c;border-radius:3px;padding:4px;text-align:center;">
-              <span style="color:#e74c3c;font-size:0.4em;font-weight:700;">⚠ Contrast 2.97:1 FAILED — Text Too Small</span>
+            <div>
+              <div style="background:white;padding:7px;border-radius:4px;margin-bottom:4px;">
+                <div style="background:#d4d4d4;height:30px;border-radius:3px;display:flex;align-items:center;justify-content:center;margin-bottom:3px;"><span style="font-size:0.7em;">🖼</span></div>
+                <div style="color:#8a8a8a;font-size:0.36em;text-align:center;">Highlights</div>
+              </div>
+              <div style="background:white;padding:7px;border-radius:4px;">
+                <div style="color:#8a8a8a;font-size:0.4em;font-weight:700;margin-bottom:3px;">Quick Links</div>
+                <div style="color:#999;font-size:0.34em;line-height:1.5;"><div>Registration</div><div>Calendar</div><div>Contact</div></div>
+              </div>
             </div>
+          </div>
+          <div style="background:#fff5f5;border:1px solid #e74c3c;border-radius:0 0 3px 3px;padding:4px;text-align:center;">
+            <span style="color:#e74c3c;font-size:0.38em;font-weight:700;">Contrast 2.97:1 FAILED - Text Too Small</span>
           </div>
         </div>
       </div>
@@ -434,38 +457,66 @@
 
 <!-- ════════════════════════════════════════════════ 1. PROBLEM -->
 <div class="section" id="overview">
-  <h2>The Problem</h2>
+  <h2>Overview</h2>
 
   <div class="problem-grid">
     <div>
       <div class="hmw-box">
-        <p>NISRA provides recreation programs for individuals with disabilities, but their website failed basic accessibility standards. Small text, poor contrast, and unclear forms prevented visually impaired users from registering independently — creating barriers that directly contradicted NISRA's mission of inclusion.</p>
+        <p>NISRA provides recreation programs for individuals with disabilities, but their website failed basic accessibility standards. Small text, poor contrast, and unclear forms prevented visually impaired users from registering independently - creating barriers that directly contradicted NISRA's mission of inclusion.</p>
+        <div style="font-size:0.72em;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px;">Problem Statement</div>
         <blockquote>"How might we improve website accessibility so users with visual impairments can read content, navigate pages, and complete tasks without frustration or assistance?"</blockquote>
       </div>
-      <h3 style="margin-bottom:12px;">Key Accessibility Challenges</h3>
+      <h3 style="margin-bottom:10px;margin-top:14px;">The Problem</h3>
       <div class="barrier"><div class="barrier-num">1</div><div><div class="barrier-title">Small Text Size</div><div class="barrier-desc">Users with low vision couldn't read program details or form fields, requiring assistance to navigate basic tasks.</div></div></div>
       <div class="barrier"><div class="barrier-num">2</div><div><div class="barrier-title">Poor Color Contrast</div><div class="barrier-desc">Text blended into backgrounds, failing WCAG standards (below 4.5:1 ratio). Users described it as "straining to read."</div></div></div>
       <div class="barrier"><div class="barrier-num">3</div><div><div class="barrier-title">Unclear Form Labels &amp; Missing Alternative Text</div><div class="barrier-desc">Sign-up fields lacked descriptive labels and images had no alt text, making the site effectively unusable for screen reader users.</div></div></div>
     </div>
     <div style="position:sticky;top:90px;">
-      <div class="screenshot-box" style="margin-bottom:16px;">
-        <h4>❌ Programs Page – Before</h4>
-        <div class="screenshot-inner">
-          <div class="sc-header"><div style="color:white;font-weight:700;font-size:0.75em;">NISRA</div><div style="display:flex;gap:8px;color:white;font-size:0.55em;"><span>Home</span><span style="font-weight:700;border-bottom:1px solid white;">Programs</span><span>About</span></div></div>
-          <div style="background:#47a1bc;padding:10px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.85em;">PROGRAMS</span></div>
-          <div class="sc-content"><div style="background:white;padding:10px;border-radius:4px;"><div class="sc-title">Weekly Programs</div><div class="sc-body">NISRA offers a wide range of accessible programs throughout the year. All leisure and recreation classes are open to individuals with developmental disabilities.</div><div class="sc-title">Cultural Arts</div><div class="sc-body">Participants share creative abilities through professional artists.</div></div></div>
-          <div class="sc-fail"><span>⚠️ Contrast: 2.97:1 FAILS WCAG</span></div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:0.78em;font-weight:700;color:#4a5568;margin-bottom:6px;">Programs Page - Before</div>
+        <div style="border-radius:8px;border:1.5px solid var(--red);overflow:hidden;background:#f5f5f5;">
+          <div style="background:#f0f0f0;padding:4px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #ddd;">
+            <div style="display:flex;gap:3px;"><div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div><div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div><div style="width:7px;height:7px;border-radius:50%;background:#28ca42;"></div></div>
+            <div style="flex:1;background:white;border-radius:3px;padding:2px 7px;font-size:0.38em;color:#888;text-align:center;">nisra.org/programs</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="line-height:1.2;"><div style="color:white;font-weight:700;font-size:0.65em;">NISRA</div><div style="color:rgba(255,255,255,0.8);font-size:0.33em;">Enriching lives of people with disabilities</div></div>
+            <div style="display:flex;gap:6px;color:rgba(255,255,255,0.9);font-size:0.38em;"><span>Home</span><span style="border-bottom:1px solid white;font-weight:700;">Programs</span><span>About</span><span>Contact</span></div>
+          </div>
+          <div style="background:#47a1bc;padding:6px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.56em;letter-spacing:0.5px;">PROGRAMS - Fall / Winter 2025</span></div>
+          <div style="background:#EEEEEE;padding:8px;display:grid;grid-template-columns:1.7fr 1fr;gap:5px;">
+            <div>
+              <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;"><div style="color:#8a8a8a;font-size:0.48em;font-weight:700;margin-bottom:1px;">Weekly Programs</div><div style="color:#999;font-size:0.37em;line-height:1.3;margin-bottom:2px;">Accessible programs for all ability levels throughout the year.</div><div style="color:#999;font-size:0.33em;">Mon-Fri | Ages 5+</div></div>
+              <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;"><div style="color:#8a8a8a;font-size:0.48em;font-weight:700;margin-bottom:1px;">Cultural Arts</div><div style="color:#999;font-size:0.37em;line-height:1.3;">Pottery, painting, music with professional artists.</div></div>
+              <div style="background:white;padding:6px;border-radius:3px;"><div style="color:#8a8a8a;font-size:0.48em;font-weight:700;margin-bottom:1px;">Athletics &amp; Sports</div><div style="color:#999;font-size:0.37em;line-height:1.3;">Basketball, swimming, Special Olympics.</div></div>
+            </div>
+            <div>
+              <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;"><div style="background:#d4d4d4;height:28px;border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;"><span style="font-size:0.65em;">🖼</span></div><div style="color:#8a8a8a;font-size:0.36em;text-align:center;">Highlights</div></div>
+              <div style="background:white;padding:6px;border-radius:3px;"><div style="color:#8a8a8a;font-size:0.4em;font-weight:700;margin-bottom:2px;">Quick Links</div><div style="color:#999;font-size:0.33em;line-height:1.5;"><div>Registration</div><div>Calendar</div><div>Contact</div></div></div>
+            </div>
+          </div>
+          <div style="background:#fff5f5;border-top:1.5px solid var(--red);padding:4px;text-align:center;"><span style="color:var(--red);font-size:0.38em;font-weight:700;">Contrast 2.97:1 FAILED - Text Too Small</span></div>
         </div>
       </div>
-      <div class="screenshot-box">
-        <h4>❌ Contact Form – Before</h4>
-        <div style="background:#fff5f5;padding:12px;border-radius:8px;">
-          <div style="background:white;padding:10px;border-radius:6px;">
-            <div style="margin-bottom:8px;"><div style="font-size:0.65em;color:#999;margin-bottom:3px;">Name</div><div style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:0.7em;color:#bbb;background:#fafafa;">Enter here</div></div>
-            <div style="margin-bottom:8px;"><div style="font-size:0.65em;color:#999;margin-bottom:3px;">Contact</div><div style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:0.7em;color:#bbb;background:#fafafa;">Enter here</div></div>
-            <div><div style="font-size:0.65em;color:#999;margin-bottom:3px;">Your question</div><div style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:0.7em;color:#bbb;background:#fafafa;min-height:36px;">Type here</div></div>
+      <div>
+        <div style="font-size:0.78em;font-weight:700;color:#4a5568;margin-bottom:6px;">Sign-Up Form - Before</div>
+        <div style="border-radius:8px;border:1.5px solid var(--red);overflow:hidden;background:#f5f5f5;">
+          <div style="background:#f0f0f0;padding:4px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #ddd;">
+            <div style="display:flex;gap:3px;"><div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div><div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div><div style="width:7px;height:7px;border-radius:50%;background:#28ca42;"></div></div>
+            <div style="flex:1;background:white;border-radius:3px;padding:2px 7px;font-size:0.38em;color:#888;text-align:center;">nisra.org/signup</div>
           </div>
-          <div style="background:#fff5f5;padding:8px;border-radius:6px;margin-top:8px;border-left:3px solid var(--red);font-size:0.65em;color:var(--red);">Issues: Vague labels cause confusion. Screen readers can't announce field purpose.</div>
+          <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:5px 10px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="color:white;font-weight:700;font-size:0.6em;">NISRA</div>
+            <div style="display:flex;gap:6px;color:rgba(255,255,255,0.9);font-size:0.38em;"><span>Home</span><span style="border-bottom:1px solid white;font-weight:700;">Sign Up</span><span>About</span></div>
+          </div>
+          <div style="background:white;padding:9px;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:7px;">Sign Up for Programs</div>
+            <div style="margin-bottom:5px;"><div style="font-size:0.55em;color:#999;margin-bottom:2px;">Name</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:3px;padding:4px 6px;font-size:0.52em;color:#bbb;">Enter here</div></div>
+            <div style="margin-bottom:5px;"><div style="font-size:0.55em;color:#999;margin-bottom:2px;">Contact</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:3px;padding:4px 6px;font-size:0.52em;color:#bbb;">Enter here</div></div>
+            <div style="margin-bottom:6px;"><div style="font-size:0.55em;color:#999;margin-bottom:2px;">Your question</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:3px;padding:4px 6px;font-size:0.52em;color:#bbb;min-height:22px;">Type here</div></div>
+            <div style="background:#47a1bc;color:white;text-align:center;padding:4px;border-radius:3px;font-size:0.52em;">Submit</div>
+          </div>
+          <div style="background:#fff5f5;border-top:1.5px solid var(--red);padding:4px 7px;"><span style="color:var(--red);font-size:0.38em;font-weight:700;">Vague labels - screen readers cannot announce field purpose</span></div>
         </div>
       </div>
     </div>
@@ -479,7 +530,7 @@
     <div class="role-card"><div class="rc-label">My Role</div><h4>UX Researcher</h4><p>Led all research planning, participant recruitment, session facilitation, synthesis, and recommendations.</p></div>
     <div class="role-card"><div class="rc-label">Collaborator</div><h4>Marketing Director</h4><p>Collaborated on redesign priorities, brand alignment, and stakeholder communication throughout the project.</p></div>
     <div class="role-card"><div class="rc-label">Collaborator</div><h4>Web Developer</h4><p>Implemented technical solutions and accessibility fixes based on research recommendations.</p></div>
-    <div class="role-card"><div class="rc-label">Timeline</div><h4>May – August 2025</h4><p>4-month engagement spanning discovery, research, synthesis, validation, and launch.</p></div>
+    <div class="role-card"><div class="rc-label">Timeline</div><h4>May - August 2025</h4><p>4-month engagement spanning discovery, research, synthesis, validation, and launch.</p></div>
   </div>
 </div>
 
@@ -512,7 +563,7 @@
 <div class="section">
   <h2>Key Stakeholders</h2>
   <div class="stakeholder-grid">
-    <div class="stakeholder-card"><div class="s-icon">👥</div><div class="s-title">Users with Visual Impairments</div><div class="s-role">Primary users — participated in contextual inquiries, interviews, and usability testing</div></div>
+    <div class="stakeholder-card"><div class="s-icon">👥</div><div class="s-title">Users with Visual Impairments</div><div class="s-role">Primary users - participated in contextual inquiries, interviews, and usability testing</div></div>
     <div class="stakeholder-card"><div class="s-icon">📢</div><div class="s-title">Marketing Director</div><div class="s-role">Collaborated on redesign priorities and brand alignment</div></div>
     <div class="stakeholder-card"><div class="s-icon">💻</div><div class="s-title">Web Developer</div><div class="s-role">Implemented technical solutions and accessibility fixes</div></div>
     <div class="stakeholder-card"><div class="s-icon">🎯</div><div class="s-title">Program Staff</div><div class="s-role">Shared common registration questions, participant needs, and operational context</div></div>
@@ -536,17 +587,29 @@
   <div class="process-panel" id="panel-1">
     <div class="panel-inner">
       <h4>1. Accessibility Audit (WCAG 2.0 AA)</h4>
-      <div style="margin-bottom:10px;"><span class="tool-pill">WebAIM Contrast Checker</span><span class="tool-pill">WAVE Accessibility Tool</span></div>
-      <div style="margin-bottom:16px;"><span class="method-pill">WCAG 2.0 AA compliance audit</span><span class="method-pill">Contrast ratio testing</span></div>
-      <p style="color:var(--text-mid);margin-bottom:10px;"><strong>What I Did:</strong> Audited key pages and documented specific failures. Required contrast: 4.5:1 for normal text, 3:1 for large text.</p>
-      <p style="color:var(--text-mid);margin-bottom:20px;"><strong>Results:</strong> Body text 3.2:1 (Failed), Form labels 2.8:1 (Failed), Program titles 2.5:1 (Failed), Button text 3.9:1 (Failed).</p>
-      <div style="background:#f8f9fa;padding:20px;border-radius:10px;border:2px solid var(--red);">
-        <div style="font-weight:700;color:var(--text-mid);margin-bottom:16px;">📊 Contrast Ratio Audit Results</div>
-        <div class="contrast-row"><div class="contrast-label">Body Text</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:71%"><span>3.2:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
-        <div class="contrast-row"><div class="contrast-label">Form Labels</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:62%"><span>2.8:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
-        <div class="contrast-row"><div class="contrast-label">Program Titles</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:56%"><span>2.5:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
-        <div class="contrast-row" style="border-bottom:none"><div class="contrast-label">Button Text</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:87%"><span>3.9:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
-        <div style="margin-top:14px;background:#fff5f5;padding:12px;border-radius:8px;border-left:4px solid var(--red);font-size:0.88em;color:var(--text-mid);">All critical text elements failed WCAG AA standards, confirming user reports about readability issues.</div>
+      <div class="pills-row"><span class="tool-pill">WebAIM Contrast Checker</span><span class="tool-pill">WAVE Accessibility Tool</span><span class="method-pill">WCAG 2.0 AA compliance audit</span><span class="method-pill">Contrast ratio testing</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+        <div>
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:6px;">What I Did</div>
+          <ul style="padding-left:16px;color:#4a5568;font-size:0.8em;line-height:1.7;margin-bottom:12px;">
+            <li>Audited the Programs page, Sign-Up Form, and navigation for WCAG 2.0 AA compliance</li>
+            <li>Tested all text elements using WebAIM's Contrast Checker</li>
+            <li>Documented each failure with the measured ratio and the required minimum</li>
+            <li>Used WAVE to identify missing alt text, unlabeled form fields, and semantic HTML issues</li>
+          </ul>
+          <div style="background:#f0f9ff;border:1.5px solid #3498db;border-radius:8px;padding:10px 14px;font-size:0.78em;">
+            <div style="font-weight:700;color:#1a1a2e;margin-bottom:4px;">WCAG 2.0 AA - What Passes</div>
+            <div style="color:#4a5568;line-height:1.6;"><span style="color:var(--green);font-weight:700;">Normal text:</span> 4.5:1 min<br><span style="color:var(--green);font-weight:700;">Large text (18px+):</span> 3:1 min<br><span style="color:#4a5568;">NISRA body text was 2.97:1, failing both.</span></div>
+          </div>
+        </div>
+        <div style="background:#f8f9fa;padding:14px;border-radius:10px;border:1.5px solid var(--red);">
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:10px;">Contrast Ratio Audit Results</div>
+          <div class="contrast-row"><div class="contrast-label">Body Text</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:71%"><span>3.2:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
+          <div class="contrast-row"><div class="contrast-label">Form Labels</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:62%"><span>2.8:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
+          <div class="contrast-row"><div class="contrast-label">Program Titles</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:56%"><span>2.5:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
+          <div class="contrast-row" style="border-bottom:none"><div class="contrast-label">Button Text</div><div class="contrast-bar-wrap"><div class="contrast-bar-bg"><div class="contrast-bar-fill" style="width:87%"><span>3.9:1</span></div></div><div class="contrast-need">Need: 4.5:1</div></div><div class="contrast-status">❌</div></div>
+          <div style="margin-top:10px;background:#fff5f5;padding:8px 10px;border-radius:6px;border-left:3px solid var(--red);font-size:0.78em;color:#4a5568;">All critical elements failed WCAG AA standards, confirming user reports.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -555,9 +618,14 @@
   <div class="process-panel" id="panel-2">
     <div class="panel-inner">
       <h4>2. Competitive Analysis</h4>
-      <div style="margin-bottom:10px;"><span class="tool-pill">WebAIM Tools</span><span class="tool-pill">Comparison Matrices</span></div>
-      <div style="margin-bottom:16px;"><span class="method-pill">Benchmarking against NWSRA &amp; FVSRA</span></div>
-      <p style="color:var(--text-mid);margin-bottom:16px;"><strong>Key Finding:</strong> Both competitors had text resize options, WCAG-compliant contrast, clear form labels, screen reader compatibility, and consistent alt text. NISRA's poor contrast, small text, and unclear forms made it significantly harder to use.</p>
+      <div class="pills-row"><span class="tool-pill">WebAIM Tools</span><span class="tool-pill">Comparison Matrices</span><span class="method-pill">Benchmarking against NWSRA &amp; FVSRA</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:16px;align-items:start;">
+        <div>
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:6px;">Key Finding</div>
+          <p style="color:#4a5568;font-size:0.8em;line-height:1.6;margin-bottom:10px;">Both competitors had text resize options, WCAG-compliant contrast, clear form labels, and screen reader compatibility. NISRA's site lacked all of these.</p>
+          <div style="background:#fff5f5;padding:10px 12px;border-radius:8px;border-left:3px solid var(--red);font-size:0.78em;color:#4a5568;">NISRA was the only organization that failed every accessibility category tested.</div>
+        </div>
+        <div>
       <table>
         <thead><tr><th>Feature</th><th style="text-align:center">NISRA (Before)</th><th style="text-align:center">NWSRA</th><th style="text-align:center">FVSRA</th></tr></thead>
         <tbody>
@@ -568,6 +636,8 @@
           <tr><td>Alt Text on Images</td><td style="text-align:center">⚠️ Inconsistent</td><td style="text-align:center">✅ Consistent</td><td style="text-align:center">✅ Consistent</td></tr>
         </tbody>
       </table>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -575,10 +645,28 @@
   <div class="process-panel" id="panel-3">
     <div class="panel-inner">
       <h4>3. Contextual Inquiries</h4>
-      <div style="margin-bottom:8px;"><span class="tool-pill">Zoom</span><span class="tool-pill">Screen Recording</span><span class="tool-pill">Task Observation Protocols</span></div>
-      <div style="margin-bottom:12px;"><span class="method-pill">Direct observation of 10 participants with visual impairments</span></div>
-      <p style="color:#4a5568;font-size:0.84em;margin-bottom:8px;"><strong>Tasks Observed:</strong> Navigate to programs page, read program descriptions, locate and complete sign-up form, use assistive technologies (screen readers when applicable).</p>
-      <p style="color:#4a5568;font-size:0.84em;"><strong>Key Findings:</strong> Users couldn't easily read program info due to small font size. Low contrast made reading difficult for users with low vision. Users found it difficult to complete the sign-up form because labels were unclear.</p>
+      <div class="pills-row"><span class="tool-pill">Zoom</span><span class="tool-pill">Screen Recording</span><span class="tool-pill">Task Observation Protocols</span><span class="method-pill">Direct observation, 10 participants</span></div>
+      <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:5px;">Tasks Observed</div>
+      <ol style="padding-left:18px;color:#4a5568;font-size:0.82em;line-height:1.7;margin-bottom:10px;">
+        <li>Navigate to the Programs page and find a program of interest</li>
+        <li>Read program descriptions and identify key details (time, location, age range)</li>
+        <li>Locate the Sign-Up form and attempt to complete registration independently</li>
+        <li>Use assistive technologies (screen readers) to navigate and interact with the site</li>
+      </ol>
+      <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:5px;">Key Findings</div>
+      <ol style="padding-left:18px;color:#4a5568;font-size:0.82em;line-height:1.7;margin-bottom:12px;">
+        <li>Users couldn't read program details due to small font and low contrast text</li>
+        <li>Sign-up form labels were too vague for users to know what to enter</li>
+        <li>Screen readers skipped or misread form fields due to poor semantic markup</li>
+        <li>Most participants needed caregiver help to complete even basic tasks</li>
+      </ol>
+      <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:8px;">What Users Said</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:#fafafa;padding:10px 12px;border-radius:8px;border-top:2px solid var(--purple-mid);"><div style="font-style:italic;color:#1a1a2e;font-size:0.78em;line-height:1.5;margin-bottom:5px;">"Forms feel like a guessing game. I don't know what to enter."</div><div style="color:#718096;font-size:0.7em;text-align:right;">Participant 1</div></div>
+        <div style="background:#fafafa;padding:10px 12px;border-radius:8px;border-top:2px solid var(--purple-mid);"><div style="font-style:italic;color:#1a1a2e;font-size:0.78em;line-height:1.5;margin-bottom:5px;">"The text was too small and the colors made it hard to read."</div><div style="color:#718096;font-size:0.7em;text-align:right;">Participant 2</div></div>
+        <div style="background:#fafafa;padding:10px 12px;border-radius:8px;border-top:2px solid var(--purple-mid);"><div style="font-style:italic;color:#1a1a2e;font-size:0.78em;line-height:1.5;margin-bottom:5px;">"I couldn't sign up on my own. I had to ask my daughter for help every single time."</div><div style="color:#718096;font-size:0.7em;text-align:right;">Participant 3</div></div>
+        <div style="background:#fafafa;padding:10px 12px;border-radius:8px;border-top:2px solid var(--purple-mid);"><div style="font-style:italic;color:#1a1a2e;font-size:0.78em;line-height:1.5;margin-bottom:5px;">"I wanted to join the program but I couldn't even read what it was about."</div><div style="color:#718096;font-size:0.7em;text-align:right;">Participant 4</div></div>
+      </div>
     </div>
   </div>
 
@@ -586,9 +674,30 @@
   <div class="process-panel" id="panel-4">
     <div class="panel-inner">
       <h4>4. Semi-Structured Interviews</h4>
-      <div style="margin-bottom:10px;"><span class="tool-pill">Zoom</span><span class="tool-pill">Interview Guides</span><span class="tool-pill">Miro</span></div>
-      <div style="margin-bottom:16px;"><span class="method-pill">10 user interviews — registered &amp; non-registered NISRA users</span></div>
-      <p style="color:#4a5568;font-size:0.82em;margin-bottom:12px;"><strong>Key Questions Asked:</strong> What's the hardest part about using the NISRA website? Have you tried signing up for a program? Do you use screen readers or other assistive tools? What would make it easier to find and sign up?</p>
+      <div class="pills-row" style="flex-wrap:wrap;gap:5px 5px;">
+        <span class="tool-pill">Zoom</span>
+        <span class="tool-pill">Interview Guides</span>
+        <span class="tool-pill">Miro</span>
+        <span class="method-pill">10 participants with low vision or assistive technology</span>
+        <span class="method-pill">Current or prospective NISRA users</span>
+        <span class="method-pill">Recruited via NISRA staff referral</span>
+        <span class="method-pill">45-60 min sessions, 1-on-1 via Zoom</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+        <div>
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:5px;">Key Questions Asked</div>
+          <ol style="padding-left:16px;color:#4a5568;font-size:0.8em;line-height:1.6;margin-bottom:0;">
+            <li>What is the hardest part about using the NISRA website?</li>
+            <li>Have you tried signing up for a program online? What happened?</li>
+            <li>Do you use screen readers or other assistive tools? Did they work on this site?</li>
+            <li>What would make it easier to find and register for programs?</li>
+          </ol>
+        </div>
+        <div style="background:white;padding:10px;border-radius:8px;border:1.5px solid var(--purple-mid);text-align:center;">
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.78em;margin-bottom:7px;">10 Participants via Zoom</div>
+          <img src="https://i.ibb.co/zW3vypGp/Untitled-1.png" alt="10 research participants in Zoom grid view" style="width:100%;border-radius:6px;border:1px solid var(--purple-light);" loading="lazy">
+        </div>
+      </div>
       <p style="color:#1a1a2e;font-size:0.84em;font-weight:700;margin-bottom:8px;">Key Insights from Interviews</p>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
         <div style="background:#fafafa;border-radius:8px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start;border-left:3px solid var(--purple-mid);">
@@ -608,10 +717,7 @@
           <div><div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:2px;">Screen reader compatibility issues</div><p style="color:#4a5568;font-size:0.78em;line-height:1.5;">Poor semantic HTML structure caused assistive technologies to misread or skip content entirely, making navigation unpredictable.</p></div>
         </div>
       </div>
-      <div style="background:white;padding:12px;border-radius:8px;border:1.5px solid var(--purple-mid);text-align:center;">
-        <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:8px;">10 Participants — Conducted via Zoom</div>
-        <img src="https://i.ibb.co/zW3vypGp/Untitled-1.png" alt="10 research participants shown in a Zoom grid view" style="width:100%;max-width:800px;border-radius:8px;border:1.5px solid var(--purple-light);" loading="lazy">
-      </div>
+
     </div>
   </div>
 
@@ -619,8 +725,7 @@
   <div class="process-panel" id="panel-5">
     <div class="panel-inner">
       <h4>5. Synthesize Insights</h4>
-      <div style="margin-bottom:8px;"><span class="tool-pill">Miro</span><span class="tool-pill">Affinity Mapping</span></div>
-      <div style="margin-bottom:12px;"><span class="method-pill">Grouped insights from 10 sessions</span><span class="method-pill">Persona development</span></div>
+      <div class="pills-row"><span class="tool-pill">Miro</span><span class="tool-pill">Affinity Mapping</span><span class="method-pill">Grouped insights from 10 sessions</span><span class="method-pill">Persona development</span></div>
       <p style="color:#4a5568;font-size:0.84em;margin-bottom:14px;"><strong>What I Did:</strong> Grouped all session notes into themed clusters using affinity mapping. Built a composite user persona representing the primary user type. Identified patterns across pain points to prioritize recommendations.</p>
       <div style="background:#fafafa;padding:14px;border-radius:10px;border:1.5px solid var(--purple-mid);">
         <div style="font-weight:700;color:#1a1a2e;font-size:0.84em;margin-bottom:12px;">Affinity Mapping: Research Themes</div>
@@ -677,6 +782,15 @@
           </div>
         </div>
       </div>
+      <div style="margin-top:12px;background:white;padding:14px;border-radius:8px;border:1.5px solid var(--purple-mid);">
+        <div style="font-weight:700;color:#1a1a2e;font-size:0.82em;margin-bottom:10px;">Key Themes Identified</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:#fff5f5;padding:9px 12px;border-radius:7px;border-left:3px solid var(--red);font-size:0.78em;"><div style="font-weight:700;color:#1a1a2e;margin-bottom:2px;">Text Unreadable</div><div style="color:#4a5568;">Small font size and low contrast made content inaccessible</div></div>
+          <div style="background:#fff5f5;padding:9px 12px;border-radius:7px;border-left:3px solid var(--red);font-size:0.78em;"><div style="font-weight:700;color:#1a1a2e;margin-bottom:2px;">Forms Confusing</div><div style="color:#4a5568;">Missing labels caused errors and form abandonment</div></div>
+          <div style="background:#fff5f5;padding:9px 12px;border-radius:7px;border-left:3px solid var(--red);font-size:0.78em;"><div style="font-weight:700;color:#1a1a2e;margin-bottom:2px;">Lack of Confidence</div><div style="color:#4a5568;">Users required assistance to complete basic tasks</div></div>
+          <div style="background:#fff5f5;padding:9px 12px;border-radius:7px;border-left:3px solid var(--red);font-size:0.78em;"><div style="font-weight:700;color:#1a1a2e;margin-bottom:2px;">Screen Reader Issues</div><div style="color:#4a5568;">Poor semantic HTML broke assistive technology</div></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -684,14 +798,13 @@
   <div class="process-panel" id="panel-6">
     <div class="panel-inner">
       <h4>6. Usability Testing &amp; Iteration</h4>
-      <div style="margin-bottom:10px;"><span class="tool-pill">Zoom</span><span class="tool-pill">Figma Prototypes</span><span class="tool-pill">WebAIM Contrast Checker</span></div>
-      <div style="margin-bottom:20px;"><span class="method-pill">Moderated testing with 10 participants</span><span class="method-pill">Iterative design improvements</span></div>
+      <div class="pills-row"><span class="tool-pill">Zoom</span><span class="tool-pill">Figma Prototypes</span><span class="tool-pill">WebAIM Contrast Checker</span><span class="method-pill">Moderated testing with 10 participants</span><span class="method-pill">Iterative design</span></div>
 
       <!-- Tasks + Success Rates -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
         <div style="background:white;padding:18px;border-radius:10px;border:2px solid var(--purple-mid);">
-          <div style="font-weight:700;color:var(--text-mid);margin-bottom:12px;border-bottom:2px solid var(--purple-mid);padding-bottom:8px;">Tasks Given to Participants</div>
-          <ul style="padding-left:18px;color:var(--text-mid);line-height:1.9;font-size:0.9em;">
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.84em;margin-bottom:10px;border-bottom:1.5px solid var(--purple-mid);padding-bottom:6px;">Tasks Given to Participants</div>
+          <ul style="padding-left:16px;color:#4a5568;line-height:1.7;font-size:0.82em;">
             <li>Increase text size using the resize feature</li>
             <li>Read a program description with the updated contrast</li>
             <li>Complete the sign-up form independently</li>
@@ -699,7 +812,7 @@
           </ul>
         </div>
         <div style="background:white;padding:18px;border-radius:10px;border:2px solid var(--green);">
-          <div style="font-weight:700;color:var(--text-mid);margin-bottom:12px;border-bottom:2px solid var(--green);padding-bottom:8px;">Success Rates (Before → After)</div>
+          <div style="font-weight:700;color:#1a1a2e;font-size:0.84em;margin-bottom:10px;border-bottom:1.5px solid var(--green);padding-bottom:6px;">Success Rates (Before to After)</div>
           <div style="margin-bottom:10px;font-size:0.85em;"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Task 1: Text resize</span><span><b style="color:var(--red)">60%</b> → <b style="color:var(--green)">100%</b></span></div><div style="background:#e9ecef;height:6px;border-radius:3px;overflow:hidden;"><div style="background:linear-gradient(90deg,var(--red) 60%,var(--green) 60%);width:100%;height:100%;"></div></div></div>
           <div style="margin-bottom:10px;font-size:0.85em;"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Task 2: Read content</span><span><b style="color:var(--red)">80%</b> → <b style="color:var(--green)">100%</b></span></div><div style="background:#e9ecef;height:6px;border-radius:3px;overflow:hidden;"><div style="background:linear-gradient(90deg,var(--red) 80%,var(--green) 80%);width:100%;height:100%;"></div></div></div>
           <div style="font-size:0.85em;"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Task 3: Complete form</span><span><b style="color:var(--red)">40%</b> → <b style="color:var(--green)">80%</b></span></div><div style="background:#e9ecef;height:6px;border-radius:3px;overflow:hidden;"><div style="background:linear-gradient(90deg,var(--red) 40%,var(--green) 40% 80%,transparent 80%);width:100%;height:100%;"></div></div></div>
@@ -714,31 +827,48 @@
         <!-- BEFORE mockup -->
         <div>
           <div style="font-weight:700;color:var(--red);margin-bottom:10px;font-size:0.95em;">❌ BEFORE: Low Contrast &amp; Small Text</div>
-          <div style="background:white;padding:10px;border-radius:12px;border:3px solid var(--red);box-shadow:0 4px 14px rgba(231,76,60,0.12);">
-            <!-- browser chrome -->
-            <div style="background:#f5f5f5;padding:6px 10px;border-radius:6px 6px 0 0;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:6px;">
-              <div style="display:flex;gap:4px;"><div style="width:8px;height:8px;border-radius:50%;background:#ff5f57"></div><div style="width:8px;height:8px;border-radius:50%;background:#ffbd2e"></div><div style="width:8px;height:8px;border-radius:50%;background:#28ca42"></div></div>
-              <div style="flex:1;background:white;border-radius:3px;padding:3px 8px;font-size:0.38em;color:#888;">🔒 nisra.org/programs</div>
+          <div style="border-radius:10px;border:2px solid var(--red);overflow:hidden;background:#f5f5f5;">
+            <!-- Safari chrome -->
+            <div style="background:#f0f0f0;padding:4px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #ddd;">
+              <div style="display:flex;gap:3px;"><div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div><div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div><div style="width:7px;height:7px;border-radius:50%;background:#28ca42;"></div></div>
+              <div style="flex:1;background:white;border-radius:3px;padding:2px 7px;font-size:0.38em;color:#888;text-align:center;">nisra.org/programs</div>
             </div>
-            <!-- site header -->
-            <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
-              <div style="color:white;font-weight:700;font-size:0.72em;">NISRA</div>
-              <div style="display:flex;gap:8px;color:white;font-size:0.45em;"><span>Home</span><span style="font-weight:700;border-bottom:1px solid white;">Programs</span><span>About</span></div>
+            <!-- NISRA header with tagline -->
+            <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="line-height:1.2;"><div style="color:white;font-weight:700;font-size:0.65em;">NISRA</div><div style="color:rgba(255,255,255,0.8);font-size:0.33em;">Enriching lives of people with disabilities</div></div>
+              <div style="display:flex;gap:6px;color:rgba(255,255,255,0.9);font-size:0.38em;"><span>Home</span><span>About</span><span style="font-weight:700;border-bottom:1px solid white;">Programs</span><span>Resources</span><span>Contact</span></div>
             </div>
-            <!-- programs banner -->
-            <div style="background:#47a1bc;padding:10px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.78em;">PROGRAMS — Fall / Winter</span></div>
-            <!-- poor contrast content -->
-            <div style="background:#eee;padding:12px;">
-              <div style="background:white;padding:10px;border-radius:5px;">
-                <div style="color:#8a8a8a;font-size:0.62em;font-weight:700;margin-bottom:3px;">Weekly Programs</div>
-                <div style="color:#999;font-size:0.5em;line-height:1.4;margin-bottom:8px;">NISRA offers a wide range of accessible programs throughout the year for all ability levels and ages.</div>
-                <div style="color:#8a8a8a;font-size:0.62em;font-weight:700;margin-bottom:3px;">Cultural Arts</div>
-                <div style="color:#999;font-size:0.5em;line-height:1.4;margin-bottom:8px;">Participants share creative abilities through guidance of professional artists.</div>
-                <div style="color:#8a8a8a;font-size:0.62em;font-weight:700;margin-bottom:3px;">Athletics &amp; Sports</div>
-                <div style="color:#999;font-size:0.5em;line-height:1.4;">Basketball, swimming, Special Olympics participation.</div>
+            <!-- Programs banner -->
+            <div style="background:#47a1bc;padding:6px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.56em;letter-spacing:0.5px;">PROGRAMS</span></div>
+            <!-- Poor contrast content with sidebar -->
+            <div style="background:#EEEEEE;padding:8px;display:grid;grid-template-columns:1.7fr 1fr;gap:5px;">
+              <div>
+                <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;">
+                  <div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:1px;">Weekly Programs</div>
+                  <div style="color:#999;font-size:0.38em;line-height:1.3;margin-bottom:1px;">Accessible programs for all ability levels throughout the year.</div>
+                  <div style="color:#999;font-size:0.33em;">Mon-Fri | Ages 5+</div>
+                </div>
+                <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;">
+                  <div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:1px;">Cultural Arts</div>
+                  <div style="color:#999;font-size:0.38em;line-height:1.3;">Pottery, painting, music with professional artists.</div>
+                </div>
+                <div style="background:white;padding:6px;border-radius:3px;">
+                  <div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:1px;">Athletics &amp; Sports</div>
+                  <div style="color:#999;font-size:0.38em;line-height:1.3;">Basketball, swimming, Special Olympics.</div>
+                </div>
+              </div>
+              <div>
+                <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;">
+                  <div style="background:#d4d4d4;height:28px;border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;"><span style="font-size:0.65em;">🖼</span></div>
+                  <div style="color:#8a8a8a;font-size:0.35em;text-align:center;">Highlights</div>
+                </div>
+                <div style="background:white;padding:6px;border-radius:3px;">
+                  <div style="color:#8a8a8a;font-size:0.4em;font-weight:700;margin-bottom:2px;">Quick Links</div>
+                  <div style="color:#999;font-size:0.33em;line-height:1.5;"><div>Registration</div><div>Calendar</div><div>Contact</div></div>
+                </div>
               </div>
             </div>
-            <div style="background:#fff5f5;padding:7px;text-align:center;border-top:2px solid var(--red);"><span style="color:var(--red);font-weight:700;font-size:0.55em;">⚠️ Contrast: 2.97:1 FAILS WCAG | Text: 9–10px</span></div>
+            <div style="background:#fff5f5;border-top:1.5px solid var(--red);padding:5px;text-align:center;"><span style="color:var(--red);font-size:0.42em;font-weight:700;">Contrast 2.97:1 FAILED - Text Too Small</span></div>
           </div>
         </div>
 
@@ -752,24 +882,44 @@
               <div style="flex:1;background:white;border-radius:3px;padding:3px 8px;font-size:0.38em;color:#888;">🔒 nisra.org/programs</div>
             </div>
             <!-- site header with resize -->
-            <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
-              <div style="color:white;font-weight:700;font-size:0.72em;">NISRA</div>
+            <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="line-height:1.2;"><div style="color:white;font-weight:700;font-size:0.65em;">NISRA</div><div style="color:rgba(255,255,255,0.8);font-size:0.33em;">Enriching lives of people with disabilities</div></div>
               <div style="display:flex;align-items:center;gap:6px;">
                 <span style="font-size:0.38em;color:rgba(255,255,255,0.9);">Resize Text</span>
                 <div style="background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;font-size:0.45em;color:#333;display:flex;gap:4px;align-items:center;"><span>A</span><span style="font-size:1.2em;font-weight:700;">A</span><span style="font-size:1.5em;font-weight:700;">A</span></div>
               </div>
             </div>
-            <!-- programs banner -->
-            <div style="background:#47a1bc;padding:10px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.78em;">PROGRAMS — Fall / Winter</span></div>
-            <!-- high-contrast content -->
-            <div style="background:#fff;padding:12px;">
-              <div style="background:#f8f9fa;padding:10px;border-radius:5px;">
-                <div style="color:#2c3e50;font-size:0.75em;font-weight:700;margin-bottom:4px;">Weekly Programs</div>
-                <div style="color:#4a5568;font-size:0.62em;line-height:1.5;margin-bottom:8px;">NISRA offers a wide range of accessible programs throughout the year for all ability levels and ages.</div>
-                <div style="color:#2c3e50;font-size:0.75em;font-weight:700;margin-bottom:4px;">Cultural Arts</div>
-                <div style="color:#4a5568;font-size:0.62em;line-height:1.5;margin-bottom:8px;">Participants share creative abilities through guidance of professional artists.</div>
-                <div style="color:#2c3e50;font-size:0.75em;font-weight:700;margin-bottom:4px;">Athletics &amp; Sports</div>
-                <div style="color:#4a5568;font-size:0.62em;line-height:1.5;">Basketball, swimming, Special Olympics participation.</div>
+            <!-- nav tabs -->
+            <div style="background:#47a1bc;padding:5px 10px;display:flex;gap:8px;color:white;font-size:0.42em;">
+              <span>Home</span><span>About</span><span style="font-weight:700;border-bottom:1px solid white;">Programs</span><span>Resources</span><span>Contact</span>
+            </div>
+            <div style="background:#47a1bc;padding:10px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.78em;">PROGRAMS - Fall / Winter</span></div>
+            <!-- high-contrast content with sidebar -->
+            <div style="background:#fff;padding:8px;display:grid;grid-template-columns:1.7fr 1fr;gap:5px;">
+              <div>
+                <div style="background:#f8f9fa;padding:6px;border-radius:3px;margin-bottom:3px;">
+                  <div style="color:#2c3e50;font-size:0.62em;font-weight:700;margin-bottom:1px;">Weekly Programs</div>
+                  <div style="color:#4a5568;font-size:0.5em;line-height:1.3;margin-bottom:1px;">Accessible programs for all ability levels throughout the year.</div>
+                  <div style="color:#4a5568;font-size:0.44em;">Mon-Fri | Ages 5+</div>
+                </div>
+                <div style="background:#f8f9fa;padding:6px;border-radius:3px;margin-bottom:3px;">
+                  <div style="color:#2c3e50;font-size:0.62em;font-weight:700;margin-bottom:1px;">Cultural Arts</div>
+                  <div style="color:#4a5568;font-size:0.5em;line-height:1.3;">Pottery, painting, music with professional artists.</div>
+                </div>
+                <div style="background:#f8f9fa;padding:6px;border-radius:3px;">
+                  <div style="color:#2c3e50;font-size:0.62em;font-weight:700;margin-bottom:1px;">Athletics &amp; Sports</div>
+                  <div style="color:#4a5568;font-size:0.5em;line-height:1.3;">Basketball, swimming, Special Olympics.</div>
+                </div>
+              </div>
+              <div>
+                <div style="background:#f8f9fa;padding:6px;border-radius:3px;margin-bottom:3px;">
+                  <div style="background:#d4d4d4;height:26px;border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;"><span style="font-size:0.65em;">🖼</span></div>
+                  <div style="color:#4a5568;font-size:0.38em;text-align:center;">Highlights</div>
+                </div>
+                <div style="background:#f8f9fa;padding:6px;border-radius:3px;">
+                  <div style="color:#2c3e50;font-size:0.44em;font-weight:700;margin-bottom:2px;">Quick Links</div>
+                  <div style="color:#4a5568;font-size:0.38em;line-height:1.5;"><div>Registration</div><div>Calendar</div><div>Contact</div></div>
+                </div>
               </div>
             </div>
             <div style="background:#f0fdf4;padding:7px;text-align:center;border-top:2px solid var(--green);"><span style="color:var(--green);font-weight:700;font-size:0.55em;">✓ Contrast: 7.05:1 PASSES WCAG | Adjustable text size</span></div>
@@ -778,7 +928,7 @@
       </div>
 
       <!-- Improved Prototype -->
-      <div style="font-weight:700;color:#1a1a2e;font-size:0.92em;margin-bottom:12px;border-top:2px solid #f0f0f0;padding-top:16px;">Improved Prototype — Sign-Up Form</div>
+      <div style="font-weight:700;color:#1a1a2e;font-size:0.92em;margin-bottom:12px;border-top:2px solid #f0f0f0;padding-top:16px;">Improved Prototype - Sign-Up Form</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
         <div>
           <div style="font-weight:700;color:var(--red);margin-bottom:10px;font-size:0.95em;">❌ BEFORE: Unclear Form Labels</div>
@@ -788,12 +938,12 @@
               <div style="flex:1;background:white;border-radius:3px;padding:3px 8px;font-size:0.38em;color:#888;">🔒 nisra.org/contact</div>
             </div>
             <div style="background:#fff5f5;padding:14px;border-radius:8px;">
-              <div style="font-size:0.78em;font-weight:700;color:#2c3e50;margin-bottom:10px;">Contact Us</div>
+              <div style="font-size:0.78em;font-weight:700;color:#2c3e50;margin-bottom:10px;">Sign Up for Programs</div>
               <div style="margin-bottom:8px;"><div style="font-size:0.62em;color:#999;margin-bottom:3px;">Name</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:4px;padding:6px 8px;font-size:0.6em;color:#bbb;">Enter here</div></div>
               <div style="margin-bottom:8px;"><div style="font-size:0.62em;color:#999;margin-bottom:3px;">Contact</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:4px;padding:6px 8px;font-size:0.6em;color:#bbb;">Enter here</div></div>
               <div style="margin-bottom:10px;"><div style="font-size:0.62em;color:#999;margin-bottom:3px;">Your question</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:4px;padding:6px 8px;font-size:0.6em;color:#bbb;min-height:32px;">Type here</div></div>
               <div style="background:#47a1bc;color:white;text-align:center;padding:7px;border-radius:4px;font-size:0.62em;font-weight:700;">Submit</div>
-              <div style="margin-top:8px;background:#fff5f5;padding:7px;border-radius:5px;border-left:3px solid var(--red);font-size:0.58em;color:var(--red);">⚠️ "Contact" — what does this mean? Phone or email? Screen reader cannot announce purpose.</div>
+              <div style="margin-top:8px;background:#fff5f5;padding:7px;border-radius:5px;border-left:3px solid var(--red);font-size:0.58em;color:var(--red);">⚠️ "Program Sign-up" - what does this mean? Phone or email? Screen reader cannot announce purpose.</div>
             </div>
           </div>
         </div>
@@ -824,7 +974,7 @@
       <!-- Issues Found & Fixed -->
       <div style="background:white;padding:18px;border-radius:10px;border:2px solid #3498db;">
         <div style="font-weight:700;color:var(--text-mid);margin-bottom:12px;border-bottom:2px solid #3498db;padding-bottom:8px;">Issues Found During Testing &amp; How We Fixed Them</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.85em;color:var(--text-mid);line-height:1.7;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.85em;color:#4a5568;line-height:1.55;">
           <div style="background:#fff5f5;padding:12px;border-radius:8px;border-left:3px solid var(--red);"><b style="color:var(--red)">Issue:</b> Users unsure how to use text resizing<br><b style="color:var(--green)">→ Fix:</b> Added clear "Resize Text" label with A A A visual</div>
           <div style="background:#fff5f5;padding:12px;border-radius:8px;border-left:3px solid var(--red);"><b style="color:var(--red)">Issue:</b> Some form labels still too vague<br><b style="color:var(--green)">→ Fix:</b> Reworded "Name" to "First and Last Name"</div>
           <div style="background:#fff5f5;padding:12px;border-radius:8px;border-left:3px solid var(--red);"><b style="color:var(--red)">Issue:</b> Some elements still low contrast<br><b style="color:var(--green)">→ Fix:</b> Adjusted colors to reach 7.05:1 (WCAG AA)</div>
@@ -838,27 +988,27 @@
 <!-- ════════════════════════════════════════════════ 6. FINDINGS -->
 <div class="section" id="findings">
   <h2>Key Findings</h2>
-  <p style="color:#4a5568;font-size:0.84em;margin-bottom:16px;">Based on the research, these are the three main pain points identified across sessions.</p>
+  <p style="color:#4a5568;font-size:0.82em;margin-bottom:12px;">Based on the research, these are the three main pain points identified across sessions.</p>
 
   <!-- Compact numbered findings -->
-  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
-    <div style="background:#fafafa;border-radius:10px;padding:12px 16px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--red);">
-      <div style="min-width:24px;height:24px;background:var(--red);border-radius:50%;color:white;font-weight:700;font-size:0.78em;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
-      <div><div style="font-weight:700;color:#1a1a2e;font-size:0.88em;margin-bottom:3px;">Low contrast made program content difficult to read.</div><p style="color:#4a5568;font-size:0.8em;line-height:1.55;">Gray text (#8A8A8A) on a light gray background (#EEEEEE) produced a contrast ratio of 2.97:1 — well below the WCAG AA minimum of 4.5:1. Users with low vision described the text as invisible and straining. All four audited elements failed.</p></div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+    <div style="background:#fafafa;border-radius:8px;padding:11px 14px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--red);">
+      <div style="min-width:22px;height:22px;background:var(--red);border-radius:50%;color:white;font-weight:700;font-size:0.76em;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+      <div><div style="font-weight:700;color:#1a1a2e;font-size:0.86em;margin-bottom:2px;">Low contrast made content unreadable.</div><p style="color:#4a5568;font-size:0.78em;line-height:1.5;">Text color #8A8A8A on background #EEEEEE measured 2.97:1 - failing the 4.5:1 WCAG AA minimum. All four audited elements failed. Users called it invisible.</p></div>
     </div>
-    <div style="background:#fafafa;border-radius:10px;padding:12px 16px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--red);">
-      <div style="min-width:24px;height:24px;background:var(--red);border-radius:50%;color:white;font-weight:700;font-size:0.78em;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
-      <div><div style="font-weight:700;color:#1a1a2e;font-size:0.88em;margin-bottom:3px;">Small text reduced independence.</div><p style="color:#4a5568;font-size:0.8em;line-height:1.55;">Font sizes of 9–10px made it impossible for users with low vision to read program details or form fields without assistance. 70% of participants needed help with basic reading tasks. There was no way to resize text within the site.</p></div>
+    <div style="background:#fafafa;border-radius:8px;padding:11px 14px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--red);">
+      <div style="min-width:22px;height:22px;background:var(--red);border-radius:50%;color:white;font-weight:700;font-size:0.76em;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+      <div><div style="font-weight:700;color:#1a1a2e;font-size:0.86em;margin-bottom:2px;">Small text forced users to rely on others.</div><p style="color:#4a5568;font-size:0.78em;line-height:1.5;">Font sizes of 9-10px were too small for low-vision users to read independently. 70% needed caregiver help. There was no built-in text resize option.</p></div>
     </div>
-    <div style="background:#fafafa;border-radius:10px;padding:12px 16px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--red);">
-      <div style="min-width:24px;height:24px;background:var(--red);border-radius:50%;color:white;font-weight:700;font-size:0.78em;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
-      <div><div style="font-weight:700;color:#1a1a2e;font-size:0.88em;margin-bottom:3px;">Unclear form labels and missing alternative text.</div><p style="color:#4a5568;font-size:0.8em;line-height:1.55;">Labels like "Contact" and "Your question" gave users no guidance. Images across the site had no alt text, making them invisible to screen readers. Participants called the form "a guessing game" and couldn't access image-based content at all.</p></div>
+    <div style="background:#fafafa;border-radius:8px;padding:11px 14px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--red);">
+      <div style="min-width:22px;height:22px;background:var(--red);border-radius:50%;color:white;font-weight:700;font-size:0.76em;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+      <div><div style="font-weight:700;color:#1a1a2e;font-size:0.86em;margin-bottom:2px;">Unclear labels and no alt text blocked screen reader users.</div><p style="color:#4a5568;font-size:0.78em;line-height:1.5;">Vague field labels and missing image alt text made the sign-up form and page content unusable with a screen reader. Participants called it "a guessing game."</p></div>
     </div>
   </div>
 
   <!-- User Persona -->
-  <div style="margin-bottom:16px;">
-    <h3 style="margin-bottom:10px;">User Persona</h3>
+  <div style="margin-bottom:14px;">
+    <h3 style="margin-bottom:8px;font-size:1.05em;font-weight:700;color:#1a1a2e;">User Persona</h3>
       <div class="persona-box">
         <div style="display:inline-block;background:var(--purple-mid);color:white;font-size:0.68em;font-weight:600;letter-spacing:1px;padding:3px 10px;border-radius:20px;margin-bottom:12px;">PRIMARY USER</div>
         <div class="persona-header" style="margin-bottom:14px;padding-bottom:14px;">
@@ -868,10 +1018,22 @@
             <div class="persona-sub">Young adult with low vision &nbsp;|&nbsp; Uses assistive tech &nbsp;|&nbsp; Values independence</div>
           </div>
         </div>
-        <p style="color:#4a5568;font-size:0.8em;line-height:1.55;margin-bottom:14px;">Maya wants to enroll in NISRA's Special Olympics program independently but faces repeated barriers navigating the website without sighted assistance.</p>
+        <p style="color:#4a5568;font-size:0.8em;line-height:1.55;margin-bottom:14px;">Maya is a 24-year-old with low vision who was born with a degenerative eye condition. She lives semi-independently, uses a screen reader and browser zoom daily, and is highly motivated to participate in community recreation. She heard about NISRA's Special Olympics program through a friend and wants to sign up on her own, but the website's poor accessibility forces her to rely on her sister every time she tries.</p>
         <div class="persona-cols" style="margin-top:0;">
-          <div class="persona-col"><h4>GOALS</h4><ul class="bullet-list"><li>Register for programs independently</li><li>Contact staff without help</li></ul></div>
-          <div class="persona-col"><h4>PAIN POINTS</h4><ul class="bullet-list"><li>Can't read low-contrast text</li><li>Vague labels cause errors</li><li>Must rely on caregivers</li></ul></div>
+          <div class="persona-col"><h4>GOALS</h4><ul class="bullet-list">
+            <li>Register for programs independently without caregiver help</li>
+            <li>Read program details and make informed choices</li>
+            <li>Contact NISRA staff through the website directly</li>
+            <li>Participate in the Special Olympics and community events</li>
+            <li>Use the website as confidently as anyone else</li>
+          </ul></div>
+          <div class="persona-col"><h4>PAIN POINTS</h4><ul class="bullet-list">
+            <li>Cannot read text due to low contrast and small font sizes</li>
+            <li>Vague form labels cause errors — she doesn't know what to enter</li>
+            <li>Screen reader skips form fields, making sign-up impossible alone</li>
+            <li>Images have no alt text so she misses key visual information</li>
+            <li>Feels excluded and frustrated every time she tries to use the site</li>
+          </ul></div>
         </div>
         <div style="margin-top:12px;background:white;padding:9px 14px;border-radius:7px;border-left:3px solid var(--purple-mid);">
           <span style="font-size:0.78em;color:#4a5568;font-style:italic;">"I know what programs I want. I just can't get to them on my own."</span>
@@ -880,19 +1042,99 @@
   </div>
 
   <!-- User Journey Map -->
-  <div style="margin-bottom:16px;">
-    <h3 style="margin-bottom:10px;">User Journey Map</h3>
-    <div style="background:#f8f9fa;padding:12px;border-radius:10px;overflow-x:auto;">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='260'%3E%3Crect fill='%23f8f9fa' width='700' height='260'/%3E%3Ctext x='350' y='22' font-family='Arial' font-size='12' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EMaya's Journey: Accessing NISRA%3C/text%3E%3Cg%3E%3Crect x='10' y='35' width='100' height='90' rx='6' fill='%23e8f4f8' stroke='%237ec8db' stroke-width='1.5'/%3E%3Ctext x='60' y='53' font-family='Arial' font-size='9' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EDISCOVERY%3C/text%3E%3Ctext x='60' y='68' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3EMaya learns%3C/text%3E%3Ctext x='60' y='80' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Eabout NISRA%3C/text%3E%3Ctext x='60' y='95' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Eprograms%3C/text%3E%3Ctext x='60' y='113' font-family='Arial' font-size='14' text-anchor='middle'%3E%F0%9F%98%90%3C/text%3E%3C/g%3E%3Cg%3E%3Crect x='125' y='35' width='100' height='90' rx='6' fill='%23fff5f5' stroke='%23e74c3c' stroke-width='1.5'/%3E%3Ctext x='175' y='53' font-family='Arial' font-size='9' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EPROBLEM%3C/text%3E%3Ctext x='175' y='68' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3EStruggles to%3C/text%3E%3Ctext x='175' y='80' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Efind program%3C/text%3E%3Ctext x='175' y='92' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Einformation%3C/text%3E%3Ctext x='175' y='113' font-family='Arial' font-size='14' text-anchor='middle'%3E%F0%9F%98%9F%3C/text%3E%3C/g%3E%3Cg%3E%3Crect x='240' y='35' width='100' height='90' rx='6' fill='%23fff5f5' stroke='%23e74c3c' stroke-width='1.5'/%3E%3Ctext x='290' y='53' font-family='Arial' font-size='9' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3ESEEKS HELP%3C/text%3E%3Ctext x='290' y='68' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3EAsks caregiver%3C/text%3E%3Ctext x='290' y='80' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Eto navigate%3C/text%3E%3Ctext x='290' y='92' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Ewebsite%3C/text%3E%3Ctext x='290' y='113' font-family='Arial' font-size='14' text-anchor='middle'%3E%F0%9F%98%A4%3C/text%3E%3C/g%3E%3Cg%3E%3Crect x='355' y='35' width='100' height='90' rx='6' fill='%23fff5f5' stroke='%23e74c3c' stroke-width='1.5'/%3E%3Ctext x='405' y='53' font-family='Arial' font-size='9' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EFORM FAIL%3C/text%3E%3Ctext x='405' y='68' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3ECan't complete%3C/text%3E%3Ctext x='405' y='80' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Esign-up form%3C/text%3E%3Ctext x='405' y='92' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Edue to labels%3C/text%3E%3Ctext x='405' y='113' font-family='Arial' font-size='14' text-anchor='middle'%3E%F0%9F%98%9E%3C/text%3E%3C/g%3E%3Cg%3E%3Crect x='470' y='35' width='100' height='90' rx='6' fill='%23fff5f5' stroke='%23e74c3c' stroke-width='1.5'/%3E%3Ctext x='520' y='53' font-family='Arial' font-size='9' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EABANDONS%3C/text%3E%3Ctext x='520' y='68' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3EQuits, feels%3C/text%3E%3Ctext x='520' y='80' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Efrustrated and%3C/text%3E%3Ctext x='520' y='92' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Eexcluded%3C/text%3E%3Ctext x='520' y='113' font-family='Arial' font-size='14' text-anchor='middle'%3E%F0%9F%98%94%3C/text%3E%3C/g%3E%3Cg%3E%3Crect x='590' y='35' width='100' height='90' rx='6' fill='%23eafaf1' stroke='%2327ae60' stroke-width='1.5'/%3E%3Ctext x='640' y='53' font-family='Arial' font-size='9' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EDESIRE%3C/text%3E%3Ctext x='640' y='68' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3EHopes for%3C/text%3E%3Ctext x='640' y='80' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Efuture site%3C/text%3E%3Ctext x='640' y='92' font-family='Arial' font-size='8' fill='%234a5568' text-anchor='middle'%3Eimprovements%3C/text%3E%3Ctext x='640' y='113' font-family='Arial' font-size='14' text-anchor='middle'%3E%F0%9F%99%82%3C/text%3E%3C/g%3E%3Cline x1='110' y1='80' x2='125' y2='80' stroke='%237ec8db' stroke-width='2'/%3E%3Cline x1='225' y1='80' x2='240' y2='80' stroke='%237ec8db' stroke-width='2'/%3E%3Cline x1='340' y1='80' x2='355' y2='80' stroke='%237ec8db' stroke-width='2'/%3E%3Cline x1='455' y1='80' x2='470' y2='80' stroke='%237ec8db' stroke-width='2'/%3E%3Cline x1='570' y1='80' x2='590' y2='80' stroke='%237ec8db' stroke-width='2'/%3E%3Crect x='10' y='145' width='680' height='100' rx='6' fill='%23fff' stroke='%23e2e8f0' stroke-width='1.5'/%3E%3Ctext x='25' y='165' font-family='Arial' font-size='10' font-weight='bold' fill='%23e74c3c'%3EKey Pain Points%3C/text%3E%3Ctext x='25' y='183' font-family='Arial' font-size='9.5' fill='%234a5568'%3E%E2%80%A2 Couldn't read program details — text too small and low contrast%3C/text%3E%3Ctext x='25' y='200' font-family='Arial' font-size='9.5' fill='%234a5568'%3E%E2%80%A2 Low contrast made form fields impossible to see clearly%3C/text%3E%3Ctext x='25' y='217' font-family='Arial' font-size='9.5' fill='%234a5568'%3E%E2%80%A2 Could not complete sign-up form — labels missing or too vague%3C/text%3E%3C/svg%3E" alt="User journey map" style="width:100%;border-radius:8px;">
+  <div style="margin-bottom:14px;">
+    <h3 style="margin-bottom:8px;font-size:1.05em;font-weight:700;color:#1a1a2e;">User Journey Map</h3>
+    <div style="background:#f8f9fa;padding:14px;border-radius:10px;">
+      <!-- Mood arc: boxes at varying heights, arrows positioned at midpoint between adjacent boxes -->
+      <div style="display:flex;gap:0;align-items:flex-start;margin-bottom:8px;min-height:220px;">
+        <!-- Stage 1 - Neutral, top (margin-top:0) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:0;">
+          <div style="width:100%;background:#e8f4f8;border:1.5px solid #7ec8db;border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">DISCOVERY</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Hears about NISRA Special Olympics</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">😐</div>
+            <div style="font-size:0.48em;color:#718096;font-style:italic;">Neutral</div>
+          </div>
+        </div>
+        <!-- Arrow 1→2 -->
+        <div style="flex-shrink:0;width:16px;margin-top:2px;display:flex;align-items:flex-start;padding-top:16px;"><span style="color:var(--purple-mid);font-size:1em;display:inline-block;transform:rotate(20deg);">→</span></div>
+        <!-- Stage 2 - Confused (margin-top:16) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:16px;">
+          <div style="width:100%;background:#fff4e6;border:1.5px solid #f39c12;border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">VISITS SITE</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Programs page text is unreadable</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">😕</div>
+            <div style="font-size:0.48em;color:#718096;font-style:italic;">Confused</div>
+          </div>
+        </div>
+        <!-- Arrow 2→3 -->
+        <div style="flex-shrink:0;width:16px;margin-top:20px;display:flex;align-items:flex-start;padding-top:14px;"><span style="color:var(--purple-mid);font-size:1em;display:inline-block;transform:rotate(22deg);">→</span></div>
+        <!-- Stage 3 - Frustrated (margin-top:36) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:36px;">
+          <div style="width:100%;background:#fff5f5;border:1.5px solid var(--red);border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">TRIES FORM</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Labels too vague to understand</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">😤</div>
+            <div style="font-size:0.48em;color:#718096;font-style:italic;">Frustrated</div>
+          </div>
+        </div>
+        <!-- Arrow 3→4 -->
+        <div style="flex-shrink:0;width:16px;margin-top:39px;display:flex;align-items:flex-start;padding-top:14px;"><span style="color:var(--red);font-size:1em;display:inline-block;transform:rotate(18deg);">→</span></div>
+        <!-- Stage 4 - Dependent (margin-top:54) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:54px;">
+          <div style="width:100%;background:#fff5f5;border:1.5px solid var(--red);border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">SEEKS HELP</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Asks caregiver to fill form</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">😞</div>
+            <div style="font-size:0.48em;color:#718096;font-style:italic;">Dependent</div>
+          </div>
+        </div>
+        <!-- Arrow 4→5 -->
+        <div style="flex-shrink:0;width:16px;margin-top:57px;display:flex;align-items:flex-start;padding-top:14px;"><span style="color:var(--red);font-size:1em;display:inline-block;transform:rotate(18deg);">→</span></div>
+        <!-- Stage 5 - Low point, furthest down (margin-top:72) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:72px;">
+          <div style="width:100%;background:#fee2e2;border:2px solid var(--red);border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">ABANDONS</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Quits site, feels excluded</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">😔</div>
+            <div style="font-size:0.48em;color:var(--red);font-style:italic;">Low point</div>
+          </div>
+        </div>
+        <!-- Arrow 5→6 -->
+        <div style="flex-shrink:0;width:16px;margin-top:60px;display:flex;align-items:flex-start;padding-top:8px;"><span style="color:var(--purple-mid);font-size:1em;display:inline-block;transform:rotate(-28deg);">→</span></div>
+        <!-- Stage 6 - Recovering (margin-top:36) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:36px;">
+          <div style="width:100%;background:#fff9e6;border:1.5px solid #f39c12;border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">GIVES FEEDBACK</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Contacts NISRA to report issues</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">😐</div>
+            <div style="font-size:0.48em;color:#718096;font-style:italic;">Recovering</div>
+          </div>
+        </div>
+        <!-- Arrow 6→7 -->
+        <div style="flex-shrink:0;width:16px;margin-top:28px;display:flex;align-items:flex-start;padding-top:8px;"><span style="color:var(--green);font-size:1em;display:inline-block;transform:rotate(-22deg);">→</span></div>
+        <!-- Stage 7 - Hopeful, back near top (margin-top:8) -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;margin-top:8px;">
+          <div style="width:100%;background:#eafaf1;border:1.5px solid var(--green);border-radius:7px;padding:8px 5px;text-align:center;">
+            <div style="font-size:0.6em;font-weight:700;color:#1a1a2e;margin-bottom:2px;">DESIRE</div>
+            <div style="font-size:0.5em;color:#4a5568;line-height:1.3;margin-bottom:4px;">Hopes site will improve</div>
+            <div style="font-size:1.1em;margin-bottom:2px;">🙂</div>
+            <div style="font-size:0.48em;color:var(--green);font-style:italic;">Hopeful</div>
+          </div>
+        </div>
+      </div>
+      <!-- Pain points summary -->
+      <div style="background:white;border-radius:7px;padding:10px 14px;border:1.5px solid #e2e8f0;">
+        <div style="font-size:0.75em;font-weight:700;color:var(--red);margin-bottom:5px;">Key Pain Points</div>
+        <div style="font-size:0.72em;color:#4a5568;line-height:1.6;">
+          <div>1. Text too small and low contrast made it impossible to read program details independently</div>
+          <div>2. Vague form labels and missing alt text made sign-up inaccessible for screen reader users</div>
+          <div>3. Users repeatedly needed caregiver assistance, undermining confidence and independence</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- User quotes -->
-  <h3 style="margin-bottom:10px;">What Users Said</h3>
-  <div class="quote-grid">
-    <div class="quote-card"><div class="quote-text">"Forms feel like a guessing game — I don't know what to enter."</div><div class="quote-author">— Participant 1 (Contextual Inquiry)</div></div>
-    <div class="quote-card"><div class="quote-text">"I struggled to navigate the site because the text was too small and the colors made it hard to read."</div><div class="quote-author">— Participant 2 (Contextual Inquiry)</div></div>
-  </div>
 </div>
 
 <!-- ════════════════════════════════════════════════ 7. SOLUTION -->
@@ -907,18 +1149,43 @@
   <div class="solution-grid" style="margin-bottom:36px;">
     <div class="sol-card">
       <h3>1. Text Resize Feature</h3>
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='100'%3E%3Crect fill='%23f8f0ff' width='280' height='100' rx='8'/%3E%3Crect x='20' y='20' width='240' height='60' rx='8' fill='%23fff' stroke='%23c79edb' stroke-width='2'/%3E%3Ctext x='40' y='45' font-family='Arial' font-size='13' fill='%234a5568' font-weight='600'%3EResize Text%3C/text%3E%3Crect x='140' y='30' width='35' height='35' rx='6' fill='%23fff' stroke='%23c79edb' stroke-width='2'/%3E%3Ctext x='157' y='52' font-family='Arial' font-size='14' fill='%234a5568' text-anchor='middle'%3EA%3C/text%3E%3Crect x='180' y='30' width='35' height='35' rx='6' fill='%23c79edb'/%3E%3Ctext x='197' y='53' font-family='Arial' font-size='16' fill='%23fff' text-anchor='middle' font-weight='bold'%3EA%3C/text%3E%3Crect x='220' y='30' width='35' height='35' rx='6' fill='%23fff' stroke='%23c79edb' stroke-width='2'/%3E%3Ctext x='237' y='54' font-family='Arial' font-size='18' fill='%234a5568' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" alt="Text resize feature" style="width:100%;border-radius:8px;margin:14px 0 10px;">
-      <p>Added A / A / A controls letting users adjust font size — eliminating the need to rely on browser zoom.</p>
+      <div id="resize-demo" style="background:#f8f0ff;border-radius:8px;padding:12px;margin:10px 0;border:1.5px solid var(--purple-mid);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:0.76em;font-weight:600;color:#1a1a2e;">Resize Text</span>
+          <div style="display:flex;gap:4px;">
+            <button onclick="setRSize('s')" id="rd-s" style="background:white;border:1.5px solid var(--purple-mid);border-radius:4px;padding:2px 8px;font-size:0.76em;cursor:pointer;color:#1a1a2e;transition:all 0.15s;">A</button>
+            <button onclick="setRSize('m')" id="rd-m" style="background:var(--purple-mid);border:1.5px solid var(--purple-mid);border-radius:4px;padding:2px 8px;font-size:0.88em;cursor:pointer;color:white;font-weight:700;transition:all 0.15s;">A</button>
+            <button onclick="setRSize('l')" id="rd-l" style="background:white;border:1.5px solid var(--purple-mid);border-radius:4px;padding:2px 8px;font-size:1.02em;cursor:pointer;color:#1a1a2e;transition:all 0.15s;">A</button>
+          </div>
+        </div>
+        <div id="rd-text" style="font-size:0.85em;color:#1a1a2e;line-height:1.5;background:white;padding:7px 10px;border-radius:5px;transition:font-size 0.25s ease;">Weekly Programs: NISRA Fall programs run weekly. All participants welcome ages 5+.</div>
+      </div>
+      <script>
+        function setRSize(s){
+          var t=document.getElementById('rd-text'),a=document.getElementById('rd-s'),b=document.getElementById('rd-m'),d=document.getElementById('rd-l');
+          [a,b,d].forEach(function(x){x.style.background='white';x.style.color='#1a1a2e';x.style.fontWeight='normal';});
+          var active=s==='s'?a:s==='m'?b:d;
+          active.style.background='var(--purple-mid)';active.style.color='white';active.style.fontWeight='700';
+          t.style.fontSize=s==='s'?'0.7em':s==='m'?'0.85em':'1.05em';
+        }
+      </script>
+      <p>Click A / A / A above to see text size change live. Users control their own reading experience.</p>
     </div>
     <div class="sol-card">
       <h3>2. Improved Color Contrast</h3>
       <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='100'%3E%3Crect fill='%23f8f0ff' width='280' height='100' rx='8'/%3E%3Crect x='20' y='15' width='100' height='70' rx='8' fill='%23fff5f5' stroke='%23e74c3c' stroke-width='2'/%3E%3Ctext x='70' y='40' font-family='Arial' font-size='11' fill='%23e74c3c' text-anchor='middle' font-weight='bold'%3EBEFORE%3C/text%3E%3Ctext x='70' y='60' font-family='Arial' font-size='18' fill='%23e74c3c' text-anchor='middle' font-weight='bold'%3E2.97:1%3C/text%3E%3Ctext x='70' y='75' font-family='Arial' font-size='9' fill='%23e74c3c' text-anchor='middle'%3E%E2%9C%97 Failed%3C/text%3E%3Ctext x='140' y='55' font-family='Arial' font-size='24' fill='%234a5568' text-anchor='middle'%3E%E2%86%92%3C/text%3E%3Crect x='160' y='15' width='100' height='70' rx='8' fill='%23f0fdf4' stroke='%2327ae60' stroke-width='2'/%3E%3Ctext x='210' y='40' font-family='Arial' font-size='11' fill='%2327ae60' text-anchor='middle' font-weight='bold'%3EAFTER%3C/text%3E%3Ctext x='210' y='60' font-family='Arial' font-size='18' fill='%2327ae60' text-anchor='middle' font-weight='bold'%3E7.05:1%3C/text%3E%3Ctext x='210' y='75' font-family='Arial' font-size='9' fill='%2327ae60' text-anchor='middle'%3E%E2%9C%93 WCAG AA%3C/text%3E%3C/svg%3E" alt="Contrast improvement" style="width:100%;border-radius:8px;margin:14px 0 10px;">
-      <p>Updated color from #8A8A8A to #4F4F4F, raising contrast from 2.97:1 to 7.05:1 — exceeding WCAG AA.</p>
+      <p>Updated color from #8A8A8A to #4F4F4F, raising contrast from 2.97:1 to 7.05:1 - exceeding WCAG AA.</p>
     </div>
     <div class="sol-card">
       <h3>3. Clear Labels &amp; Alt Text</h3>
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='100'%3E%3Crect fill='%23f8f0ff' width='280' height='100' rx='8'/%3E%3Crect x='15' y='15' width='250' height='70' rx='8' fill='%23fff' stroke='%23c79edb' stroke-width='2'/%3E%3Ctext x='25' y='35' font-family='Arial' font-size='11' fill='%232c3e50' font-weight='600'%3EFirst Name%3C/text%3E%3Ctext x='110' y='35' font-family='Arial' font-size='11' fill='%23e74c3c'%3E*%3C/text%3E%3Crect x='25' y='42' width='230' height='25' rx='4' fill='%23fff' stroke='%23c79edb' stroke-width='1.5'/%3E%3Ctext x='32' y='59' font-family='Arial' font-size='10' fill='%23999'%3EEnter your first name%3C/text%3E%3Ctext x='25' y='78' font-family='Arial' font-size='8' fill='%23718096'%3EPlease enter your first name%3C/text%3E%3C/svg%3E" alt="Clear form labels with descriptive placeholder text" style="width:100%;border-radius:8px;margin:14px 0 10px;">
-      <p>Replaced vague labels with specific ones ("First Name," "Phone Number") with helper text. All images updated with descriptive alt text for screen reader users.</p>
+      <div style="background:#f8f0ff;border-radius:8px;padding:12px;margin:10px 0;border:1.5px solid var(--purple-mid);">
+        <div style="font-size:0.72em;font-weight:700;color:#1a1a2e;margin-bottom:8px;">Sign-Up Form Fields</div>
+        <div style="margin-bottom:7px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:600;margin-bottom:2px;">First and Last Name <span style="color:var(--red)">*</span></label><div style="background:white;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">Enter your full name</div><div style="font-size:0.6em;color:#718096;margin-top:1px;">Please enter your legal full name</div></div>
+        <div style="margin-bottom:7px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:600;margin-bottom:2px;">Email Address <span style="color:var(--red)">*</span></label><div style="background:white;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">your.email@example.com</div></div>
+        <div style="margin-bottom:7px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:600;margin-bottom:2px;">Phone Number <span style="color:var(--red)">*</span></label><div style="background:white;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">(555) 123-4567</div></div>
+        <div><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:600;margin-bottom:2px;">Program Interest <span style="color:var(--red)">*</span></label><div style="background:white;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;min-height:28px;">Select or describe the program you want to join</div></div>
+      </div>
+      <p>Descriptive labels, helper text, and alt text on all images. Each field clearly tells users exactly what to enter.</p>
     </div>
   </div>
 
@@ -928,24 +1195,32 @@
   <div class="compare-grid" style="margin-bottom:20px;">
     <!-- BEFORE full NISRA mockup -->
     <div>
-      <div style="font-weight:700;color:#e74c3c;margin-bottom:8px;font-size:0.88em;">1. Before: Low Contrast &amp; Small Text</div>
-      <div style="border-radius:10px;border:2px solid #e74c3c;overflow:hidden;">
-        <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
-          <div style="color:white;font-weight:700;font-size:0.82em;">NISRA</div>
-          <div style="font-size:0.6em;color:rgba(255,255,255,0.85);">Enriching the lives of people with disabilities</div>
+      <div style="font-weight:700;color:#e74c3c;margin-bottom:8px;font-size:0.88em;">Before: Low Contrast &amp; Small Text</div>
+      <div style="border-radius:8px;border:1.5px solid #e74c3c;overflow:hidden;">
+        <div style="background:#f0f0f0;padding:4px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #ddd;">
+          <div style="display:flex;gap:3px;"><div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div><div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div><div style="width:7px;height:7px;border-radius:50%;background:#28ca42;"></div></div>
+          <div style="flex:1;background:white;border-radius:3px;padding:2px 7px;font-size:0.38em;color:#888;text-align:center;">nisra.org/programs</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="line-height:1.2;"><div style="color:white;font-weight:700;font-size:0.65em;">NISRA</div><div style="color:rgba(255,255,255,0.8);font-size:0.33em;">Enriching lives of people with disabilities</div></div>
+          <div style="display:flex;gap:6px;color:rgba(255,255,255,0.9);font-size:0.38em;"><span>Home</span><span style="border-bottom:1px solid white;font-weight:700;">Programs</span><span>About</span><span>Contact</span></div>
         </div>
         <div style="background:#47a1bc;padding:7px 12px;display:flex;gap:12px;color:white;font-size:0.68em;">
           <span>Home</span><span>About</span><span style="font-weight:700;border-bottom:1.5px solid white;">Programs</span><span>Resources</span><span>Contact</span>
         </div>
         <div style="background:#47a1bc;padding:9px 12px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.8em;">PROGRAMS</span></div>
-        <div style="background:#EEEEEE;padding:12px;">
-          <div style="font-size:0.64em;color:#8A8A8A;line-height:1.3;margin-bottom:6px;">NISRA offers a wide range of recreation programs throughout the year for all ability levels and ages!</div>
-          <div style="font-size:0.7em;font-weight:700;color:#8A8A8A;margin:8px 0 4px;">Weekly Programs</div>
-          <div style="font-size:0.58em;color:#8A8A8A;line-height:1.3;margin-bottom:6px;">NISRA Fall programs run weekly from September through Thanksgiving. Activities help participants explore interests and acquire social skills.</div>
-          <div style="font-size:0.7em;font-weight:700;color:#8A8A8A;margin:8px 0 4px;">Cultural Arts</div>
-          <div style="font-size:0.58em;color:#8A8A8A;line-height:1.3;">Participants share creative abilities through professional artists.</div>
+        <div style="background:#EEEEEE;padding:8px;display:grid;grid-template-columns:1.7fr 1fr;gap:5px;">
+          <div>
+            <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;"><div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:1px;">Weekly Programs</div><div style="color:#999;font-size:0.38em;line-height:1.3;margin-bottom:2px;">Accessible programs for all ability levels throughout the year.</div><div style="color:#999;font-size:0.33em;">Mon-Fri | Ages 5+</div></div>
+            <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;"><div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:1px;">Cultural Arts</div><div style="color:#999;font-size:0.38em;line-height:1.3;">Pottery, painting, music with professional artists.</div></div>
+            <div style="background:white;padding:6px;border-radius:3px;"><div style="color:#8a8a8a;font-size:0.5em;font-weight:700;margin-bottom:1px;">Athletics &amp; Sports</div><div style="color:#999;font-size:0.38em;line-height:1.3;">Basketball, swimming, Special Olympics.</div></div>
+          </div>
+          <div>
+            <div style="background:white;padding:6px;border-radius:3px;margin-bottom:3px;"><div style="background:#d4d4d4;height:28px;border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;"><span style="font-size:0.65em;">🖼</span></div><div style="color:#8a8a8a;font-size:0.35em;text-align:center;">Highlights</div></div>
+            <div style="background:white;padding:6px;border-radius:3px;"><div style="color:#8a8a8a;font-size:0.4em;font-weight:700;margin-bottom:2px;">Quick Links</div><div style="color:#999;font-size:0.33em;line-height:1.5;"><div>Registration</div><div>Calendar</div><div>Contact</div></div></div>
+          </div>
         </div>
-        <div style="background:#fff5f5;padding:7px;text-align:center;border-top:1.5px solid #e74c3c;"><span style="color:#e74c3c;font-weight:700;font-size:0.62em;">⚠️ Contrast: 2.97:1 FAILS WCAG | Text: 9–10px</span></div>
+        <div style="background:#fff5f5;padding:5px;text-align:center;border-top:1.5px solid #e74c3c;"><span style="color:#e74c3c;font-weight:700;font-size:0.55em;">Contrast: 2.97:1 FAILS WCAG | Text: 9-10px</span></div>
       </div>
       <div style="margin-top:12px;background:#f8f9fa;padding:12px;border-radius:8px;border:1.5px solid #e74c3c;">
         <div style="display:flex;gap:10px;margin-bottom:8px;">
@@ -959,10 +1234,15 @@
 
     <!-- AFTER with consistent NISRA header/tabs -->
     <div>
-      <div style="font-weight:700;color:#27ae60;margin-bottom:8px;font-size:0.88em;">2. After: Accessible Programs Page</div>
+      <div style="font-weight:700;color:#27ae60;margin-bottom:8px;font-size:0.88em;">After: Accessible Programs Page</div>
       <div style="border-radius:10px;border:2px solid #27ae60;overflow:hidden;">
-        <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
-          <div style="color:white;font-weight:700;font-size:0.82em;">NISRA</div>
+        <!-- Safari chrome -->
+        <div style="background:#f0f0f0;padding:4px 8px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #ddd;">
+          <div style="display:flex;gap:3px;"><div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div><div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div><div style="width:7px;height:7px;border-radius:50%;background:#28ca42;"></div></div>
+          <div style="flex:1;background:white;border-radius:4px;padding:2px 8px;font-size:0.42em;color:#888;text-align:center;">nisra.org/programs</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#6b4d9e,#5a3d85);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="line-height:1.2;"><div style="color:white;font-weight:700;font-size:0.78em;">NISRA</div><div style="color:rgba(255,255,255,0.8);font-size:0.35em;">Enriching lives of people with disabilities</div></div>
           <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:0.52em;color:rgba(255,255,255,0.9);">Resize Text</span>
             <div style="background:rgba(255,255,255,0.9);padding:2px 8px;border-radius:4px;font-size:0.52em;color:#333;display:flex;gap:4px;"><span>A</span><b style="font-size:1.15em;">A</b><b style="font-size:1.35em;">A</b></div>
@@ -972,13 +1252,33 @@
           <span>Home</span><span>About</span><span style="font-weight:700;border-bottom:1.5px solid white;">Programs</span><span>Resources</span><span>Contact</span>
         </div>
         <div style="background:#47a1bc;padding:9px 12px;text-align:center;"><span style="color:white;font-weight:700;font-size:0.8em;">PROGRAMS</span></div>
-        <div style="background:white;padding:12px;">
-          <div style="font-size:0.72em;color:#2c3e50;line-height:1.5;margin-bottom:8px;">NISRA offers a wide range of recreation programs throughout the year for all ability levels and ages!</div>
-          <div style="font-size:0.82em;font-weight:700;color:#2c3e50;margin-bottom:5px;">Weekly Programs</div>
-          <div style="font-size:0.68em;color:#4a5568;line-height:1.4;margin-bottom:8px;">NISRA Fall programs run weekly from September through Thanksgiving. Activities help participants explore interests and acquire social skills.</div>
-          <div style="font-size:0.82em;font-weight:700;color:#2c3e50;margin-bottom:5px;">Cultural Arts</div>
-          <div style="font-size:0.68em;color:#4a5568;line-height:1.4;">Participants share creative abilities through professional artists.</div>
-        </div>
+          <div style="background:white;padding:8px;display:grid;grid-template-columns:1.7fr 1fr;gap:5px;">
+            <div>
+              <div style="background:#f8f9fa;padding:6px;border-radius:3px;margin-bottom:3px;">
+                <div style="font-size:0.72em;font-weight:700;color:#2c3e50;margin-bottom:2px;">Weekly Programs</div>
+                <div style="font-size:0.6em;color:#4a5568;line-height:1.4;margin-bottom:2px;">Accessible programs for all ability levels throughout the year.</div>
+                <div style="font-size:0.54em;color:#4a5568;">Mon-Fri | Ages 5+</div>
+              </div>
+              <div style="background:#f8f9fa;padding:6px;border-radius:3px;margin-bottom:3px;">
+                <div style="font-size:0.72em;font-weight:700;color:#2c3e50;margin-bottom:2px;">Cultural Arts</div>
+                <div style="font-size:0.6em;color:#4a5568;line-height:1.4;">Pottery, painting, music with professional artists.</div>
+              </div>
+              <div style="background:#f8f9fa;padding:6px;border-radius:3px;">
+                <div style="font-size:0.72em;font-weight:700;color:#2c3e50;margin-bottom:2px;">Athletics &amp; Sports</div>
+                <div style="font-size:0.6em;color:#4a5568;line-height:1.4;">Basketball, swimming, Special Olympics.</div>
+              </div>
+            </div>
+            <div>
+              <div style="background:#f8f9fa;padding:6px;border-radius:3px;margin-bottom:3px;">
+                <div style="background:#d4d4d4;height:30px;border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;"><span style="font-size:0.7em;">🖼</span></div>
+                <div style="font-size:0.5em;color:#4a5568;text-align:center;">Highlights</div>
+              </div>
+              <div style="background:#f8f9fa;padding:6px;border-radius:3px;">
+                <div style="font-size:0.56em;font-weight:700;color:#2c3e50;margin-bottom:2px;">Quick Links</div>
+                <div style="font-size:0.5em;color:#4a5568;line-height:1.5;"><div>Registration</div><div>Calendar</div><div>Contact</div></div>
+              </div>
+            </div>
+          </div>
         <div style="background:#f0fdf4;padding:7px;text-align:center;border-top:1.5px solid #27ae60;"><span style="color:#27ae60;font-weight:700;font-size:0.62em;">✓ Contrast: 7.05:1 PASSES WCAG | Adjustable text</span></div>
       </div>
       <div style="margin-top:12px;background:#f8f9fa;padding:12px;border-radius:8px;border:1.5px solid #27ae60;">
@@ -987,39 +1287,49 @@
           <div style="background:#eee;border:1.5px solid #ddd;padding:4px 10px;border-radius:4px;font-size:0.72em;font-weight:700;color:#333;">#EEEEEE</div>
         </div>
         <div class="wcag-ratio pass" style="font-size:1.6em;padding:8px 0;">7.05:1</div>
-        <div class="wcag-status pass">Normal &amp; Large Text: <strong>WCAG AA Pass</strong></div>
+        <div class="wcag-status pass">Achieved: 7.05:1 | Required: 4.5:1 (normal text) &mdash; <strong>WCAG AA Pass</strong></div>
       </div>
     </div>
   </div>
 
 
   <!-- Form comparison -->
-  <h3 style="margin-bottom:10px;margin-top:4px;">Before &amp; After: Sign-Up Form</h3>
   <div class="compare-grid">
     <div class="before-box">
-      <div class="compare-header">3. Before: Unclear Labels</div>
-      <div style="background:white;padding:18px;border-radius:8px;">
-        <div style="margin-bottom:12px;"><div style="font-size:0.85em;color:#999;margin-bottom:5px;">Name</div><div style="width:100%;padding:8px;border:1px solid #ddd;border-radius:5px;font-size:0.9em;background:#fafafa;color:#bbb;">Enter here</div></div>
-        <div style="margin-bottom:12px;"><div style="font-size:0.85em;color:#999;margin-bottom:5px;">Contact</div><div style="width:100%;padding:8px;border:1px solid #ddd;border-radius:5px;font-size:0.9em;background:#fafafa;color:#bbb;">Enter here</div></div>
-        <div><div style="font-size:0.85em;color:#999;margin-bottom:5px;">Your question</div><div style="width:100%;padding:8px;border:1px solid #ddd;border-radius:5px;font-size:0.9em;background:#fafafa;color:#bbb;min-height:64px;">Type here</div></div>
+      <div class="compare-header">Before: Unclear Sign-up Form</div>
+      <div style="border-radius:8px;border:1.5px solid var(--red);overflow:hidden;margin-bottom:10px;">
+        <div style="background:#f0f0f0;padding:3px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #ddd;">
+          <div style="display:flex;gap:3px;"><div style="width:6px;height:6px;border-radius:50%;background:#ff5f57;"></div><div style="width:6px;height:6px;border-radius:50%;background:#ffbd2e;"></div><div style="width:6px;height:6px;border-radius:50%;background:#28ca42;"></div></div>
+          <div style="flex:1;background:white;border-radius:3px;padding:2px 7px;font-size:0.38em;color:#888;text-align:center;">nisra.org/signup</div>
+        </div>
+        <div style="background:white;padding:12px;">
+          <div style="font-size:0.72em;font-weight:700;color:#1a1a2e;margin-bottom:8px;">Sign Up for Programs</div>
+          <div style="margin-bottom:7px;"><div style="font-size:0.72em;color:#999;margin-bottom:2px;">Name</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">Enter here</div></div>
+          <div style="margin-bottom:7px;"><div style="font-size:0.72em;color:#999;margin-bottom:2px;">Contact</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">Enter here</div></div>
+          <div style="margin-bottom:8px;"><div style="font-size:0.72em;color:#999;margin-bottom:2px;">Your question</div><div style="background:#fafafa;border:1px solid #ddd;border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;min-height:28px;">Type here</div></div>
+          <div style="background:#e74c3c;color:white;text-align:center;padding:5px;border-radius:4px;font-size:0.65em;">Submit</div>
+        </div>
+        <div style="background:#fff5f5;padding:7px 10px;border-top:1.5px solid var(--red);font-size:0.7em;color:var(--red);">Vague labels — screen readers cannot announce purpose</div>
       </div>
-      <div style="background:#fff5f5;padding:12px;border-radius:8px;margin-top:12px;border-left:4px solid var(--red);font-size:0.85em;color:var(--red);">Vague labels cause confusion. Screen readers can't announce field purpose.</div>
     </div>
     <div class="after-box">
-      <div class="compare-header">4. After: Clear Labels &amp; Alt Text</div>
-      <div style="background:white;padding:18px;border-radius:8px;">
-        <div style="margin-bottom:12px;"><label style="display:block;font-size:0.92em;color:#2c3e50;font-weight:600;margin-bottom:5px;">First Name <span style="color:var(--red)">*</span></label><div style="width:100%;padding:8px;border:2px solid var(--purple-mid);border-radius:5px;font-size:0.9em;background:#fafafa;color:#bbb;">Enter your first name</div><div style="font-size:0.78em;color:var(--text-light);margin-top:3px;">Please enter your first name</div></div>
-        <div style="margin-bottom:12px;"><label style="display:block;font-size:0.92em;color:#2c3e50;font-weight:600;margin-bottom:5px;">Phone Number <span style="color:var(--red)">*</span></label><div style="width:100%;padding:8px;border:2px solid var(--purple-mid);border-radius:5px;font-size:0.9em;background:#fafafa;color:#bbb;">(123) 456-7890</div><div style="font-size:0.78em;color:var(--text-light);margin-top:3px;">Please enter your phone number</div></div>
-        <div><label style="display:block;font-size:0.92em;color:#2c3e50;font-weight:600;margin-bottom:5px;">Your Question <span style="color:var(--red)">*</span></label><div style="width:100%;padding:8px;border:2px solid var(--purple-mid);border-radius:5px;font-size:0.9em;background:#fafafa;color:#bbb;min-height:64px;">Please enter your question</div><div style="font-size:0.78em;color:var(--text-light);margin-top:3px;">Describe your question in detail</div></div>
+      <div class="compare-header">After: Improved Sign-up Form</div>
+      <div style="border-radius:8px;border:1.5px solid var(--green);overflow:hidden;margin-bottom:10px;">
+        <div style="background:#f0f0f0;padding:3px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #ddd;">
+          <div style="display:flex;gap:3px;"><div style="width:6px;height:6px;border-radius:50%;background:#ff5f57;"></div><div style="width:6px;height:6px;border-radius:50%;background:#ffbd2e;"></div><div style="width:6px;height:6px;border-radius:50%;background:#28ca42;"></div></div>
+          <div style="flex:1;background:white;border-radius:3px;padding:2px 7px;font-size:0.38em;color:#888;text-align:center;">nisra.org/signup</div>
+        </div>
+        <div style="background:white;padding:12px;">
+          <div style="font-size:0.72em;font-weight:700;color:#1a1a2e;margin-bottom:8px;">Sign Up for Programs</div>
+          <div style="margin-bottom:7px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:700;margin-bottom:2px;">First and Last Name <span style="color:var(--red)">*</span></label><div style="background:#fafafa;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">Enter your full name</div><div style="font-size:0.58em;color:#718096;margin-top:1px;">Please enter your legal full name</div></div>
+          <div style="margin-bottom:7px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:700;margin-bottom:2px;">Email Address <span style="color:var(--red)">*</span></label><div style="background:#fafafa;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">your.email@example.com</div></div>
+          <div style="margin-bottom:7px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:700;margin-bottom:2px;">Phone Number <span style="color:var(--red)">*</span></label><div style="background:#fafafa;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;">(555) 123-4567</div></div>
+          <div style="margin-bottom:8px;"><label style="display:block;font-size:0.72em;color:#1a1a2e;font-weight:700;margin-bottom:2px;">Program Interest <span style="color:var(--red)">*</span></label><div style="background:#fafafa;border:1.5px solid var(--purple-mid);border-radius:4px;padding:4px 8px;font-size:0.68em;color:#bbb;min-height:28px;">Select or describe the program</div></div>
+          <div style="background:var(--green);color:white;text-align:center;padding:5px;border-radius:4px;font-size:0.65em;font-weight:700;">Submit Registration</div>
+        </div>
+        <div style="background:#f0fdf4;padding:7px 10px;border-top:1.5px solid var(--green);font-size:0.7em;color:#1a1a2e;">Clear labels, helper text, required fields, screen reader compatible</div>
       </div>
-      <div style="background:#f0fdf4;padding:12px;border-radius:8px;margin-top:12px;border-left:4px solid var(--green);font-size:0.82em;color:#1a1a2e;">
-        <div style="color:var(--green);font-weight:700;margin-bottom:4px;">Implemented:</div>
-        <div>✓ Descriptive labels ("First Name", "Phone Number for Contact")</div>
-        <div>✓ Helper text under each field</div>
-        <div>✓ Required field indicators (*)</div>
-        <div>✓ Screen reader compatible field associations</div>
-        <div>✓ All images updated with descriptive alt text</div>
-      </div>
+
     </div>
   </div>
 </div>
@@ -1066,8 +1376,11 @@
 
   <h3 style="margin-top:20px;margin-bottom:10px;">Post-Launch User Feedback</h3>
   <div class="quote-grid">
-    <div class="quote-card"><div class="quote-text">"The larger text made everything easier to read."</div><div class="quote-author">— User</div></div>
-    <div class="quote-card"><div class="quote-text">"I was finally able to sign up without needing help."</div><div class="quote-author">— User</div></div>
+    <div class="quote-card"><div class="quote-text">"The larger text made everything easier to read. I didn't have to zoom in manually anymore."</div><div class="quote-author">- Participant 1</div></div>
+    <div class="quote-card"><div class="quote-text">"I was finally able to sign up without needing help. That meant a lot to me."</div><div class="quote-author">- Participant 2</div></div>
+    <div class="quote-card"><div class="quote-text">"The form finally made sense. I knew exactly what to fill in for each field."</div><div class="quote-author">- Participant 3</div></div>
+    <div class="quote-card"><div class="quote-text">"It felt like the website was actually made for me this time."</div><div class="quote-author">- Participant 4</div></div>
+    <div class="quote-card"><div class="quote-text">"Before, I always needed my sister to help me sign up. Now I can do it on my own."</div><div class="quote-author">- Participant 5</div></div>
   </div>
 </div>
 
@@ -1077,9 +1390,9 @@
   <table>
     <thead><tr><th>Challenge</th><th>Solution</th><th>Outcome</th></tr></thead>
     <tbody>
-      <tr><td><strong>Research sample of 10 users</strong></td><td>Cross-validated findings with WCAG audit data and competitive analysis to strengthen confidence</td><td>Identified critical issues with sufficient evidence to act</td></tr>
-      <tr><td><strong>Limited tooling budget</strong></td><td>Used free, industry-standard tools: WebAIM, WAVE, and browser dev tools</td><td>Achieved full WCAG 2.0 AA compliance without paid software</td></tr>
-      <tr><td><strong>Demonstrating research value to stakeholders</strong></td><td>Framed accessibility improvements in terms of program sign-ups and mission alignment</td><td>Secured full approval and ongoing commitment to accessibility</td></tr>
+      <tr><td><strong>Stakeholders who did not understand accessibility's value</strong></td><td>Translated research into business impact: showed how barriers directly reduced program sign-ups and contradicted NISRA's mission</td><td>Secured stakeholder buy-in and prioritized accessibility fixes</td></tr>
+      <tr><td><strong>Competing priorities from stakeholders (visuals over function)</strong></td><td>Stakeholders initially wanted more colorful imagery rather than structural fixes. Reframed the conversation around user independence and legal compliance</td><td>Shifted focus toward meaningful, measurable improvements</td></tr>
+      <tr><td><strong>Limited tooling budget</strong></td><td>Used free, industry-standard tools: WebAIM Contrast Checker, WAVE, and browser dev tools</td><td>Achieved full WCAG 2.0 AA compliance without paid software</td></tr>
     </tbody>
   </table>
 </div>
@@ -1088,9 +1401,9 @@
 <div class="section">
   <h2>Key Learnings</h2>
   <div class="learnings-grid">
-    <div class="learning-card"><div class="learning-head"><div class="learning-icon">💬</div><h3>Empathy Over Assumptions</h3></div><p style="color:var(--text-light);line-height:1.7;">I assumed I understood accessibility needs, but watching users struggle with "simple" tasks taught me to listen first, design second.</p></div>
-    <div class="learning-card"><div class="learning-head"><div class="learning-icon">🤝</div><h3>Translate Research to Action</h3></div><p style="color:var(--text-light);line-height:1.7;">Stakeholders needed business impact, not just user stories. Connecting accessibility to sign-up metrics made the difference.</p></div>
-    <div class="learning-card"><div class="learning-head"><div class="learning-icon">🔄</div><h3>Iterate Based on Feedback</h3></div><p style="color:var(--text-light);line-height:1.7;">Usability testing revealed issues I missed. Embracing that "done" meant iterating until users succeeded, not defending my first solution.</p></div>
+    <div class="learning-card"><div class="learning-head"><div class="learning-icon">👂</div><h3>Listen to Users with Disabilities First</h3></div><p style="color:#4a5568;line-height:1.55;font-size:0.84em;">Designing for accessibility without talking to people with disabilities first leads to guesswork. Watching real users struggle with things I assumed were simple was the most important part of this project.</p></div>
+    <div class="learning-card"><div class="learning-head"><div class="learning-icon">🤝</div><h3>Translate Research to Action</h3></div><p style="color:#4a5568;line-height:1.55;font-size:0.84em;">Stakeholders needed business impact, not just user stories. Connecting accessibility to sign-up metrics made the difference.</p></div>
+    <div class="learning-card"><div class="learning-head"><div class="learning-icon">🔄</div><h3>Iterate Based on Feedback</h3></div><p style="color:#4a5568;line-height:1.55;font-size:0.84em;">Usability testing revealed issues I missed. Embracing that "done" meant iterating until users succeeded, not defending my first solution.</p></div>
   </div>
 </div>
 
@@ -1102,16 +1415,15 @@
     <div class="next-card"><h4>🎯 Expand Accessibility</h4><p>Address keyboard navigation, focus indicators, and cognitive accessibility.</p></div>
     <div class="next-card"><h4>💬 User Feedback Loop</h4><p>Implement a mechanism for users to report accessibility issues directly.</p></div>
     <div class="next-card"><h4>👨‍💼 Staff Training</h4><p>Educate content creators on maintaining accessibility when adding new programs.</p></div>
-    <div class="next-card"><h4>🧪 Expanded User Testing</h4><p>Conduct follow-up research with a larger, more diverse group of users with disabilities to validate improvements.</p></div>
   </div>
 </div>
 
 <!-- ════════════════════════════════════════════════ CONCLUSION -->
-<div class="conclusion">
-  <h2>Project Summary</h2>
-  <p>Through systematic UX research and accessibility audits, I identified critical barriers preventing visually impaired users from accessing NISRA's website independently.</p>
-  <p style="margin-top:16px;">By implementing <strong>text resize controls</strong>, <strong>WCAG-compliant color contrast</strong>, and <strong>clear form labels</strong>, the redesign achieved a <strong>20% increase in program sign-ups</strong>, with <strong>80% of users</strong> reporting the site was easier to use.</p>
-  <p style="margin-top:16px;font-weight:600;">Key to success: <strong>User-centered research</strong> with visually impaired participants revealed specific pain points that informed targeted, measurable accessibility improvements.</p>
+<div class="conclusion" style="padding:32px 40px;text-align:left;">
+  <h2 style="margin-bottom:14px;">Conclusion</h2>
+  <p style="margin-bottom:10px;">NISRA's website was excluding the very people it was built to serve. This project fixed that by listening to users first, then designing based on what they actually needed.</p>
+  <p style="margin-bottom:10px;">Three changes made the biggest difference: a text resize control, improved color contrast, and clear form labels with alt text. Together, they raised independent sign-up completion from 40% to 80% and increased program enrollment by 20%.</p>
+  <p style="font-weight:600;">The most important lesson: include people with disabilities in your research from the start. Everything else follows from that.</p>
 </div>
 
 </div><!-- /container -->
