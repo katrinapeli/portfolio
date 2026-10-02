@@ -1,1307 +1,1280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VirtualCare App - UX Research Case Study | Katrina Peli</title>
-   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Charting Between Patients: Behavioral Health Documentation Case Study | Katrina Peli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F6F8; --surface:#FFFFFF; --ink:#13243B; --muted:#56677B; --line:#D5DEE6;
+  --blue:#2E6DB4; --blue-soft:#E2ECF7; --blue-deep:#1D4F87;
+  --teal:#157A74; --teal-soft:#DCF0EE;
+  --amber:#A8661A; --amber-soft:#FAEBD7;
+  --red:#A9433A; --red-soft:#F7E1DE;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink);background:var(--paper)}
+a{color:var(--blue-deep)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2;letter-spacing:-0.01em}
+h2{font-size:2rem;margin-bottom:.6rem}
+h3{font-size:1.3rem;margin:2rem 0 .6rem}
+h4{font-size:1rem;font-weight:700;margin:1.2rem 0 .4rem}
+p{margin-bottom:.9rem}
+ul,ol{margin:.4rem 0 1rem 1.3rem}
+li{margin-bottom:.35rem}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.prose{max-width:68ch}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-size: 14px;
-        line-height: 1.5;
-        color: #1e293b;
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        scroll-behavior: smooth;
-    }
+/* Notice + nav */
+.notice{background:var(--ink);color:#E9EEF4;font-size:.85rem;padding:9px 0}
+.notice strong{color:#fff}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.nav-name{font-family:var(--serif);font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink)}
+.nav-links{display:flex;gap:18px;list-style:none;margin:0;font-size:.875rem;overflow-x:auto}
+.nav-links li{margin:0}
+.nav-links a{text-decoration:none;color:var(--muted);font-weight:600;white-space:nowrap}
+.nav-links a.active,.nav-links a:hover{color:var(--blue-deep)}
+.progress{height:3px;background:var(--blue);width:0;transition:width .1s linear}
+@media (max-width:860px){.nav-links{display:none}}
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+/* Hero */
+.hero{padding:56px 0 32px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:end}
+.kicker{font-size:.95rem;color:var(--blue-deep);font-weight:600;margin-bottom:.8rem}
+.hero h1{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:1rem}
+.hero .lede{font-size:1.15rem;color:var(--muted);max-width:52ch}
+.meta{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);margin-top:28px}
+.meta div{padding:12px 12px 12px 0;border-bottom:1px solid var(--line)}
+.meta dt{font-size:.8rem;color:var(--muted)}
+.meta dd{font-weight:600;font-size:.95rem}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
-    /* Navigation */
-    .nav {
-        position: sticky; top: 0;
-        background: rgba(255,255,255,0.96);
-        backdrop-filter: blur(10px);
-        padding: 12px 0;
-        box-shadow: 0 4px 20px rgba(74,144,226,0.1);
-        z-index: 1000;
-        margin-bottom: 24px;
-        border-radius: 0 0 16px 16px;
-    }
-    .nav-content {
-        max-width: 1100px; margin: 0 auto; padding: 0 24px;
-        display: flex; justify-content: space-between; align-items: center;
-    }
-    .nav-content a:first-child {
-        font-size: 1.05em; font-weight: 700; color: #4A90E2; text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 18px; list-style: none; font-size: 0.85em; }
-    .nav-links a { color: #4A90E2; text-decoration: none; font-weight: 600; }
+/* Shift timeline (signature element) */
+.shift{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 20px 16px;margin-top:36px}
+.shift-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.shift-head h3{margin:0;font-size:1.25rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--paper)}
+.seg button{border:0;background:transparent;font:inherit;font-size:.85rem;font-weight:600;color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.shift-svg-wrap{overflow-x:auto}
+.shift svg{display:block;min-width:720px;width:100%;height:auto}
+.shift-foot{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;margin-top:10px}
+.readout{font-size:.9rem;color:var(--muted);min-height:2.6em}
+.readout strong{color:var(--ink)}
+.late{text-align:right}
+.late .num{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1}
+.late .lbl{font-size:.8rem;color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:10px;border-radius:2px;display:inline-block}
 
-    /* Hero */
-    .hero {
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2868AB 100%);
-        color: white;
-        padding: 40px 28px;
-        border-radius: 18px;
-        margin-bottom: 24px;
-        box-shadow: 0 20px 60px rgba(74,144,226,0.4);
-        position: relative; overflow: hidden;
-        animation: fadeIn 0.8s ease;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-        align-items: center;
-    }
-    .hero::before {
-        content: '';
-        position: absolute; top: -50%; right: -50%;
-        width: 200%; height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        animation: pulse 8s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.2);opacity:0.8;} }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
-    @keyframes slideIn { from{opacity:0;transform:translateX(-30px);} to{opacity:1;transform:translateX(0);} }
+/* Sections */
+section.block{padding:64px 0;border-top:1px solid var(--line)}
+.sec-no{font-family:var(--serif);color:var(--blue);font-size:1rem;font-weight:700;display:block;margin-bottom:.3rem}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;margin:22px 0}
+.fig figcaption,.cap{font-size:.85rem;color:var(--muted);margin-top:12px}
+.sim{display:inline-block;font-size:.72rem;font-weight:700;color:var(--amber);background:var(--amber-soft);padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.two,.three{grid-template-columns:1fr}}
 
-    .hero-content { position: relative; z-index: 1; }
-    .hero-phones { position: relative; z-index: 1; display: flex; gap: 14px; justify-content: center; }
-    .hero h1 { font-size: 1.8em; margin-bottom: 10px; font-weight: 700; animation: slideIn 0.8s ease; }
-    .hero p { font-size: 0.95em; margin-bottom: 16px; opacity: 0.95; animation: slideIn 0.8s ease 0.2s backwards; }
+/* At a glance */
+.glance{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;margin-top:24px}
+.glance div{padding:18px 18px 16px;border-right:1px solid var(--line)}
+.glance div:last-child{border-right:0}
+.glance .from{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(86,103,123,.5);font-size:.95rem}
+.glance .to{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--teal);line-height:1.1}
+.glance .what{font-size:.85rem;color:var(--muted);margin-top:4px}
+@media (max-width:760px){.glance{grid-template-columns:1fr 1fr}.glance div:nth-child(2){border-right:0}.glance div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
-    .hero-meta { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 16px; }
-    .meta-item {
-        background: rgba(255,255,255,0.15); padding: 10px; border-radius: 10px;
-        backdrop-filter: blur(10px); font-size: 0.85em;
-        transition: all 0.3s ease; animation: slideIn 0.8s ease backwards;
-    }
-    .meta-item:nth-child(1){animation-delay:0.3s;} .meta-item:nth-child(2){animation-delay:0.4s;}
-    .meta-item:nth-child(3){animation-delay:0.5s;}
-    .meta-item:hover { transform: translateY(-4px); background: rgba(255,255,255,0.25); }
-    .meta-item strong { display: block; font-size: 0.72em; margin-bottom: 4px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
-    .meta-item span { font-size: 0.88em; font-weight: 500; }
+.callout{border-left:4px solid var(--blue);background:var(--blue-soft);padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0}
+.callout p:last-child{margin-bottom:0}
+.callout .q{font-family:var(--serif);font-size:1.25rem;line-height:1.4}
 
-    /* Sections */
-    .section {
-        background: white; padding: 32px 28px; margin-bottom: 20px;
-        border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-        transition: all 0.3s ease;
-    }
-    .section:hover { box-shadow: 0 8px 30px rgba(74,144,226,0.14); }
-    .section h2 { color: #4A90E2; font-size: 1.65em; margin-bottom: 16px; font-weight: 700; }
-    .section h3 { color: #1e293b; font-size: 1.25em; margin: 20px 0 12px; font-weight: 600; }
-    .section h4 { color: #4A90E2; font-size: 1.05em; margin: 16px 0 8px; font-weight: 600; }
-    .section p { font-size: 0.93em; margin-bottom: 12px; }
-    .section ul, .section ol { font-size: 0.93em; }
-    .section li { margin-bottom: 6px; }
+/* Tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#EEF2F6;font-weight:700;font-size:.82rem;color:var(--ink)}
+tr:last-child td{border-bottom:0}
 
-    .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 20px 0; }
+/* Status chips */
+.chip{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.chip.ok{background:var(--teal-soft);color:var(--teal)}
+.chip.part{background:var(--amber-soft);color:var(--amber)}
+.chip.no{background:var(--red-soft);color:var(--red)}
+.chip.role{background:var(--blue-soft);color:var(--blue-deep)}
 
-    /* Challenge Cards */
-    .challenge-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
-    .challenge-card {
-        background: linear-gradient(135deg, #E3F2FD 0%, #ffffff 100%);
-        border-left: 4px solid #4A90E2; padding: 18px; border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;
-    }
-    .challenge-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(74,144,226,0.18); }
-    .challenge-number {
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-        color: white; width: 36px; height: 36px; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.1em; font-weight: bold; margin-bottom: 10px;
-    }
-    .challenge-title { color: #4A90E2; font-size: 0.95em; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .challenge-description { font-size: 0.88em; }
+/* Assumptions */
+.assume{display:grid;gap:10px}
+.assume-row{display:grid;grid-template-columns:1fr auto;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.assume-row p{margin:0}
+.assume-row .why{font-size:.85rem;color:var(--muted);margin-top:4px}
 
-    /* Phone Mockup */
-    .phone-mockup-container { display: flex; justify-content: center; align-items: center; gap: 14px; margin: 24px 0; flex-wrap: wrap; }
-    .phone-mockup {
-        position: relative; width: 220px; height: 450px;
-        background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
-        border-radius: 34px; padding: 3px;
-        box-shadow: 0 18px 38px rgba(0,0,0,0.22); transition: all 0.4s ease;
-    }
-    .phone-mockup:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 30px 70px rgba(74,144,226,0.38); }
-    .phone-screen { width: 100%; height: 100%; background: #f5f5f5; border-radius: 31px; overflow: hidden; position: relative; border: 1px solid rgba(0,0,0,0.05); }
-    .phone-notch { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 88px; height: 24px; background: #000; border-radius: 14px; z-index: 10; }
-    .phone-content { padding: 22px 13px 13px; height: 100%; overflow: hidden; font-size: 0.88em; }
+/* Personas */
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:0;flex-wrap:wrap}
+.tabs button{font:inherit;font-weight:600;font-size:.92rem;border:1px solid transparent;border-bottom:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px 10px 0 0;cursor:pointer;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.tabpanel{background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 12px 12px;padding:24px}
+.persona{display:grid;grid-template-columns:200px 1fr 1fr;gap:24px}
+.avatar{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.5rem;color:#fff;margin-bottom:10px}
+.persona .pq{font-family:var(--serif);font-size:1.15rem;line-height:1.4;border-left:3px solid var(--blue);padding-left:12px;margin-top:12px}
+@media (max-width:860px){.persona{grid-template-columns:1fr}}
 
-    /* Stats */
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; margin: 24px 0; }
-    .stat-card {
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-        color: white; padding: 18px 16px; border-radius: 10px;
-        text-align: center; box-shadow: 0 8px 24px rgba(74,144,226,0.28);
-        transition: all 0.3s ease; cursor: pointer;
-    }
-    .stat-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 14px 38px rgba(74,144,226,0.38); }
-    .stat-number { font-size: 2em; font-weight: 700; margin-bottom: 5px; }
-    .stat-label { font-size: 0.75em; opacity: 0.95; text-transform: uppercase; letter-spacing: 0.5px; }
+/* Workflow stepper */
+.flow{display:grid;grid-template-columns:300px 1fr;gap:20px}
+.steps{list-style:none;margin:0;counter-reset:s}
+.steps li{margin:0 0 6px}
+.steps button{width:100%;text-align:left;font:inherit;font-size:.9rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;color:var(--ink)}
+.steps button .n{width:24px;height:24px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem}
+.steps button .t{font-size:.78rem;color:var(--muted)}
+.steps button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.steps button.pain .n{background:var(--amber-soft);color:var(--amber)}
+.step-detail{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.step-detail h4{margin-top:0;font-family:var(--serif);font-size:1.25rem;font-weight:600}
+.step-detail .obs{margin-top:10px}
+.step-detail blockquote{font-family:var(--serif);font-size:1.1rem;border-left:3px solid var(--amber);padding-left:12px;margin:14px 0}
+@media (max-width:860px){.flow{grid-template-columns:1fr}}
+.stackbar{display:flex;height:38px;border-radius:8px;overflow:hidden;margin:10px 0 8px}
+.stackbar div{display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;font-weight:600;white-space:nowrap;overflow:hidden}
 
-    /* Process Steps */
-    .process-steps { display: flex; justify-content: space-between; align-items: center; margin: 24px 0; flex-wrap: wrap; }
-    .process-step { text-align: center; flex: 1; min-width: 110px; margin: 6px; transition: all 0.3s ease; }
-    .process-step:hover { transform: scale(1.08); }
-    .step-circle {
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-        color: white; width: 72px; height: 72px; border-radius: 50%;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        margin: 0 auto 10px; font-weight: 700; box-shadow: 0 8px 20px rgba(74,144,226,0.28);
-    }
-    .step-number { font-size: 1.6em; }
-    .step-name { font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.5px; }
-    .step-label { color: #4A90E2; font-weight: 600; font-size: 0.9em; }
-    .step-arrow { color: #4A90E2; font-size: 1.6em; flex: 0; min-width: auto; }
+/* Affinity board */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.filters button{font:inherit;font-size:.85rem;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.col h4{margin:0 0 8px;font-size:.88rem}
+.col .count{color:var(--muted);font-weight:500}
+.note{background:#FFF6DC;border:1px solid #EFD9A0;padding:10px 11px;margin-bottom:8px;font-size:.86rem;line-height:1.45;border-radius:3px 3px 10px 3px;transition:opacity .2s}
+.note .who{display:block;font-size:.72rem;color:var(--amber);font-weight:700;margin-top:6px}
+.note.dim{opacity:.18}
 
-    /* Tables */
-    table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    thead { background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%); color: white; }
-    th, td { padding: 10px 13px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.88em; }
-    th { font-weight: 600; text-transform: uppercase; font-size: 0.8em; letter-spacing: 0.5px; }
-    tr:last-child td { border-bottom: none; }
-    tbody tr:hover { background: #f1f5f9; }
+/* AI box */
+.ai{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.ai div{padding:16px;border-right:1px solid var(--line)}
+.ai div:last-child{border-right:0}
+.ai .stepn{font-family:var(--serif);font-weight:700;color:var(--blue);font-size:1.1rem}
+.ai p{font-size:.88rem;margin:4px 0 0}
+.ai .me{background:var(--teal-soft)}
+@media (max-width:860px){.ai{grid-template-columns:1fr 1fr}.ai div:nth-child(2){border-right:0}.ai div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
-    /* Feature Grid */
-    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin: 18px 0; }
-    .feature-card {
-        background: linear-gradient(135deg, #E3F2FD 0%, #ffffff 100%);
-        padding: 18px; border-radius: 12px; border-top: 4px solid #4A90E2;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.07); transition: all 0.3s ease;
-    }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(74,144,226,0.18); }
-    .feature-card h4 { color: #4A90E2; margin-top: 0; font-size: 1em; margin-bottom: 8px; }
-    .feature-card h5 { color: #1e293b; font-size: 0.95em; margin-bottom: 6px; }
-    .feature-card ul { margin-left: 16px; margin-top: 8px; font-size: 0.88em; }
-    .feature-card li { margin-bottom: 6px; color: #475569; }
-    .feature-card p { font-size: 0.9em; }
+/* Findings accordion */
+.finding{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.finding summary{list-style:none;cursor:pointer;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.finding summary::-webkit-details-marker{display:none}
+.finding summary .fn{font-family:var(--serif);font-weight:700;color:var(--blue);font-size:1.1rem}
+.finding summary .ft{font-weight:700}
+.finding summary .chev{transition:transform .2s;color:var(--muted)}
+.finding[open] summary .chev{transform:rotate(90deg)}
+.finding .fbody{padding:0 20px 18px 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;border-top:1px solid var(--line);padding-top:16px}
+.finding dt{font-size:.8rem;font-weight:700;color:var(--muted)}
+.finding dd{font-size:.92rem}
+@media (max-width:760px){.finding .fbody{grid-template-columns:1fr}}
 
-    /* HMW */
-    .hmw-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin: 18px 0; }
-    .hmw-card {
-        background: linear-gradient(135deg, #BBDEFB 0%, #90CAF9 100%);
-        padding: 18px; border-radius: 10px; border-left: 4px solid #4A90E2;
-        transition: all 0.3s ease; cursor: pointer;
-    }
-    .hmw-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(74,144,226,0.28); }
-    .hmw-label { color: #4A90E2; font-weight: 700; font-size: 0.9em; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .hmw-text { color: #1e293b; font-size: 0.92em; line-height: 1.6; }
+/* Matrix */
+.matrix-wrap{display:grid;grid-template-columns:1fr 300px;gap:20px}
+.matrix{position:relative;aspect-ratio:1.35/1;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-left:28px;margin-bottom:28px}
+.matrix .q{position:absolute;width:50%;height:50%;padding:10px 12px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.matrix .q1{left:0;top:0;background:rgba(21,122,116,.07);border-right:1px dashed var(--line);border-bottom:1px dashed var(--line);border-radius:12px 0 0 0}
+.matrix .q2{right:0;top:0;border-bottom:1px dashed var(--line);text-align:right}
+.matrix .q3{left:0;bottom:0;border-right:1px dashed var(--line)}
+.matrix .q4{right:0;bottom:0;text-align:right}
+.matrix .axis-y{position:absolute;left:-28px;top:50%;transform:translateY(-50%) rotate(-90deg);font-size:.78rem;color:var(--muted);white-space:nowrap;transform-origin:center}
+.matrix .axis-x{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:.78rem;color:var(--muted)}
+.dot{position:absolute;width:34px;height:34px;border-radius:50%;transform:translate(-50%,50%);border:2px solid #fff;background:var(--blue);color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;box-shadow:0 1px 4px rgba(19,36,59,.25)}
+.dot[aria-pressed="true"]{background:var(--ink);outline:3px solid var(--blue);outline-offset:2px}
+.dot.ship{background:var(--teal)}
+.dot.later{background:#8494A6}
+.matrix-detail{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;align-self:start}
+.matrix-detail h4{margin-top:0;font-family:var(--serif);font-size:1.15rem;font-weight:600}
+@media (max-width:860px){.matrix-wrap{grid-template-columns:1fr}}
 
-    /* Highlight Box */
-    .highlight-box {
-        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-        border-left: 4px solid #f59e0b; padding: 16px; border-radius: 10px; margin: 16px 0;
-        transition: all 0.3s ease;
-    }
-    .highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 14px rgba(245,158,11,0.18); }
-    .highlight-box strong { color: #92400e; }
-    .highlight-box h4 { font-size: 1em; margin-bottom: 8px; }
-    .highlight-box p { font-size: 0.92em; }
+/* EHR mockups */
+.mock-wrap{overflow-x:auto;padding-bottom:6px}
+.mock-grid{display:grid;grid-template-columns:1fr 290px;gap:20px;align-items:start}
+@media (max-width:980px){.mock-grid{grid-template-columns:1fr}}
+.ehr{min-width:740px;background:#fff;border:1px solid #BFCAD6;border-radius:10px;overflow:hidden;font-size:12.5px;position:relative;box-shadow:0 10px 30px rgba(19,36,59,.12)}
+.ehr-chrome{background:#E7ECF1;padding:7px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #C9D3DD;font-size:11.5px;color:#4A5A6C}
+.ehr-chrome i{width:10px;height:10px;border-radius:50%;background:#C3CDD8;display:inline-block}
+.ehr-banner{background:#24456E;color:#fff;padding:9px 14px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ehr-banner b{font-size:14px}
+.ehr-banner .flag{background:#F2C14E;color:#3A2A00;padding:1px 7px;border-radius:3px;font-weight:700;font-size:11px}
+.ehr-banner .spacer{flex:1}
+.ehr-body{display:grid;grid-template-columns:170px 1fr;min-height:390px}
+.ehr-nav{background:#F4F6F9;border-right:1px solid #D9E0E7;padding:8px 0}
+.ehr-nav div{padding:5px 12px;color:#3B4B5E}
+.ehr-nav div.on{background:#DCE6F2;font-weight:700;color:#1D4F87}
+.ehr-nav div.sub{padding-left:24px;font-size:11.5px;color:#6A7A8C}
+.ehr-main{padding:14px 18px}
+.crumb{color:#6A7A8C;font-size:11.5px;margin-bottom:8px}
+.ehr-err{background:#FBE3E0;border:1px solid #E7B1AB;color:#8A2F27;padding:8px 10px;border-radius:5px;margin-bottom:10px;font-weight:600}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:11px;font-weight:700;color:#4A5A6C;margin-bottom:3px}
+.inp{border:1px solid #C3CDD8;border-radius:4px;padding:6px 8px;background:#fff;color:#2B3A4C}
+.inp.auto{background:#EAF5F3;border-color:#A7D3CE}
+.inp.miss{border-color:#C9584D;background:#FFF6F5}
+.dd{border:1px solid #C3CDD8;border-radius:4px;max-height:150px;overflow:hidden;font-size:11.5px}
+.dd div{padding:4px 8px;border-bottom:1px solid #EEF1F4;color:#3B4B5E}
+.dd div.hi{background:#DCE6F2}
+.ta{border:1px solid #C3CDD8;border-radius:4px;padding:8px;min-height:62px;color:#2B3A4C;line-height:1.45}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+.evchips{display:flex;gap:6px;flex-wrap:wrap}
+.evchips span{border:1px solid #C3CDD8;border-radius:999px;padding:4px 10px;font-size:11.5px}
+.evchips span.sel{background:#24456E;color:#fff;border-color:#24456E}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:12px}
+.prn{border:1px solid #A7D3CE;background:#F1FAF8;border-radius:6px;padding:9px 11px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.remind{background:#FFF2D6;color:#7A4C0F;border-radius:4px;padding:3px 8px;font-weight:700;font-size:11px;white-space:nowrap}
+.ehr-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E1E6EC;padding:10px 18px;background:#FAFBFC}
+.btn{border-radius:5px;padding:6px 14px;font-weight:700;font-size:12px;border:1px solid #24456E}
+.btn.pri{background:#24456E;color:#fff}
+.btn.sec{background:#fff;color:#24456E}
+.req{font-size:11.5px;color:#4A5A6C}
+.req b{color:#157A74}
+.hs{position:absolute;width:26px;height:26px;border-radius:50%;background:#E0752D;color:#fff;font-weight:800;font-size:13px;border:2px solid #fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3);font-family:var(--sans)}
+.hs[aria-pressed="true"]{background:var(--ink);outline:3px solid #E0752D}
+.notes-list{list-style:none;margin:0}
+.notes-list li{margin:0 0 8px}
+.notes-list button{width:100%;text-align:left;font:inherit;font-size:.88rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;color:var(--ink);display:grid;grid-template-columns:26px 1fr;gap:10px}
+.notes-list button .b{width:24px;height:24px;border-radius:50%;background:#E0752D;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.notes-list button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.notes-list strong{display:block}
+.notes-list span.d{color:var(--muted);font-size:.84rem}
 
-    /* Quote */
-    .quote {
-        background: linear-gradient(135deg, #BBDEFB 0%, #E3F2FD 100%);
-        border-left: 4px solid #4A90E2; padding: 16px; border-radius: 10px; margin: 18px 0;
-        font-style: italic; font-size: 0.98em; color: #475569; transition: all 0.3s ease;
-    }
-    .quote:hover { background: linear-gradient(135deg, #90CAF9 0%, #BBDEFB 100%); transform: translateX(4px); }
+.flowcompare{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.flowcol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.flowcol ol{margin:8px 0 0 1.2rem}
+.flowcol li{font-size:.9rem}
+.flowcol .tot{font-family:var(--serif);font-size:1.4rem;font-weight:700}
+@media (max-width:760px){.flowcompare{grid-template-columns:1fr}}
 
-    /* Persona */
-    .define-persona-card {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-        border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.05); margin-top: 12px;
-    }
-    .define-persona-top { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
-    .define-avatar {
-        width: 56px; height: 56px; border-radius: 50%;
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 26px; color: white; flex-shrink: 0;
-    }
-    .define-quickfacts { display: flex; flex-direction: column; gap: 7px; min-width: 200px; flex: 0 1 300px; }
-    .define-pill { background: #eff6ff; border: 1px solid #bfdbfe; color: #36465f; padding: 7px 9px; border-radius: 9px; font-size: 0.85em; }
-    .define-detail-title { font-weight: 800; color: #315082; margin-bottom: 4px; font-size: 0.92em; }
-    .define-detail-text { color: #475569; font-size: 0.87em; line-height: 1.6; }
+/* Charts */
+.chart-box{position:relative;height:340px}
+.chart-box.short{height:300px}
+.sus{display:grid;gap:10px;margin-top:6px}
+.sus-row{display:grid;grid-template-columns:110px 1fr 44px;gap:10px;align-items:center;font-size:.88rem}
+.sus-track{position:relative;height:16px;background:#EEF2F6;border-radius:999px}
+.sus-fill{height:100%;border-radius:999px}
+.sus-mark{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink)}
+.sus-row b{font-family:var(--serif);font-size:1.1rem;text-align:right}
 
-    /* Journey Map */
-    .journey-map {
-        display: grid; grid-template-columns: 120px repeat(5,1fr);
-        gap: 1px; background: #e2e8f0; border-radius: 12px; overflow: hidden;
-        margin-top: 12px; font-size: 0.78em;
-    }
-    .journey-header { background: #f8fafc; }
-    .journey-stage-header {
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-        color: white; padding: 10px 7px; text-align: center; font-weight: 700; font-size: 0.8em; line-height: 1.4;
-    }
-    .journey-row-label { background: #f1f5f9; padding: 9px; font-weight: 700; color: #475569; display: flex; align-items: center; font-size: 0.82em; }
-    .journey-cell { background: white; padding: 9px; color: #475569; line-height: 1.45; display: flex; align-items: center; }
-    .journey-cell.pain { background: #fef3c7; color: #92400e; }
-    .journey-emotion { background: white; padding: 9px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-    .emotion-point { font-size: 1.5em; }
+.changes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.change{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.change .r1{font-size:.85rem;color:var(--red)}
+.change .r2{font-size:.85rem;color:var(--teal);margin-top:8px}
+@media (max-width:860px){.changes{grid-template-columns:1fr}}
+.quote{font-family:var(--serif);font-size:1.15rem;line-height:1.45;margin:0 0 6px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.quotes figure{border-top:3px solid var(--teal);padding-top:12px}
+.quotes figcaption{font-size:.82rem;color:var(--muted)}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}}
 
-    /* Qual Research */
-    .qual-research-image img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 8px 28px rgba(0,0,0,0.09); }
-    @media (min-width: 769px) { .qual-research-image { position: sticky; top: 100px; } }
-    .qual-research-layout { align-items: start; }
+/* Templates */
+.doc{max-width:720px}
+.doc dl{display:grid;grid-template-columns:170px 1fr;gap:10px 18px;font-size:.92rem}
+.doc dt{font-weight:700;color:var(--muted)}
+.doc dd{margin:0}
+.doc ol,.doc ul{margin-top:0}
+@media (max-width:640px){.doc dl{grid-template-columns:1fr}}
 
-    /* Scroll reveal */
-    .scroll-reveal { opacity: 0; transform: translateY(28px); transition: all 0.6s ease; }
-    .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+/* Repository */
+.repo-tools{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.repo-tools input,.repo-tools select{font:inherit;font-size:.9rem;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.repo-tools input{flex:1;min-width:200px}
+.repo-count{font-size:.85rem;color:var(--muted)}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-        .hero { grid-template-columns: 1fr; }
-        .hero-phones { display: none; }
-        .hero h1 { font-size: 1.5em; }
-        .two-column { grid-template-columns: 1fr; }
-        .process-steps { flex-direction: column; }
-        .step-arrow { transform: rotate(90deg); margin: 8px 0; }
-        .section { padding: 22px 16px; }
-        .journey-map { grid-template-columns: 1fr; font-size: 0.82em; }
-        .journey-row-label { background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%); color: white; font-weight: 700; text-transform: uppercase; padding: 7px 10px; }
-        .affinity-grid { grid-template-columns: 1fr !important; }
-        .define-quickfacts { min-width: 100%; }
-    }
+.deliver{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.deliver div{border-top:3px solid var(--blue);padding-top:12px}
+.deliver h4{margin-top:0;font-family:var(--serif);font-size:1.15rem;font-weight:600}
+@media (max-width:860px){.deliver{grid-template-columns:1fr}}
 
-    ul, ol { margin-left: 22px; margin-top: 10px; }
-    li { margin-bottom: 7px; line-height: 1.65; }
+footer{padding:40px 0 60px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
 </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="index.html">Katrina Peli</a>
-            <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#findings">Findings</a></li>
-                <li><a href="#results">Results</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav class="nav" aria-label="Case study sections">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="index.html">Katrina Peli</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#plan">Plan</a></li>
+      <li><a href="#inquiry">Inquiry</a></li>
+      <li><a href="#synthesis">Synthesis</a></li>
+      <li><a href="#concept">Concept</a></li>
+      <li><a href="#testing">Testing</a></li>
+      <li><a href="#ops">Research ops</a></li>
+      <li><a href="#reflection">Reflection</a></li>
+    </ul>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
 
-    <div class="container">
-        <!-- Hero -->
-        <div class="hero" id="overview">
-            <div class="hero-content">
-                <div style="display:inline-block;background:rgba(255,255,255,0.3);padding:6px 18px;border-radius:18px;margin-bottom:16px;backdrop-filter:blur(10px);">
-                    <span style="color:white;font-size:0.85em;font-weight:600;letter-spacing:0.5px;">UX RESEARCH CASE STUDY</span>
-                </div>
-                <h1>Improving Provider Search, Messaging, and Appointment Booking in the VirtualCare App</h1>
-                <p>Research-driven improvements to provider search, communication, and appointment booking, contributing to a 15-point increase in user satisfaction.</p>
-                <div style="margin:18px 0 22px;">
-                    <div style="display:inline-block;background:rgba(255,255,255,0.25);padding:9px 22px;border-radius:13px;backdrop-filter:blur(10px);">
-                        <span style="color:white;font-size:1.05em;font-weight:600;">Katrina Peli</span>
-                        <span style="color:rgba(255,255,255,0.95);font-size:0.95em;margin-left:10px;">| UX Researcher</span>
-                    </div>
-                </div>
-                <div class="hero-meta">
-                    <div class="meta-item">
-                        <strong>Tools</strong>
-                        <span>Figma, Google Analytics, Google Forms, Zoom</span>
-                    </div>
-                    <div class="meta-item">
-                        <strong>Duration</strong>
-                        <span>May 2023 – March 2024 (10 months)</span>
-                    </div>
-                    <div class="meta-item">
-                        <strong>Team</strong>
-                        <span>1 PM, 1 Developer, 1 Designer</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Phones -->
-            <div class="hero-phones">
-                <!-- Phone 1: Provider Search -->
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <div class="phone-notch"></div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;font-size:0.58em;color:#1e293b;">
-                            <span style="font-weight:600;">9:41</span>
-                            <div style="display:flex;gap:3px;align-items:center;">📶📡🔋</div>
-                        </div>
-                        <div class="phone-content" style="padding:18px 13px 13px;">
-                            <div style="background:#f8fafc;border-radius:9px;padding:7px 11px;margin-bottom:10px;display:flex;align-items:center;gap:7px;border:1px solid #e2e8f0;">
-                                <span style="font-size:0.88em;">🔍</span>
-                                <span style="font-size:0.72em;color:#94a3b8;">Search providers...</span>
-                            </div>
-                            <div style="display:flex;gap:5px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px;">
-                                <div style="background:#4A90E2;color:white;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;font-weight:600;">All</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">📍 Near Me</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">🏥 Specialty</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">💳 Insurance</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">📅 Today</div>
-                            </div>
-                            <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px;">
-                                <div style="font-size:0.67em;color:#64748b;font-weight:600;flex:1;">Available Today</div>
-                                <div style="background:#dcfce7;color:#16a34a;padding:2px 7px;border-radius:9px;font-size:0.58em;font-weight:600;">12 Online</div>
-                            </div>
-                            <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;margin-bottom:7px;box-shadow:0 2px 7px rgba(0,0,0,0.06);position:relative;">
-                                <div style="position:absolute;top:7px;right:7px;background:#dcfce7;color:#16a34a;padding:1px 5px;border-radius:4px;font-size:0.52em;font-weight:600;">Available</div>
-                                <div style="display:flex;gap:9px;align-items:flex-start;">
-                                    <div style="position:relative;flex-shrink:0;">
-                                        <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#357ABD);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1em;border:2px solid #e0f2fe;">RW</div>
-                                        <div style="position:absolute;bottom:0;right:0;width:11px;height:11px;background:#16a34a;border:2px solid white;border-radius:50%;"></div>
-                                    </div>
-                                    <div style="flex:1;min-width:0;">
-                                        <div style="font-weight:700;font-size:0.75em;color:#1e293b;">Dr. R. Williams</div>
-                                        <div style="font-size:0.62em;color:#64748b;">Cardiologist · Downtown Health</div>
-                                        <div style="display:flex;align-items:center;gap:5px;margin-top:2px;">
-                                            <span style="font-size:0.62em;color:#fbbf24;">⭐ 4.9</span>
-                                            <span style="font-size:0.58em;color:#94a3b8;">127 reviews</span>
-                                            <span style="font-size:0.58em;color:#4A90E2;font-weight:600;">8+ yrs</span>
-                                        </div>
-                                        <div style="font-size:0.6em;color:#16a34a;font-weight:600;margin-top:2px;">Today 2:00 PM · Accepting new patients</div>
-                                        <div style="display:flex;gap:4px;margin-top:5px;">
-                                            <div style="background:#e0f2fe;color:#0284c7;padding:2px 5px;border-radius:4px;font-size:0.55em;font-weight:600;">💬 Chat</div>
-                                            <div style="background:#e0f2fe;color:#0284c7;padding:2px 5px;border-radius:4px;font-size:0.55em;font-weight:600;">📹 Video</div>
-                                            <div style="background:#e0f2fe;color:#0284c7;padding:2px 5px;border-radius:4px;font-size:0.55em;font-weight:600;">🏥 Visit</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;box-shadow:0 2px 7px rgba(0,0,0,0.06);">
-                                <div style="display:flex;gap:9px;align-items:flex-start;">
-                                    <div style="position:relative;flex-shrink:0;">
-                                        <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1em;border:2px solid #ede9fe;">JW</div>
-                                        <div style="position:absolute;bottom:0;right:0;width:11px;height:11px;background:#94a3b8;border:2px solid white;border-radius:50%;"></div>
-                                    </div>
-                                    <div style="flex:1;min-width:0;">
-                                        <div style="font-weight:700;font-size:0.75em;color:#1e293b;">Dr. J. Martinez</div>
-                                        <div style="font-size:0.62em;color:#64748b;">Pediatrics · Metro Pediatrics</div>
-                                        <div style="display:flex;align-items:center;gap:5px;margin-top:2px;">
-                                            <span style="font-size:0.62em;color:#fbbf24;">⭐ 4.8</span>
-                                            <span style="font-size:0.58em;color:#94a3b8;">203 reviews</span>
-                                            <span style="font-size:0.58em;color:#8b5cf6;font-weight:600;">12+ yrs</span>
-                                        </div>
-                                        <div style="font-size:0.6em;color:#64748b;margin-top:2px;">Tomorrow 9:00 AM · 📍 2.3 mi</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 13px;display:flex;justify-content:space-around;align-items:center;">
-                            <div style="text-align:center;color:#4A90E2;"><div style="font-size:1em;">🏠</div><div style="font-size:0.58em;font-weight:600;margin-top:1px;">Home</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">📅</div><div style="font-size:0.58em;margin-top:1px;">Book</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">💬</div><div style="font-size:0.58em;margin-top:1px;">Chat</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">👤</div><div style="font-size:0.58em;margin-top:1px;">Profile</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phone 2: Messages -->
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <div class="phone-notch"></div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;font-size:0.58em;color:#1e293b;">
-                            <span style="font-weight:600;">9:41</span>
-                            <div style="display:flex;gap:3px;align-items:center;">📶📡🔋</div>
-                        </div>
-                        <div class="phone-content" style="padding:18px 13px 13px;">
-                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;">
-                                <div><h3 style="font-size:1.15em;color:#1e293b;margin:0;font-weight:700;">Messages</h3><p style="font-size:0.67em;color:#64748b;margin:2px 0 0;">Stay connected</p></div>
-                                <div style="background:#f1f5f9;width:29px;height:29px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.88em;">✏️</div>
-                            </div>
-                            <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px;">
-                                <div style="font-size:0.67em;color:#64748b;font-weight:600;flex:1;">Recent</div>
-                                <div style="background:#fee2e2;color:#dc2626;padding:2px 7px;border-radius:9px;font-size:0.58em;font-weight:600;">3 New</div>
-                            </div>
-                            <div style="border-left:3px solid #4A90E2;background:linear-gradient(to right,#eff6ff,white);border-radius:9px;padding:9px;margin-bottom:7px;display:flex;gap:9px;align-items:center;box-shadow:0 2px 7px rgba(74,144,226,0.14);">
-                                <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#357ABD);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.88em;flex-shrink:0;position:relative;">RW<div style="position:absolute;bottom:-1px;right:-1px;width:9px;height:9px;background:#16a34a;border:2px solid white;border-radius:50%;"></div></div>
-                                <div style="flex:1;min-width:0;">
-                                    <div style="font-weight:600;font-size:0.72em;color:#1e293b;">Dr. R. Williams</div>
-                                    <div style="font-size:0.65em;color:#1e293b;font-weight:500;margin-top:1px;">📋 Test results ready</div>
-                                    <div style="font-size:0.58em;color:#64748b;margin-top:1px;">2m ago</div>
-                                </div>
-                            </div>
-                            <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;margin-bottom:7px;display:flex;gap:9px;align-items:center;">
-                                <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#db2777);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.88em;flex-shrink:0;">EB</div>
-                                <div style="flex:1;min-width:0;">
-                                    <div style="font-weight:600;font-size:0.72em;color:#1e293b;">Dr. E. Chen</div>
-                                    <div style="font-size:0.62em;color:#64748b;margin-top:1px;">💊 Prescription sent</div>
-                                    <div style="font-size:0.58em;color:#4A90E2;margin-top:1px;">✓✓ Read · 1h</div>
-                                </div>
-                            </div>
-                            <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;margin-bottom:11px;display:flex;gap:9px;align-items:center;">
-                                <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.88em;flex-shrink:0;">JW</div>
-                                <div style="flex:1;min-width:0;">
-                                    <div style="font-weight:600;font-size:0.72em;color:#1e293b;">Dr. J. Martinez</div>
-                                    <div style="font-size:0.62em;color:#64748b;margin-top:1px;">✅ Appointment confirmed</div>
-                                    <div style="font-size:0.58em;color:#64748b;margin-top:1px;">📅 Tomorrow, 9:00 AM</div>
-                                </div>
-                            </div>
-                            <div style="background:linear-gradient(135deg,#e0f2fe,#f0f9ff);border-radius:9px;padding:11px;border:1px solid #bae6fd;">
-                                <div style="font-size:0.67em;color:#0369a1;font-weight:600;margin-bottom:7px;">✨ Quick Actions</div>
-                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
-                                    <div style="background:white;padding:7px;border-radius:7px;text-align:center;border:1px solid #e0f2fe;"><div style="font-size:1em;margin-bottom:2px;">📹</div><div style="font-size:0.6em;color:#0369a1;font-weight:600;">Start Video</div></div>
-                                    <div style="background:white;padding:7px;border-radius:7px;text-align:center;border:1px solid #e0f2fe;"><div style="font-size:1em;margin-bottom:2px;">📄</div><div style="font-size:0.6em;color:#0369a1;font-weight:600;">Share Files</div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 13px;display:flex;justify-content:space-around;align-items:center;">
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">🏠</div><div style="font-size:0.58em;margin-top:1px;">Home</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">📅</div><div style="font-size:0.58em;margin-top:1px;">Book</div></div>
-                            <div style="text-align:center;color:#4A90E2;position:relative;"><div style="position:absolute;top:-2px;right:5px;width:6px;height:6px;background:#ef4444;border-radius:50%;border:1px solid white;"></div><div style="font-size:1em;">💬</div><div style="font-size:0.58em;font-weight:600;margin-top:1px;">Chat</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">👤</div><div style="font-size:0.58em;margin-top:1px;">Profile</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phone 3: Appointments -->
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <div class="phone-notch"></div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;font-size:0.58em;color:#1e293b;">
-                            <span style="font-weight:600;">9:41</span>
-                            <div style="display:flex;gap:3px;align-items:center;">📶📡🔋</div>
-                        </div>
-                        <div class="phone-content" style="padding:18px 13px 13px;">
-                            <h3 style="font-size:1.15em;color:#1e293b;margin:0 0 4px;font-weight:700;">My Appointments</h3>
-                            <p style="font-size:0.67em;color:#64748b;margin:0 0 13px;">📅 Upcoming visits</p>
-                            <div style="background:white;border:2px solid #4A90E2;border-radius:9px;padding:11px;margin-bottom:9px;">
-                                <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:7px;">
-                                    <div><div style="font-weight:600;color:#1e293b;font-size:0.77em;">Dr. D. Brooks</div><div style="font-size:0.65em;color:#64748b;">General Checkup</div></div>
-                                    <div style="background:#4A90E2;color:white;padding:2px 7px;border-radius:5px;font-size:0.58em;font-weight:600;">TODAY</div>
-                                </div>
-                                <div style="font-size:0.65em;color:#64748b;margin-bottom:9px;line-height:1.6;">📍 Community Medical Center<br>🕐 2:30 PM – 3:00 PM · Copay $20</div>
-                                <button style="width:100%;background:#4A90E2;color:white;border:none;padding:7px;border-radius:7px;font-weight:600;font-size:0.65em;cursor:pointer;">Join Video Call</button>
-                            </div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:9px;padding:11px;margin-bottom:9px;">
-                                <div style="font-weight:600;color:#1e293b;font-size:0.73em;">Dr. J. Torres</div>
-                                <div style="font-size:0.62em;color:#64748b;">Follow-up Visit</div>
-                                <div style="font-size:0.65em;color:#64748b;margin-top:5px;line-height:1.6;">📍 Telehealth (Remote)<br>🕐 Jan 15, 10:00 AM</div>
-                            </div>
-                            <div style="background:#E3F2FD;border-radius:9px;padding:11px;text-align:center;">
-                                <div style="font-size:0.67em;color:#4A90E2;font-weight:600;margin-bottom:2px;">🔔 Smart Reminders</div>
-                                <div style="font-size:0.62em;color:#64748b;">Email & SMS 24hrs before</div>
-                            </div>
-                        </div>
-                        <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 13px;display:flex;justify-content:space-around;align-items:center;">
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">🏠</div><div style="font-size:0.58em;margin-top:1px;">Home</div></div>
-                            <div style="text-align:center;color:#4A90E2;"><div style="font-size:1em;">📅</div><div style="font-size:0.58em;font-weight:600;margin-top:1px;">Book</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">💬</div><div style="font-size:0.58em;margin-top:1px;">Chat</div></div>
-                            <div style="text-align:center;color:#94a3b8;"><div style="font-size:1em;">👤</div><div style="font-size:0.58em;margin-top:1px;">Profile</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Overview -->
-        <div class="section scroll-reveal">
-            <h2>Overview</h2>
-            <p>I led UX research for the VirtualCare app to improve provider search, messaging, and appointment booking. Through interviews, competitive analysis, and usability testing, I identified where users were getting stuck and translated findings into design recommendations.</p>
-            <p>Results included 30% faster search time, +35 pp messaging success, +38 pp booking success, and +15 pp user satisfaction.</p>
-        </div>
-
-        <!-- Challenge -->
-        <div class="section scroll-reveal">
-            <h2>The Challenge</h2>
-            <p>Patients were getting stuck before they could access care. Missing filters, unclear messaging, and confusing booking confirmation caused frustration, wasted time, and app abandonment.</p>
-            <div class="highlight-box">
-                <h4 style="color:#92400e;">Research Question</h4>
-                <p style="font-size:1.05em;"><em>What barriers prevent patients from finding an available provider, contacting care teams, and completing appointment booking successfully?</em></p>
-            </div>
-            <h3>3 Main Pain Points</h3>
-            <div class="challenge-grid">
-                <div class="challenge-card">
-                    <div class="challenge-number">1</div>
-                    <div class="challenge-title">Provider Search</div>
-                    <div class="challenge-description"><ul>
-                        <li>No real-time filters for availability, location, or specialty</li>
-                        <li>Outdated or vague provider info led to wasted time</li>
-                        <li>Users gave up after failed attempts to find care</li>
-                    </ul></div>
-                </div>
-                <div class="challenge-card">
-                    <div class="challenge-number">2</div>
-                    <div class="challenge-title">Messaging</div>
-                    <div class="challenge-description"><ul>
-                        <li>Message button was hard to find on provider profiles</li>
-                        <li>No conversation history or follow-up thread</li>
-                        <li>Users defaulted to phone calls, causing delays</li>
-                    </ul></div>
-                </div>
-                <div class="challenge-card">
-                    <div class="challenge-number">3</div>
-                    <div class="challenge-title">Booking</div>
-                    <div class="challenge-description"><ul>
-                        <li>Booking flow lacked clarity and confirmation</li>
-                        <li>No simple reschedule/cancel option in the app</li>
-                        <li>No reminders caused missed or double-booked visits</li>
-                    </ul></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Research Approach -->
-        <div class="section scroll-reveal" id="research">
-            <h2>Research Approach</h2>
-            <div class="two-column">
-                <div>
-                    <h3>My Role</h3>
-                    <p>As the UX researcher, I led the end-to-end research process: planning, participant screening, user interviews, competitive analysis, usability testing, synthesis, and stakeholder presentations. I collaborated with the design team to translate findings into prioritized recommendations.</p>
-                    <ul>
-                        <li>Recruited & screened 10 participants (ages 22–65)</li>
-                        <li>Conducted 10 in-depth user interviews</li>
-                        <li>Led 2 rounds of moderated usability testing (n=10 each)</li>
-                        <li>Analyzed qualitative & quantitative data</li>
-                        <li>Created personas, journey maps, and findings decks</li>
-                        <li>Presented insights to stakeholders</li>
-                        <li>Privacy-conscious research practices, including informed consent and de-identified data</li>
-                    </ul>
-                </div>
-                <div class="qual-research-image">
-                    <img src="https://i.ibb.co/0yj6TDyp/Katrina-Peli-UX-Portfolio.png" alt="Qualitative research interview insights" loading="lazy" />
-                </div>
-            </div>
-
-            <h3 style="margin-top:28px;">Research Methodology</h3>
-            <div class="process-steps">
-                <div class="process-step"><div class="step-circle"><div class="step-number">1</div><div class="step-name">Discover</div></div><div class="step-label">Competitive Analysis</div></div>
-                <div class="step-arrow">→</div>
-                <div class="process-step"><div class="step-circle"><div class="step-number">2</div><div class="step-name">Define</div></div><div class="step-label">Persona Development</div></div>
-                <div class="step-arrow">→</div>
-                <div class="process-step"><div class="step-circle"><div class="step-number">3</div><div class="step-name">Ideate</div></div><div class="step-label">Design Workshops</div></div>
-                <div class="step-arrow">→</div>
-                <div class="process-step"><div class="step-circle"><div class="step-number">4</div><div class="step-name">Validate</div></div><div class="step-label">Usability Testing</div></div>
-            </div>
-
-            <h3 style="margin-top:28px;">Stakeholders</h3>
-            <table>
-                <thead><tr><th>Stakeholder</th><th>Role in Project</th><th>Primary Focus</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>Product Manager</strong></td><td>Defined feature priorities and roadmap</td><td>Business goals, scope, trade-offs</td></tr>
-                    <tr><td><strong>Patients / End Users</strong></td><td>Participated in research and usability testing</td><td>Usability, trust, ease of access</td></tr>
-                    <tr><td><strong>Engineers / Developers</strong></td><td>Assessed feasibility and built features</td><td>Technical constraints, implementation</td></tr>
-                    <tr><td><strong>Healthcare Providers</strong></td><td>Shared workflow and communication needs</td><td>Care delivery, efficiency</td></tr>
-                    <tr><td><strong>Designers</strong></td><td>Translated insights into UI/UX solutions</td><td>User flows, accessibility, clarity</td></tr>
-                    <tr><td><strong>Clinic Operations Leaders</strong></td><td>Evaluated operational impact</td><td>Missed appointments, retention, completion</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Discovery -->
-        <div class="section scroll-reveal" id="findings">
-            <h2>1. Discovery Research</h2>
-            <h3>Competitor Analysis</h3>
-            <p>I analyzed 3 leading telehealth platforms to understand how competitors handle provider search, communication, and booking.</p>
-            <table>
-                <thead><tr><th>Platform Type</th><th>Provider Search</th><th>Communication</th><th>Booking</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>Platform A</strong></td><td>Basic name/specialty search; no availability filters</td><td>Video call only; no follow-up chat</td><td>Multi-step booking; no confirmation clarity</td></tr>
-                    <tr><td><strong>Platform B</strong></td><td>Specialty filter only; no real-time availability</td><td>Video call only; no asynchronous messaging</td><td>Confirmation email sent but no reminders</td></tr>
-                    <tr><td><strong>Platform C</strong></td><td>Limited filters; outdated provider profiles</td><td>Appointment-based calls; follow-up inconsistent</td><td>No reschedule/cancel option in app</td></tr>
-                </tbody>
-            </table>
-            <div class="highlight-box">
-                <p><strong>Key Insight:</strong> Across platforms reviewed, provider search lacked real-time availability, communication was limited to scheduled visits with little follow-up support, and booking flows often left users uncertain about next steps. These gaps directly shaped our research focus.</p>
-            </div>
-
-            <h3>Qualitative Research</h3>
-            <div class="two-column qual-research-layout">
-                <div>
-                    <h4>Participants</h4>
-                    <p><strong>10 interviews</strong> (ages 22–65), recruited via the hospital's patient outreach program. All had recently searched for a provider or used a health app. Conducted via Zoom and in person.</p>
-                    <p style="background:#fef3c7;padding:10px;border-radius:8px;font-size:0.9em;margin:12px 0;">
-                        <strong>Ethics Note:</strong> Research followed privacy-conscious practices, including informed consent, de-identified participant data, and $50 compensation.
-                    </p>
-                    <h4>Key Interview Questions</h4>
-                    <ul>
-                        <li>Walk me through the last time you searched for a provider. What was frustrating?</li>
-                        <li>Tell me about your experience booking appointments online.</li>
-                        <li>What communication tools do you use to reach providers?</li>
-                    </ul>
-                    <h4>Key Findings</h4>
-                    <div class="feature-grid">
-                        <div class="feature-card"><h5>Finding 1: Search filters were missing</h5><p>Users could not filter by specialty, location, or availability.</p></div>
-                        <div class="feature-card"><h5>Finding 2: Message button was hard to find</h5><p>Users struggled to locate where to message providers in the app.</p></div>
-                        <div class="feature-card"><h5>Finding 3: Booking confirmation was unclear</h5><p>Users were unsure if their appointment had actually been booked.</p></div>
-                    </div>
-
-                    <!-- Affinity Map -->
-                    <div style="margin-top:22px;">
-                        <h4>Affinity Mapping: Key Themes</h4>
-                        <p style="color:#64748b;margin-bottom:11px;font-size:0.88em;">After analyzing interview transcripts, I grouped insights into three themes:</p>
-                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;" class="affinity-grid">
-                            <!-- Theme 1 -->
-                            <div>
-                                <div style="background:#fef3c7;border-left:2px solid #f59e0b;padding:4px 7px;border-radius:4px;margin-bottom:5px;"><div style="font-size:0.62em;font-weight:700;color:#92400e;">🔍 SEARCH ISSUES</div></div>
-                                <div style="background:#fef9c3;padding:3px 6px;border-radius:3px;margin-bottom:3px;font-size:0.62em;color:#854d0e;border-left:2px solid #f59e0b;"><strong>Availability:</strong></div>
-                                <div style="background:#fef3c7;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#78350f;">"Spent 2 hours calling clinics"</div>
-                                <div style="background:#fef3c7;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#78350f;">"No way to see who's accepting"</div>
-                                <div style="background:#fef3c7;padding:4px 6px;border-radius:3px;margin-bottom:5px;font-size:0.68em;color:#78350f;">"6 week wait time"</div>
-                                <div style="background:#fef9c3;padding:3px 6px;border-radius:3px;margin-bottom:3px;font-size:0.62em;color:#854d0e;border-left:2px solid #f59e0b;"><strong>Filters:</strong></div>
-                                <div style="background:#fef3c7;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#78350f;">"No way to filter by location"</div>
-                                <div style="background:#fef3c7;padding:4px 6px;border-radius:3px;font-size:0.68em;color:#78350f;">"Can't filter by specialty"</div>
-                            </div>
-                            <!-- Theme 2 -->
-                            <div>
-                                <div style="background:#dbeafe;border-left:2px solid #4A90E2;padding:4px 7px;border-radius:4px;margin-bottom:5px;"><div style="font-size:0.62em;font-weight:700;color:#1e40af;">💬 COMMUNICATION</div></div>
-                                <div style="background:#e0f2fe;padding:3px 6px;border-radius:3px;margin-bottom:3px;font-size:0.62em;color:#075985;border-left:2px solid #4A90E2;"><strong>Phone Tag:</strong></div>
-                                <div style="background:#dbeafe;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#1e40af;">"Phone tag frustrating"</div>
-                                <div style="background:#dbeafe;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#1e40af;">"Waited 3 days for callback"</div>
-                                <div style="background:#dbeafe;padding:4px 6px;border-radius:3px;margin-bottom:5px;font-size:0.68em;color:#1e40af;">"Left 4 voicemails, no response"</div>
-                                <div style="background:#e0f2fe;padding:3px 6px;border-radius:3px;margin-bottom:3px;font-size:0.62em;color:#075985;border-left:2px solid #4A90E2;"><strong>Messaging:</strong></div>
-                                <div style="background:#dbeafe;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#1e40af;">"No way to message doctor"</div>
-                                <div style="background:#dbeafe;padding:4px 6px;border-radius:3px;font-size:0.68em;color:#1e40af;">"Can't find previous messages"</div>
-                            </div>
-                            <!-- Theme 3 -->
-                            <div>
-                                <div style="background:#fce7f3;border-left:2px solid #ec4899;padding:4px 7px;border-radius:4px;margin-bottom:5px;"><div style="font-size:0.62em;font-weight:700;color:#9f1239;">📅 BOOKING</div></div>
-                                <div style="background:#fdf2f8;padding:3px 6px;border-radius:3px;margin-bottom:3px;font-size:0.62em;color:#831843;border-left:2px solid #ec4899;"><strong>Booking:</strong></div>
-                                <div style="background:#fce7f3;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#9f1239;">"Booking process confusing"</div>
-                                <div style="background:#fce7f3;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#9f1239;">"Not sure if booking went through"</div>
-                                <div style="background:#fce7f3;padding:4px 6px;border-radius:3px;margin-bottom:5px;font-size:0.68em;color:#9f1239;">"No confirmation email"</div>
-                                <div style="background:#fdf2f8;padding:3px 6px;border-radius:3px;margin-bottom:3px;font-size:0.62em;color:#831843;border-left:2px solid #ec4899;"><strong>Changes:</strong></div>
-                                <div style="background:#fce7f3;padding:4px 6px;border-radius:3px;margin-bottom:3px;font-size:0.68em;color:#9f1239;">"Can't reschedule easily"</div>
-                                <div style="background:#fce7f3;padding:4px 6px;border-radius:3px;font-size:0.68em;color:#9f1239;">"No way to cancel online"</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="qual-research-image">
-                    <img src="https://i.ibb.co/Tq1v6Jqc/image-1.png" alt="Qualitative research interview insights" loading="lazy" />
-                </div>
-            </div>
-        </div>
-
-        <!-- Define Phase -->
-        <div class="section scroll-reveal" id="define">
-            <h2>2. Define Phase</h2>
-            <p>I created a user persona to represent our target audience and guide design decisions to meet their specific needs.</p>
-            <h3>User Persona</h3>
-            <div class="define-persona-card">
-                <div class="define-persona-top">
-                    <div class="define-avatar">👩</div>
-                    <div style="flex:1;min-width:0;">
-                        <div style="font-size:1.3em;font-weight:800;color:#1e293b;">Sarah Johnson</div>
-                        <div style="color:#64748b;font-weight:600;margin-top:3px;">28 · Marketing Professional · Chicago, IL</div>
-                        <div style="color:#475569;margin-top:8px;font-size:0.92em;"><strong>Primary need:</strong> Fast, trustworthy access to healthcare without long wait times or phone calls.</div>
-                    </div>
-                    <div class="define-quickfacts">
-                        <div class="define-pill"><strong>Goal:</strong> Find an available provider quickly, message them easily, and book without confusion.</div>
-                        <div class="define-pill"><strong>Pain:</strong> Availability, messaging, and booking confirmations are unclear — causing frustration and abandonment.</div>
-                        <div class="define-pill"><strong>Behavior:</strong> Mobile-first, prefers messaging over phone calls, abandons platforms that feel slow or unclear.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Journey Map -->
-            <div style="margin-top:32px;">
-                <h3>User Journey Map</h3>
-                <p style="color:#64748b;margin-bottom:16px;font-size:0.9em;">Sarah's experience finding a specialist for an ongoing health concern</p>
-                <div class="journey-map">
-                    <div class="journey-header"></div>
-                    <div class="journey-stage-header">🔍<br>Discovery</div>
-                    <div class="journey-stage-header">📱<br>Provider Search</div>
-                    <div class="journey-stage-header">📞<br>Contact Attempts</div>
-                    <div class="journey-stage-header">📅<br>Booking</div>
-                    <div class="journey-stage-header">✅<br>Confirmation</div>
-
-                    <div class="journey-row-label">Actions</div>
-                    <div class="journey-cell">Searches online for specialists; downloads VirtualCare app</div>
-                    <div class="journey-cell">Filters by specialty, calls 3 clinics to check availability</div>
-                    <div class="journey-cell">Leaves voicemails, waits for callbacks, tries emailing</div>
-                    <div class="journey-cell">Books through VirtualCare app</div>
-                    <div class="journey-cell">Receives confirmation email and calendar invite</div>
-
-                    <div class="journey-row-label">Touchpoints</div>
-                    <div class="journey-cell">Google search, health blogs, VirtualCare app download</div>
-                    <div class="journey-cell">App search interface, phone calls to clinics</div>
-                    <div class="journey-cell">Clinic phone systems, email, in-app messaging</div>
-                    <div class="journey-cell">VirtualCare booking flow, provider profile</div>
-                    <div class="journey-cell">Email confirmation, SMS reminder, calendar sync</div>
-
-                    <div class="journey-row-label">Emotion</div>
-                    <div class="journey-emotion"><div class="emotion-point">😐</div><span style="font-size:0.72em;color:#64748b;">Concerned</span></div>
-                    <div class="journey-emotion"><div class="emotion-point">😟</div><span style="font-size:0.72em;color:#64748b;">Frustrated</span></div>
-                    <div class="journey-emotion"><div class="emotion-point">😤</div><span style="font-size:0.72em;color:#64748b;">Angry, helpless</span></div>
-                    <div class="journey-emotion"><div class="emotion-point">😊</div><span style="font-size:0.72em;color:#64748b;">Relieved</span></div>
-                    <div class="journey-emotion"><div class="emotion-point">😌</div><span style="font-size:0.72em;color:#64748b;">Reassured</span></div>
-
-                    <div class="journey-row-label">Pain Points</div>
-                    <div class="journey-cell pain">Multiple sites show conflicting info; unclear who accepts new patients</div>
-                    <div class="journey-cell pain">2 hours calling clinics; 2 not accepting, 1 has 6-week wait</div>
-                    <div class="journey-cell pain">Phone tag — 3 days of missed calls and vague email responses</div>
-                    <div class="journey-cell pain">Unsure about choosing the right time slot; unclear what to expect</div>
-                    <div class="journey-cell pain">Anxious about missing appointment; checking calendar repeatedly</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ideate -->
-        <div class="section scroll-reveal">
-            <h2>3. From Insights to Solutions</h2>
-            <h3>Design Workshop: "How Might We..."</h3>
-            <p>I facilitated a design workshop with the team to translate research insights into actionable opportunities:</p>
-            <div class="hmw-grid">
-                <div class="hmw-card"><div class="hmw-label">HMW #1</div><div class="hmw-text">How might we make provider availability transparent before patients invest time?</div></div>
-                <div class="hmw-card"><div class="hmw-label">HMW #2</div><div class="hmw-text">How might we enable quick communication without disrupting provider workflows?</div></div>
-                <div class="hmw-card"><div class="hmw-label">HMW #3</div><div class="hmw-text">How might we prevent booking confusion and provide clear confirmations?</div></div>
-            </div>
-
-            <h3>How Findings Informed Design Recommendations</h3>
-            <table>
-                <thead><tr><th>Research Finding</th><th>Design Recommendation</th><th>Why It Mattered</th></tr></thead>
-                <tbody>
-                    <tr><td>Users could not filter by specialty, location, or availability.</td><td>Add visible search filters for specialty, location, and availability.</td><td>Helped users find relevant providers faster.</td></tr>
-                    <tr><td>Users had trouble finding where to message providers.</td><td>Add a visible Message Provider button on provider cards.</td><td>Made communication easier to discover.</td></tr>
-                    <tr><td>Users were unsure if appointments were successfully booked.</td><td>Add a step-by-step booking flow with a clear confirmation screen.</td><td>Improved trust and reduced booking confusion.</td></tr>
-                    <tr><td>Users lacked reminders and easy follow-up options.</td><td>Add email/SMS reminders, calendar sync, and reschedule/cancel actions.</td><td>Reduced missed appointments and gave users more control.</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Solution -->
-        <div class="section scroll-reveal">
-            <div style="display:inline-block;background:#EBF4FF;color:#4A90E2;font-size:0.78em;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:0.5px;">PHASE 4</div>
-            <h2>Before &amp; After</h2>
-            <p style="font-size:0.93em;color:#475569;margin-bottom:18px;">The original app had no search filters, a buried message button, and no booking confirmation. Here's what changed:</p>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
-                <!-- BEFORE -->
-                <div>
-                    <div style="background:#ef4444;color:white;font-size:0.78em;font-weight:700;padding:6px 12px;border-radius:8px 8px 0 0;letter-spacing:0.5px;">✗ BEFORE</div>
-                    <div style="border:2px solid #ef4444;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
-                        <div style="background:#f8fafc;padding:14px;border-bottom:1px solid #e2e8f0;">
-                            <div style="font-size:0.8em;font-weight:600;color:#1e293b;margin-bottom:10px;">Provider Search</div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:8px 10px;font-size:0.72em;color:#94a3b8;margin-bottom:10px;">Search by name...</div>
-                            <div style="font-size:0.72em;color:#64748b;margin-bottom:6px;">Results (no filters available)</div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:9px;margin-bottom:6px;display:flex;gap:8px;align-items:center;">
-                                <div style="width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-weight:700;font-size:0.82em;flex-shrink:0;">RW</div>
-                                <div>
-                                    <div style="font-size:0.72em;font-weight:600;">Dr. R. Williams</div>
-                                    <div style="font-size:0.62em;color:#94a3b8;">Cardiologist</div>
-                                    <div style="font-size:0.6em;color:#ef4444;margin-top:3px;">⚠ No availability info</div>
-                                </div>
-                            </div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:9px;display:flex;gap:8px;align-items:center;">
-                                <div style="width:34px;height:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-weight:700;font-size:0.82em;flex-shrink:0;">SK</div>
-                                <div>
-                                    <div style="font-size:0.72em;font-weight:600;">Dr. S. Kim</div>
-                                    <div style="font-size:0.62em;color:#94a3b8;">Dermatology</div>
-                                    <div style="font-size:0.6em;color:#ef4444;margin-top:3px;">⚠ No availability info</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="background:#fef2f2;padding:10px 14px;">
-                            <div style="font-size:0.72em;color:#ef4444;font-weight:600;">User pain points:</div>
-                            <ul style="margin:5px 0 0 14px;font-size:0.7em;color:#7f1d1d;">
-                                <li>No filters for specialty, location, or availability</li>
-                                <li>Had to call clinics separately to check availability</li>
-                                <li>No message button visible on provider cards</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- AFTER -->
-                <div>
-                    <div style="background:#16a34a;color:white;font-size:0.78em;font-weight:700;padding:6px 12px;border-radius:8px 8px 0 0;letter-spacing:0.5px;">✓ AFTER</div>
-                    <div style="border:2px solid #16a34a;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
-                        <div style="background:#f8fafc;padding:14px;border-bottom:1px solid #e2e8f0;">
-                            <div style="font-size:0.78em;font-weight:600;color:#1e293b;margin-bottom:8px;">Provider Search</div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:7px 9px;font-size:0.65em;color:#94a3b8;margin-bottom:7px;">🔍 Search providers...</div>
-                            <div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap;">
-                                <div style="background:#4A90E2;color:white;padding:2px 7px;border-radius:10px;font-size:0.58em;font-weight:600;">All</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:2px 7px;border-radius:10px;font-size:0.58em;">📍 Near Me</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:2px 7px;border-radius:10px;font-size:0.58em;">🏥 Specialty</div>
-                                <div style="background:#f1f5f9;color:#475569;padding:2px 7px;border-radius:10px;font-size:0.58em;">📅 Today</div>
-                            </div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:9px;margin-bottom:6px;position:relative;">
-                                <div style="position:absolute;top:6px;right:6px;background:#dcfce7;color:#16a34a;padding:1px 5px;border-radius:4px;font-size:0.52em;font-weight:600;">Available</div>
-                                <div style="display:flex;gap:7px;align-items:center;">
-                                    <div style="position:relative;flex-shrink:0;">
-                                        <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#357ABD);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.68em;">RW</div>
-                                        <div style="position:absolute;bottom:0;right:0;width:8px;height:8px;background:#16a34a;border:1px solid white;border-radius:50%;"></div>
-                                    </div>
-                                    <div style="flex:1;min-width:0;">
-                                        <div style="font-weight:700;font-size:0.65em;color:#1e293b;">Dr. R. Williams</div>
-                                        <div style="font-size:0.58em;color:#64748b;">Cardiologist · ⭐ 4.9 · 8+ yrs</div>
-                                        <div style="font-size:0.55em;color:#16a34a;font-weight:600;margin-top:1px;">Today 2PM · Accepting patients</div>
-                                        <div style="display:flex;gap:3px;margin-top:4px;">
-                                            <div style="background:#e0f2fe;color:#0284c7;padding:1px 5px;border-radius:3px;font-size:0.52em;font-weight:600;">💬 Chat</div>
-                                            <div style="background:#e0f2fe;color:#0284c7;padding:1px 5px;border-radius:3px;font-size:0.52em;font-weight:600;">📹 Video</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:9px;display:flex;gap:7px;align-items:center;">
-                                <div style="position:relative;flex-shrink:0;">
-                                    <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#db2777);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.68em;">SK</div>
-                                    <div style="position:absolute;bottom:0;right:0;width:8px;height:8px;background:#94a3b8;border:1px solid white;border-radius:50%;"></div>
-                                </div>
-                                <div style="flex:1;min-width:0;">
-                                    <div style="font-weight:700;font-size:0.65em;color:#1e293b;">Dr. S. Kim</div>
-                                    <div style="font-size:0.58em;color:#64748b;">Dermatology · ⭐ 4.7 · 6+ yrs</div>
-                                    <div style="font-size:0.55em;color:#64748b;margin-top:1px;">Wed 1:30PM · 📍 2.3 mi</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="background:#f0fdf4;padding:10px 14px;">
-                            <div style="font-size:0.72em;color:#16a34a;font-weight:600;">Improvements:</div>
-                            <ul style="margin:5px 0 0 14px;font-size:0.7em;color:#14532d;">
-                                <li>Real-time availability visible in results</li>
-                                <li>Filters for specialty, location, and availability</li>
-                                <li>Message button on every provider card</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <style>
-                @media (max-width: 768px) { .before-after-grid { grid-template-columns: 1fr !important; } }
-            </style>
-
-            <h3 style="margin-top:24px;">2. Messaging</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
-                <div>
-                    <div style="background:#ef4444;color:white;font-size:0.78em;font-weight:700;padding:6px 12px;border-radius:8px 8px 0 0;">✗ BEFORE</div>
-                    <div style="border:2px solid #ef4444;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
-                        <div style="background:#f8fafc;padding:14px;border-bottom:1px solid #e2e8f0;">
-                            <div style="font-size:0.78em;font-weight:600;color:#1e293b;margin-bottom:8px;">Provider Card</div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:10px;margin-bottom:8px;">
-                                <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-                                    <div style="width:30px;height:30px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-weight:700;font-size:0.7em;flex-shrink:0;">RW</div>
-                                    <div>
-                                        <div style="font-size:0.65em;font-weight:600;color:#1e293b;">Dr. R. Williams</div>
-                                        <div style="font-size:0.58em;color:#94a3b8;">Cardiologist</div>
-                                    </div>
-                                </div>
-                                <div style="background:#f8fafc;border-radius:5px;padding:6px;margin-bottom:5px;">
-                                    <div style="font-size:0.58em;color:#94a3b8;">📞 Call clinic to book</div>
-                                </div>
-                                <div style="text-align:right;">
-                                    <span style="font-size:0.52em;color:#94a3b8;text-decoration:underline;">... more options</span>
-                                </div>
-                            </div>
-                            <div style="background:#fef2f2;border-radius:6px;padding:8px;">
-                                <div style="font-size:0.6em;color:#ef4444;font-weight:600;">No messages inbox</div>
-                                <div style="font-size:0.55em;color:#94a3b8;margin-top:2px;">No conversation history — every call started fresh</div>
-                            </div>
-                        </div>
-                        <div style="background:#fef2f2;padding:10px 14px;">
-                            <ul style="margin:0 0 0 14px;font-size:0.7em;color:#7f1d1d;">
-                                <li>Message button was buried or missing</li>
-                                <li>No conversation history or follow-up thread</li>
-                                <li>Users defaulted to phone calls, causing delays</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div style="background:#16a34a;color:white;font-size:0.78em;font-weight:700;padding:6px 12px;border-radius:8px 8px 0 0;">✓ AFTER</div>
-                    <div style="border:2px solid #16a34a;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
-                        <div style="background:#f8fafc;padding:14px;border-bottom:1px solid #e2e8f0;">
-                            <div style="font-size:0.78em;font-weight:600;color:#1e293b;margin-bottom:8px;">Messages Inbox</div>
-                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-                                <div><div style="font-size:0.72em;font-weight:700;color:#1e293b;">Messages</div><div style="font-size:0.55em;color:#64748b;">Stay connected</div></div>
-                                <div style="background:#f1f5f9;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68em;">✏️</div>
-                            </div>
-                            <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px;">
-                                <div style="font-size:0.58em;color:#64748b;font-weight:600;flex:1;">Recent</div>
-                                <div style="background:#fee2e2;color:#dc2626;padding:1px 5px;border-radius:7px;font-size:0.52em;font-weight:600;">3 New</div>
-                            </div>
-                            <div style="border-left:3px solid #4A90E2;background:linear-gradient(to right,#eff6ff,white);border-radius:7px;padding:7px;margin-bottom:5px;display:flex;gap:7px;align-items:center;">
-                                <div style="position:relative;flex-shrink:0;">
-                                    <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#357ABD);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.65em;">RW</div>
-                                    <div style="position:absolute;bottom:0;right:0;width:7px;height:7px;background:#16a34a;border:1px solid white;border-radius:50%;"></div>
-                                </div>
-                                <div style="flex:1;min-width:0;">
-                                    <div style="font-weight:600;font-size:0.62em;color:#1e293b;">Dr. R. Williams</div>
-                                    <div style="font-size:0.57em;color:#1e293b;font-weight:500;">📋 Test results ready</div>
-                                    <div style="font-size:0.5em;color:#64748b;">2m ago</div>
-                                </div>
-                            </div>
-                            <div style="background:white;border:1px solid #f1f5f9;border-radius:7px;padding:7px;margin-bottom:5px;display:flex;gap:7px;align-items:center;">
-                                <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#db2777);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:0.65em;flex-shrink:0;">EB</div>
-                                <div style="flex:1;min-width:0;">
-                                    <div style="font-weight:600;font-size:0.62em;color:#1e293b;">Dr. E. Chen</div>
-                                    <div style="font-size:0.57em;color:#64748b;">💊 Prescription sent</div>
-                                    <div style="font-size:0.5em;color:#4A90E2;">✓✓ Read · 1h</div>
-                                </div>
-                            </div>
-                            <div style="background:linear-gradient(135deg,#e0f2fe,#f0f9ff);border-radius:7px;padding:7px;border:1px solid #bae6fd;">
-                                <div style="font-size:0.58em;color:#0369a1;font-weight:600;margin-bottom:4px;">✨ Quick Actions</div>
-                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-                                    <div style="background:white;padding:5px;border-radius:5px;text-align:center;border:1px solid #e0f2fe;"><div style="font-size:0.85em;">📹</div><div style="font-size:0.52em;color:#0369a1;font-weight:600;">Start Video</div></div>
-                                    <div style="background:white;padding:5px;border-radius:5px;text-align:center;border:1px solid #e0f2fe;"><div style="font-size:0.85em;">📄</div><div style="font-size:0.52em;color:#0369a1;font-weight:600;">Share Files</div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="background:#f0fdf4;padding:10px 14px;">
-                            <ul style="margin:0 0 0 14px;font-size:0.7em;color:#14532d;">
-                                <li>Messages inbox with full conversation history</li>
-                                <li>Unread badge — nothing gets missed</li>
-                                <li>Video call and file sharing in one place</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3>3. Appointment Booking</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
-                <div>
-                    <div style="background:#ef4444;color:white;font-size:0.78em;font-weight:700;padding:6px 12px;border-radius:8px 8px 0 0;">✗ BEFORE</div>
-                    <div style="border:2px solid #ef4444;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
-                        <div style="background:#f8fafc;padding:14px;border-bottom:1px solid #e2e8f0;">
-                            <div style="font-size:0.8em;font-weight:600;color:#1e293b;margin-bottom:10px;">After Booking</div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:12px;text-align:center;">
-                                <div style="font-size:0.72em;color:#94a3b8;margin-bottom:4px;">Appointment submitted</div>
-                                <div style="font-size:0.65em;color:#ef4444;">⚠ No confirmation shown</div>
-                                <div style="font-size:0.65em;color:#94a3b8;margin-top:4px;">No email · No reminder</div>
-                            </div>
-                        </div>
-                        <div style="background:#fef2f2;padding:10px 14px;">
-                            <ul style="margin:0 0 0 14px;font-size:0.7em;color:#7f1d1d;">
-                                <li>Users unsure if booking went through</li>
-                                <li>No reminders, causing missed appointments</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div style="background:#16a34a;color:white;font-size:0.78em;font-weight:700;padding:6px 12px;border-radius:8px 8px 0 0;">✓ AFTER</div>
-                    <div style="border:2px solid #16a34a;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
-                        <div style="background:#f8fafc;padding:14px;border-bottom:1px solid #e2e8f0;">
-                            <div style="font-size:0.8em;font-weight:600;color:#1e293b;margin-bottom:10px;">After Booking</div>
-                            <div style="background:white;border:1px solid #e2e8f0;border-radius:7px;padding:12px;text-align:center;">
-                                <div style="font-size:1.4em;margin-bottom:4px;">✅</div>
-                                <div style="font-size:0.72em;font-weight:700;color:#16a34a;">Appointment Confirmed!</div>
-                                <div style="font-size:0.65em;color:#64748b;margin-top:4px;">Dr. R. Williams · Today 2:30 PM</div>
-                                <div style="font-size:0.62em;color:#4A90E2;margin-top:6px;">📧 Confirmation sent · 🔔 Reminder set</div>
-                            </div>
-                        </div>
-                        <div style="background:#f0fdf4;padding:10px 14px;">
-                            <ul style="margin:0 0 0 14px;font-size:0.7em;color:#14532d;">
-                                <li>Clear confirmation screen after booking</li>
-                                <li>Email + SMS reminders sent automatically</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Usability Testing -->
-        <div class="section scroll-reveal">
-            <h2>4. Usability Testing</h2>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
-
-                <!-- LEFT: context -->
-                <div>
-                    <p>I conducted two rounds of moderated usability testing with 10 participants using a Figma prototype.</p>
-                    <h4 style="margin-top:16px;">Core Tasks</h4>
-                    <ul>
-                        <li>Find a provider available this week</li>
-                        <li>Send a message to a provider</li>
-                        <li>Book an appointment for a specific date and time</li>
-                    </ul>
-                    <p style="margin-top:12px;">I measured task completion rate and time on task. After Round 1, I identified issues with hidden filters, unclear messaging entry points, and uncertainty in the booking flow. The team revised the prototype, and Round 2 validated whether the changes improved performance.</p>
-                    <p style="font-size:0.88em;color:#64748b;margin-top:8px;font-style:italic;">Usability testing measured completion rate and time on task (n=10). Post-launch analytics measured broader impact — see Final Results.</p>
-
-                    <div style="background:linear-gradient(135deg,#BBDEFB,#E3F2FD);padding:18px;border-radius:12px;margin-top:20px;border-left:4px solid #4A90E2;">
-                        <h4 style="color:#1e293b;margin-bottom:10px;">Key Findings</h4>
-                        <ul style="margin:0;color:#475569;line-height:1.75;font-size:0.93em;">
-                            <li><strong>Search:</strong> Visible filters reduced search time by 30%.</li>
-                            <li><strong>Messaging:</strong> Prominent message button raised success from 55% to 90%.</li>
-                            <li><strong>Booking:</strong> Step-by-step flow improved completion from 50% to 88%.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- RIGHT: metric bars -->
-                <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
-                    <div style="font-size:0.8em;font-weight:700;color:#1e293b;margin-bottom:2px;">Round 1 → Round 2</div>
-
-                    <div style="background:white;padding:14px 16px;border-radius:10px;border:1px solid #e2e8f0;">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-                            <div style="font-size:1.2em;">🔍</div>
-                            <div><div style="font-weight:600;font-size:0.82em;color:#1e293b;">Find provider</div><div style="font-size:0.72em;color:#64748b;">Avg. time to complete</div></div>
-                            <div style="margin-left:auto;background:#dcfce7;padding:4px 10px;border-radius:6px;"><span style="font-size:0.75em;color:#16a34a;font-weight:700;">30% faster</span></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:0.72em;color:#64748b;">Round 1</span><span style="font-size:0.72em;color:#c0392b;font-weight:700;">4.5 min</span></div>
-                        <div style="background:#f1f5f9;height:22px;border-radius:4px;overflow:hidden;margin-bottom:8px;"><div style="background:linear-gradient(90deg,#e74c3c,#c0392b);height:100%;width:100%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.7em;">4.5 min</div></div>
-                        <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:0.72em;color:#64748b;">Round 2</span><span style="font-size:0.72em;color:#059669;font-weight:700;">3.15 min</span></div>
-                        <div style="background:#f1f5f9;height:22px;border-radius:4px;overflow:hidden;"><div style="background:linear-gradient(90deg,#10b981,#059669);height:100%;width:70%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.7em;">3.15 min</div></div>
-                    </div>
-
-                    <div style="background:white;padding:14px 16px;border-radius:10px;border:1px solid #e2e8f0;">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-                            <div style="font-size:1.2em;">💬</div>
-                            <div><div style="font-weight:600;font-size:0.82em;color:#1e293b;">Send message</div><div style="font-size:0.72em;color:#64748b;">Successful completion rate</div></div>
-                            <div style="margin-left:auto;background:#dcfce7;padding:4px 10px;border-radius:6px;"><span style="font-size:0.75em;color:#16a34a;font-weight:700;">+35 pp</span></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:0.72em;color:#64748b;">Round 1</span><span style="font-size:0.72em;color:#c0392b;font-weight:700;">55%</span></div>
-                        <div style="background:#f1f5f9;height:22px;border-radius:4px;overflow:hidden;margin-bottom:8px;"><div style="background:linear-gradient(90deg,#e74c3c,#c0392b);height:100%;width:55%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.7em;">55%</div></div>
-                        <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:0.72em;color:#64748b;">Round 2</span><span style="font-size:0.72em;color:#059669;font-weight:700;">90%</span></div>
-                        <div style="background:#f1f5f9;height:22px;border-radius:4px;overflow:hidden;"><div style="background:linear-gradient(90deg,#10b981,#059669);height:100%;width:90%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.7em;">90%</div></div>
-                    </div>
-
-                    <div style="background:white;padding:14px 16px;border-radius:10px;border:1px solid #e2e8f0;">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-                            <div style="font-size:1.2em;">📅</div>
-                            <div><div style="font-weight:600;font-size:0.82em;color:#1e293b;">Book appointment</div><div style="font-size:0.72em;color:#64748b;">Successful completion rate</div></div>
-                            <div style="margin-left:auto;background:#dcfce7;padding:4px 10px;border-radius:6px;"><span style="font-size:0.75em;color:#16a34a;font-weight:700;">+38 pp</span></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:0.72em;color:#64748b;">Round 1</span><span style="font-size:0.72em;color:#c0392b;font-weight:700;">50%</span></div>
-                        <div style="background:#f1f5f9;height:22px;border-radius:4px;overflow:hidden;margin-bottom:8px;"><div style="background:linear-gradient(90deg,#e74c3c,#c0392b);height:100%;width:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.7em;">50%</div></div>
-                        <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:0.72em;color:#64748b;">Round 2</span><span style="font-size:0.72em;color:#059669;font-weight:700;">88%</span></div>
-                        <div style="background:#f1f5f9;height:22px;border-radius:4px;overflow:hidden;"><div style="background:linear-gradient(90deg,#10b981,#059669);height:100%;width:88%;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.7em;">88%</div></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Results -->
-        <div class="section scroll-reveal" id="results">
-            <h2>Final Results</h2>
-
-            <h3>Final Prototype</h3>
-            <p style="font-size:0.9em;color:#64748b;margin-bottom:16px;">The three improved flows validated through usability testing.</p>
-            <div class="phone-mockup-container">
-
-                <!-- Phone 1: Provider Search -->
-                <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-                    <div style="font-size:0.72em;font-weight:700;color:#4A90E2;text-transform:uppercase;letter-spacing:0.5px;">🔍 Provider Search</div>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="phone-notch"></div>
-                            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;font-size:0.58em;color:#1e293b;"><span style="font-weight:600;">9:41</span><div>📶📡🔋</div></div>
-                            <div class="phone-content" style="padding:18px 13px 13px;">
-                                <div style="background:#f8fafc;border-radius:9px;padding:7px 11px;margin-bottom:10px;display:flex;align-items:center;gap:7px;border:1px solid #e2e8f0;"><span>🔍</span><span style="font-size:0.72em;color:#94a3b8;">Search providers...</span></div>
-                                <div style="display:flex;gap:5px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px;">
-                                    <div style="background:#4A90E2;color:white;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;font-weight:600;">All</div>
-                                    <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">📍 Near Me</div>
-                                    <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">🏥 Specialty</div>
-                                    <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">💳 Insurance</div>
-                                    <div style="background:#f1f5f9;color:#475569;padding:3px 8px;border-radius:12px;font-size:0.6em;white-space:nowrap;">📅 Today</div>
-                                </div>
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px;">
-                                    <div style="font-size:0.67em;color:#64748b;font-weight:600;flex:1;">Available Today</div>
-                                    <div style="background:#dcfce7;color:#16a34a;padding:2px 7px;border-radius:9px;font-size:0.58em;font-weight:600;">12 Online</div>
-                                </div>
-                                <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;margin-bottom:7px;box-shadow:0 2px 7px rgba(0,0,0,0.06);position:relative;">
-                                    <div style="position:absolute;top:7px;right:7px;background:#dcfce7;color:#16a34a;padding:1px 5px;border-radius:4px;font-size:0.52em;font-weight:600;">Available</div>
-                                    <div style="display:flex;gap:9px;align-items:flex-start;">
-                                        <div style="position:relative;flex-shrink:0;">
-                                            <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#357ABD);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1em;border:2px solid #e0f2fe;">RW</div>
-                                            <div style="position:absolute;bottom:0;right:0;width:11px;height:11px;background:#16a34a;border:2px solid white;border-radius:50%;"></div>
-                                        </div>
-                                        <div style="flex:1;min-width:0;">
-                                            <div style="font-weight:700;font-size:0.75em;color:#1e293b;">Dr. R. Williams</div>
-                                            <div style="font-size:0.62em;color:#64748b;">Cardiologist · ⭐ 4.9 · 8+ yrs</div>
-                                            <div style="font-size:0.6em;color:#16a34a;font-weight:600;margin-top:2px;">Today 2PM · Accepting patients</div>
-                                            <div style="display:flex;gap:4px;margin-top:5px;">
-                                                <div style="background:#e0f2fe;color:#0284c7;padding:2px 5px;border-radius:4px;font-size:0.55em;font-weight:600;">💬 Chat</div>
-                                                <div style="background:#e0f2fe;color:#0284c7;padding:2px 5px;border-radius:4px;font-size:0.55em;font-weight:600;">📹 Video</div>
-                                                <div style="background:#e0f2fe;color:#0284c7;padding:2px 5px;border-radius:4px;font-size:0.55em;font-weight:600;">🏥 Visit</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;box-shadow:0 2px 7px rgba(0,0,0,0.06);">
-                                    <div style="display:flex;gap:9px;align-items:center;">
-                                        <div style="position:relative;flex-shrink:0;">
-                                            <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1em;border:2px solid #ede9fe;">JM</div>
-                                            <div style="position:absolute;bottom:0;right:0;width:11px;height:11px;background:#94a3b8;border:2px solid white;border-radius:50%;"></div>
-                                        </div>
-                                        <div>
-                                            <div style="font-weight:700;font-size:0.75em;color:#1e293b;">Dr. J. Martinez</div>
-                                            <div style="font-size:0.62em;color:#64748b;">Pediatrics · ⭐ 4.8 · 12+ yrs</div>
-                                            <div style="font-size:0.6em;color:#64748b;margin-top:2px;">Tomorrow 9AM · 📍 2.3 mi</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 13px;display:flex;justify-content:space-around;align-items:center;">
-                                <div style="text-align:center;color:#4A90E2;"><div>🏠</div><div style="font-size:0.58em;font-weight:600;">Home</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>📅</div><div style="font-size:0.58em;">Book</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>💬</div><div style="font-size:0.58em;">Chat</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>👤</div><div style="font-size:0.58em;">Profile</div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p style="font-size:0.68em;color:#64748b;text-align:center;">Filters + availability + actions</p>
-                </div>
-
-                <!-- Phone 2: Messaging -->
-                <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-                    <div style="font-size:0.72em;font-weight:700;color:#4A90E2;text-transform:uppercase;letter-spacing:0.5px;">💬 Messaging</div>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="phone-notch"></div>
-                            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;font-size:0.58em;color:#1e293b;"><span style="font-weight:600;">9:41</span><div>📶📡🔋</div></div>
-                            <div class="phone-content" style="padding:18px 13px 13px;">
-                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                                    <div><h3 style="font-size:1.15em;color:#1e293b;margin:0;font-weight:700;">Messages</h3><p style="font-size:0.67em;color:#64748b;margin:2px 0 0;">Stay connected</p></div>
-                                    <div style="background:#f1f5f9;width:29px;height:29px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.88em;">✏️</div>
-                                </div>
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px;">
-                                    <div style="font-size:0.67em;color:#64748b;font-weight:600;flex:1;">Recent</div>
-                                    <div style="background:#fee2e2;color:#dc2626;padding:2px 7px;border-radius:9px;font-size:0.58em;font-weight:600;">3 New</div>
-                                </div>
-                                <div style="border-left:3px solid #4A90E2;background:linear-gradient(to right,#eff6ff,white);border-radius:9px;padding:9px;margin-bottom:7px;display:flex;gap:9px;align-items:center;box-shadow:0 2px 7px rgba(74,144,226,0.14);">
-                                    <div style="position:relative;flex-shrink:0;">
-                                        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#4A90E2,#357ABD);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.88em;">RW</div>
-                                        <div style="position:absolute;bottom:-1px;right:-1px;width:9px;height:9px;background:#16a34a;border:2px solid white;border-radius:50%;"></div>
-                                    </div>
-                                    <div style="flex:1;min-width:0;">
-                                        <div style="font-weight:600;font-size:0.72em;color:#1e293b;">Dr. R. Williams</div>
-                                        <div style="font-size:0.65em;color:#1e293b;font-weight:500;margin-top:1px;">📋 Test results ready</div>
-                                        <div style="font-size:0.58em;color:#64748b;margin-top:1px;">2m ago</div>
-                                    </div>
-                                </div>
-                                <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;margin-bottom:7px;display:flex;gap:9px;align-items:center;">
-                                    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#db2777);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.88em;flex-shrink:0;">EB</div>
-                                    <div style="flex:1;min-width:0;">
-                                        <div style="font-weight:600;font-size:0.72em;color:#1e293b;">Dr. E. Chen</div>
-                                        <div style="font-size:0.62em;color:#64748b;margin-top:1px;">💊 Prescription sent</div>
-                                        <div style="font-size:0.58em;color:#4A90E2;margin-top:1px;">✓✓ Read · 1h</div>
-                                    </div>
-                                </div>
-                                <div style="background:white;border:1px solid #f1f5f9;border-radius:9px;padding:9px;margin-bottom:9px;display:flex;gap:9px;align-items:center;">
-                                    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.88em;flex-shrink:0;">JM</div>
-                                    <div style="flex:1;min-width:0;">
-                                        <div style="font-weight:600;font-size:0.72em;color:#1e293b;">Dr. J. Martinez</div>
-                                        <div style="font-size:0.62em;color:#64748b;margin-top:1px;">✅ Appointment confirmed</div>
-                                        <div style="font-size:0.58em;color:#64748b;margin-top:1px;">📅 Tomorrow, 9:00 AM</div>
-                                    </div>
-                                </div>
-                                <div style="background:linear-gradient(135deg,#e0f2fe,#f0f9ff);border-radius:9px;padding:10px;border:1px solid #bae6fd;">
-                                    <div style="font-size:0.67em;color:#0369a1;font-weight:600;margin-bottom:6px;">✨ Quick Actions</div>
-                                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
-                                        <div style="background:white;padding:6px;border-radius:7px;text-align:center;border:1px solid #e0f2fe;"><div style="font-size:1em;margin-bottom:2px;">📹</div><div style="font-size:0.6em;color:#0369a1;font-weight:600;">Start Video</div></div>
-                                        <div style="background:white;padding:6px;border-radius:7px;text-align:center;border:1px solid #e0f2fe;"><div style="font-size:1em;margin-bottom:2px;">📄</div><div style="font-size:0.6em;color:#0369a1;font-weight:600;">Share Files</div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 13px;display:flex;justify-content:space-around;align-items:center;">
-                                <div style="text-align:center;color:#94a3b8;"><div>🏠</div><div style="font-size:0.58em;">Home</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>📅</div><div style="font-size:0.58em;">Book</div></div>
-                                <div style="text-align:center;color:#4A90E2;position:relative;"><div style="position:absolute;top:-2px;right:5px;width:6px;height:6px;background:#ef4444;border-radius:50%;border:1px solid white;"></div><div>💬</div><div style="font-size:0.58em;font-weight:600;">Chat</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>👤</div><div style="font-size:0.58em;">Profile</div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p style="font-size:0.68em;color:#64748b;text-align:center;">Inbox + history + quick actions</p>
-                </div>
-
-                <!-- Phone 3: Booking -->
-                <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-                    <div style="font-size:0.72em;font-weight:700;color:#4A90E2;text-transform:uppercase;letter-spacing:0.5px;">📅 Booking</div>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="phone-notch"></div>
-                            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;font-size:0.58em;color:#1e293b;"><span style="font-weight:600;">9:41</span><div>📶📡🔋</div></div>
-                            <div class="phone-content" style="padding:18px 13px 13px;">
-                                <h3 style="font-size:1.15em;color:#1e293b;margin:0 0 4px;font-weight:700;">My Appointments</h3>
-                                <p style="font-size:0.67em;color:#64748b;margin:0 0 13px;">📅 Upcoming visits</p>
-                                <div style="background:white;border:2px solid #4A90E2;border-radius:9px;padding:11px;margin-bottom:9px;">
-                                    <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:7px;">
-                                        <div><div style="font-weight:600;color:#1e293b;font-size:0.77em;">Dr. D. Brooks</div><div style="font-size:0.65em;color:#64748b;">General Checkup</div></div>
-                                        <div style="background:#4A90E2;color:white;padding:2px 7px;border-radius:5px;font-size:0.58em;font-weight:600;">TODAY</div>
-                                    </div>
-                                    <div style="font-size:0.65em;color:#64748b;margin-bottom:9px;line-height:1.6;">📍 Community Medical Center<br>🕐 2:30 PM · Copay $20</div>
-                                    <button style="width:100%;background:#4A90E2;color:white;border:none;padding:7px;border-radius:7px;font-weight:600;font-size:0.65em;cursor:pointer;">Join Video Call</button>
-                                </div>
-                                <div style="background:white;border:1px solid #e2e8f0;border-radius:9px;padding:11px;margin-bottom:9px;">
-                                    <div style="font-weight:600;color:#1e293b;font-size:0.73em;">Dr. J. Torres</div>
-                                    <div style="font-size:0.62em;color:#64748b;">Follow-up · Telehealth</div>
-                                    <div style="font-size:0.65em;color:#64748b;margin-top:5px;">Jan 15, 10:00 AM</div>
-                                </div>
-                                <div style="background:#E3F2FD;border-radius:9px;padding:11px;text-align:center;">
-                                    <div style="font-size:0.67em;color:#4A90E2;font-weight:600;margin-bottom:2px;">🔔 Smart Reminders</div>
-                                    <div style="font-size:0.62em;color:#64748b;">Email & SMS 24hrs before</div>
-                                </div>
-                            </div>
-                            <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 13px;display:flex;justify-content:space-around;align-items:center;">
-                                <div style="text-align:center;color:#94a3b8;"><div>🏠</div><div style="font-size:0.58em;">Home</div></div>
-                                <div style="text-align:center;color:#4A90E2;"><div>📅</div><div style="font-size:0.58em;font-weight:600;">Book</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>💬</div><div style="font-size:0.58em;">Chat</div></div>
-                                <div style="text-align:center;color:#94a3b8;"><div>👤</div><div style="font-size:0.58em;">Profile</div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p style="font-size:0.68em;color:#64748b;text-align:center;">Confirmed booking + reminders</p>
-                </div>
-
-            </div>
-
-            <h3 style="margin-top:24px;">Measured Results</h3>
-            <p>After launch in late 2023, we tracked 88 active users over 3 months using app analytics. A follow-up satisfaction survey (n=60) measured broader impact.</p>
-            <div class="stats-grid">
-                <div class="stat-card"><div class="stat-number">+15 pp</div><div class="stat-label">User Satisfaction</div><p style="font-size:0.75em;margin-top:7px;opacity:0.9;line-height:1.4;">65% → 80% · Post-launch survey</p></div>
-                <div class="stat-card"><div class="stat-number">-30%</div><div class="stat-label">Search Time</div><p style="font-size:0.75em;margin-top:7px;opacity:0.9;line-height:1.4;">Faster provider search · Usability testing</p></div>
-                <div class="stat-card"><div class="stat-number">+35 pp</div><div class="stat-label">Messaging Success</div><p style="font-size:0.75em;margin-top:7px;opacity:0.9;line-height:1.4;">55% → 90% · Usability testing</p></div>
-                <div class="stat-card"><div class="stat-number">+38 pp</div><div class="stat-label">Booking Success</div><p style="font-size:0.75em;margin-top:7px;opacity:0.9;line-height:1.4;">50% → 88% · Usability testing</p></div>
-            </div>
-
-            <div class="quote" style="margin-top:18px;">"The new filters made it so much easier to find the exact provider I needed. I found someone in under 2 minutes." — Participant 1</div>
-            <div class="quote" style="margin-top:10px;">"I love that I can message my doctor directly through the app. No more phone tag." — Participant 2</div>
-            <div class="quote" style="margin-top:10px;">"Finally I could see who was actually available and book right away. I didn't have to call anyone." — Participant 3</div>
-
-        </div>
-
-        <!-- Challenges & Learnings -->
-        <div class="section scroll-reveal">
-            <h2>Challenges & Learnings</h2>
-            <h3>Challenges</h3>
-            <table>
-                <thead><tr><th>Challenge</th><th>Solution</th><th>Outcome</th></tr></thead>
-                <tbody>
-                    <tr><td>Recruiting diverse participants</td><td>Flexible session timing and participant incentives</td><td>Recruited users across different ages and comfort levels</td></tr>
-                    <tr><td>Participant privacy</td><td>Followed privacy-conscious practices with informed consent and de-identified data</td><td>Maintained participant privacy throughout research</td></tr>
-                    <tr><td>Balancing patient and provider needs</td><td>Considered provider workflow constraints when recommending messaging features</td><td>Aligned communication needs with operational feasibility</td></tr>
-                </tbody>
-            </table>
-
-            <h3>Key Takeaways</h3>
-            <div class="feature-grid">
-                <div class="feature-card"><h4>Small Details Matter</h4><p>Making filters more visible reduced search time and improved task completion significantly.</p></div>
-                <div class="feature-card"><h4>Actionable Insights</h4><p>Connecting findings to clear design recommendations helped the team prioritize changes.</p></div>
-                <div class="feature-card"><h4>Iteration Works</h4><p>Round 1 revealed friction; Round 2 showed measurable improvement after design changes.</p></div>
-            </div>
-
-        </div>
-
-        <!-- Closing -->
-        <div class="section scroll-reveal" style="background:linear-gradient(135deg,#BBDEFB,#E3F2FD);border:2px solid #4A90E2;">
-            <h2>Closing</h2>
-            <p style="font-size:1em;margin-bottom:12px;">What stood out most was how small, specific changes made the biggest difference. A visible filter, a clearly labeled message button, a confirmation screen — none of these were complex to build, but each one removed a moment of confusion that was causing real patients to give up on getting care.</p>
-            <p style="font-size:0.95em;color:#1e293b;">If I continued this work, I would research the provider side — understanding how care teams experience the same flows would help design a system that works for both ends of the conversation.</p>
-        </div>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">UX research case study, clinical workflow</p>
+        <h1>Charting between patients</h1>
+        <p class="lede">How behavioral health nurses and technicians document unit events in an EHR, and how the workflow could fit the way a shift actually runs.</p>
+      </div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>UX Researcher (solo)</dd></div>
+        <div><dt>Timeline</dt><dd>3 weeks</dd></div>
+        <div><dt>Methods</dt><dd>Interviews, contextual inquiry, concept evaluation, usability testing</dd></div>
+        <div><dt>Participants</dt><dd>8 simulated staff profiles</dd></div>
+        <div><dt>Users</dt><dd>RNs, behavioral health techs, social work, charge nurse</dd></div>
+        <div><dt>Tools</dt><dd>Figma, Google Sheets, AI-assisted coding with manual review</dd></div>
+      </dl>
     </div>
 
-    <script>
-        const scrollReveal = () => {
-            document.querySelectorAll('.scroll-reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 80) {
-                    el.classList.add('revealed');
-                }
-            });
-        };
-        window.addEventListener('scroll', scrollReveal);
-        scrollReveal();
+    <figure class="shift" aria-labelledby="shift-title">
+      <div class="shift-head">
+        <div>
+          <h3 id="shift-title">One day shift, 07:00 to 19:00 <span class="sim">Simulated composite</span></h3>
+          <p class="small muted" style="margin:4px 0 0">Hover or tab through the markers. Patient care comes first, so documentation drifts to the end of the shift.</p>
+        </div>
+        <div class="seg" role="group" aria-label="Workflow view">
+          <button type="button" data-shift="current" aria-pressed="true">Current workflow</button>
+          <button type="button" data-shift="proposed" aria-pressed="false">With proposed changes</button>
+        </div>
+      </div>
+      <div class="shift-svg-wrap"><svg id="shiftSvg" viewBox="0 0 1000 190" role="img" aria-label="Timeline of patient care events and documentation across a 12-hour shift"></svg></div>
+      <div class="legend">
+        <span><i class="sw" style="background:#13243B;border-radius:50%;width:10px"></i>Patient care event</span>
+        <span><i class="sw" style="background:#2E6DB4"></i>Charting</span>
+        <span><i class="sw" style="background:#A9433A"></i>Note abandoned or overdue</span>
+        <span><i class="sw" style="background:#A8661A"></i>Catch-up charting</span>
+      </div>
+      <div class="shift-foot">
+        <p class="readout" id="shiftReadout" aria-live="polite">Select a marker to see what happened.</p>
+        <div class="late"><div class="num" id="lateNum">90 min</div><div class="lbl" id="lateLbl">charting after 17:30</div></div>
+      </div>
+    </figure>
+  </div>
+</header>
 
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+<main>
+<!-- Summary -->
+<section class="block" id="problem">
+  <div class="wrap">
+    <span class="sec-no">1</span>
+    <h2>The problem</h2>
+    <div class="two">
+      <div class="prose">
+        <p>On an inpatient behavioral health unit, staff document observations, incidents, interventions and PRN medications throughout the shift. A single event, such as a patient becoming agitated and receiving a PRN, has to be recorded in several parts of the chart.</p>
+        <p>When documentation competes with patient safety, safety wins. Notes get started, abandoned and rebuilt from memory at the end of the shift. That affects more than staff time: late or missing PRN reassessments mean the next nurse can't tell whether a medication worked.</p>
+      </div>
+      <div>
+        <div class="callout">
+          <p class="small muted" style="margin-bottom:6px">Research question</p>
+          <p class="q">Which steps in documenting a unit event slow staff down, why, and what would let them chart closer to the moment it happens without losing required information?</p>
+        </div>
+        <p class="small muted">I framed the question around steps and causes rather than "make it faster," so the research could show which parts of the workflow actually cost time.</p>
+      </div>
+    </div>
+
+    <h3>Results at a glance <span class="sim">Simulated</span></h3>
+    <div class="glance">
+      <div><div class="from">8 steps</div><div class="to">5 steps</div><div class="what">to document one unit event</div></div>
+      <div><div class="from">6.2 min</div><div class="to">3.4 min</div><div class="what">average time on task</div></div>
+      <div><div class="from">1 of 6</div><div class="to">6 of 6</div><div class="what">resumed a note after an interruption</div></div>
+      <div><div class="from">SUS 52</div><div class="to">SUS 78</div><div class="what">perceived usability</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Plan -->
+<section class="block" id="plan">
+  <div class="wrap">
+    <span class="sec-no">2</span>
+    <h2>Research plan</h2>
+    <p class="prose">I wrote a one-page research brief with a product manager, a UX designer and a clinical informatics nurse (roles simulated for this project). We agreed on what decisions the research needed to inform, then listed the team's assumptions so we could test them instead of building on them.</p>
+
+    <div class="two">
+      <div>
+        <h3>Assumptions we tested</h3>
+        <div class="assume">
+          <div class="assume-row"><div><p>Staff have trouble finding the right place to document an event.</p><p class="why">6 of 8 described searching the note list; observed in all 4 inquiry sessions.</p></div><span class="chip ok">Confirmed</span></div>
+          <div class="assume-row"><div><p>The main cost is typing the narrative.</p><p class="why">Writing took 38% of task time. Navigating, re-entering and fixing errors took the rest.</p></div><span class="chip no">Not supported</span></div>
+          <div class="assume-row"><div><p>Interruptions cause lost work.</p><p class="why">5 of 8 had lost a note; only 1 of 6 resumed a note in baseline testing.</p></div><span class="chip ok">Confirmed</span></div>
+          <div class="assume-row"><div><p>Staff want fewer required fields.</p><p class="why">They accepted the fields. They wanted to see them before signing, not after.</p></div><span class="chip part">Partly</span></div>
+        </div>
+      </div>
+      <div>
+        <h3>Methods</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>n</th><th>What it answered</th></tr></thead>
+            <tbody>
+              <tr><td>Semi-structured interviews</td><td>8</td><td>How staff describe documenting events, workarounds, priorities</td></tr>
+              <tr><td>Contextual inquiry (walkthroughs)</td><td>4</td><td>What actually happens step by step, and where time goes</td></tr>
+              <tr><td>Concept evaluation</td><td>6</td><td>Which proposed directions staff trusted and why</td></tr>
+              <tr><td>Moderated usability testing</td><td>2 rounds × 6</td><td>Time on task, completion, errors, ease (SEQ), SUS</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small muted">Qualitative methods explained why; task metrics showed whether the concept improved the workflow.</p>
+      </div>
+    </div>
+
+    <h3>Participants <span class="sim">Simulated profiles</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Role</th><th>Shift</th><th>Years in behavioral health</th><th>Where they chart</th></tr></thead>
+        <tbody>
+          <tr><td>P1</td><td>Registered nurse</td><td>Day</td><td>6</td><td>Nurses' station workstation</td></tr>
+          <tr><td>P2</td><td>Registered nurse</td><td>Night</td><td>3</td><td>Nurses' station workstation</td></tr>
+          <tr><td>P3</td><td>Registered nurse</td><td>Day</td><td>11</td><td>Workstation on wheels</td></tr>
+          <tr><td>P4</td><td>Behavioral health technician</td><td>Day</td><td>2</td><td>Shared workstation</td></tr>
+          <tr><td>P5</td><td>Behavioral health technician</td><td>Night</td><td>4</td><td>Workstation on wheels</td></tr>
+          <tr><td>P6</td><td>Behavioral health technician</td><td>Evening</td><td>7</td><td>Shared workstation</td></tr>
+          <tr><td>P7</td><td>Social worker</td><td>Day</td><td>5</td><td>Office desktop</td></tr>
+          <tr><td>P8</td><td>Charge nurse</td><td>Day</td><td>14</td><td>Nurses' station, reviews others' notes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Personas</h3>
+    <div class="tabs" role="tablist" aria-label="Personas">
+      <button role="tab" id="t-dana" aria-selected="true" aria-controls="p-dana">Dana, registered nurse</button>
+      <button role="tab" id="t-marcus" aria-selected="false" aria-controls="p-marcus" tabindex="-1">Marcus, behavioral health tech</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-dana" aria-labelledby="t-dana">
+      <div class="persona">
+        <div>
+          <div class="avatar" style="background:#2E6DB4">DR</div>
+          <strong>Dana Reyes</strong>
+          <p class="small muted">RN, day shift. 6 years in inpatient psych. Covers 14 patients; charge nurse two days a week.</p>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Needs</h4>
+          <ul class="small">
+            <li>Chart close to the event so handoff is accurate</li>
+            <li>Never miss a PRN reassessment</li>
+            <li>Know what's required before signing</li>
+          </ul>
+          <h4>Frustrations</h4>
+          <ul class="small">
+            <li>The incident form sits under Assessments, not where she expects it</li>
+            <li>Re-types time, room and PRN details already in the MAR</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Context</h4>
+          <p class="small">Charts on a shared workstation at the nurses' station. Gets pulled away every few minutes during peak hours.</p>
+          <p class="pq">"The last hour of my shift is all charting."</p>
+        </div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-marcus" aria-labelledby="t-marcus" hidden>
+      <div class="persona">
+        <div>
+          <div class="avatar" style="background:#157A74">MH</div>
+          <strong>Marcus Hill</strong>
+          <p class="small muted">Behavioral health technician, evening shift. 4 years on the unit. Does 15-minute observation rounds.</p>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Needs</h4>
+          <ul class="small">
+            <li>Log behaviors quickly between rounds</li>
+            <li>Pick up a note where he left off</li>
+            <li>Know which note type techs should use</li>
+          </ul>
+          <h4>Frustrations</h4>
+          <ul class="small">
+            <li>Loses unsaved notes when called to the floor</li>
+            <li>Sees nursing note types he isn't meant to use</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Context</h4>
+          <p class="small">Uses a workstation on wheels. Keeps scratch notes on paper as a backup until he can sit down.</p>
+          <p class="pq">"I get two sentences in and someone's calling my name."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contextual inquiry -->
+<section class="block" id="inquiry">
+  <div class="wrap">
+    <span class="sec-no">3</span>
+    <h2>Contextual inquiry</h2>
+    <p class="prose">In four walkthrough sessions, staff documented the same scenario: a patient becomes agitated in the day room, staff verbally de-escalate, and the nurse gives a PRN. I timed each step and noted where people hesitated, backtracked or left the screen.</p>
+
+    <figure class="fig">
+      <div class="flow">
+        <ol class="steps" id="steps" aria-label="Current documentation steps"></ol>
+        <div class="step-detail" id="stepDetail" aria-live="polite"></div>
+      </div>
+      <figcaption>Figure 1. Current workflow for documenting one agitation event with a PRN, averaged across 4 sessions. Steps marked in amber are pain points. <span class="sim">Simulated</span></figcaption>
+    </figure>
+
+    <figure class="fig">
+      <h4 style="margin-top:0">Where the 6.2 minutes went</h4>
+      <div class="stackbar" role="img" aria-label="Of 372 seconds: navigating 145, writing clinical information 140, re-entering data 45, fixing errors 42">
+        <div style="flex:145;background:#2E6DB4">Navigating 39%</div>
+        <div style="flex:140;background:#157A74">Writing 38%</div>
+        <div style="flex:45;background:#A8661A">Re-entry 12%</div>
+        <div style="flex:42;background:#A9433A">Errors 11%</div>
+      </div>
+      <figcaption>Figure 2. Only 38% of task time went to recording clinical information. This is the finding that overturned the "typing is the problem" assumption. <span class="sim">Simulated</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Synthesis -->
+<section class="block" id="synthesis">
+  <div class="wrap">
+    <span class="sec-no">4</span>
+    <h2>Synthesis</h2>
+    <p class="prose">I coded interview and walkthrough notes, then grouped them into themes on an affinity board. Filtering by role showed that some problems were shared and some belonged to one group: PRN follow-up was entirely a nursing problem, while note-type confusion came mostly from techs.</p>
+
+    <figure class="fig">
+      <div class="filters" role="group" aria-label="Filter notes by role" id="roleFilters">
+        <button type="button" data-role="all" aria-pressed="true">All roles</button>
+        <button type="button" data-role="RN" aria-pressed="false">Registered nurse</button>
+        <button type="button" data-role="BHT" aria-pressed="false">Behavioral health tech</button>
+        <button type="button" data-role="SW" aria-pressed="false">Social work</button>
+        <button type="button" data-role="CN" aria-pressed="false">Charge nurse</button>
+      </div>
+      <div class="board" id="board"></div>
+      <figcaption>Figure 3. Affinity board, 18 notes in 6 themes. Select a role to highlight its notes. <span class="sim">Simulated quotes</span></figcaption>
+    </figure>
+
+    <figure class="fig">
+      <h4 style="margin-top:0">How often each pain point came up, by role</h4>
+      <div class="chart-box"><canvas id="painChart" aria-label="Stacked bar chart of pain point frequency by role" role="img"></canvas></div>
+      <figcaption>Figure 4. Number of participants (out of 8) who described each pain point. <span class="sim">Simulated</span></figcaption>
+    </figure>
+
+    <h3>How I used AI in synthesis</h3>
+    <p class="prose">AI tools sped up the first pass, but every code was checked against the source notes. I kept judgment calls, like severity and recommendations, with the research.</p>
+    <div class="ai">
+      <div><span class="stepn">1</span><p><strong>De-identify</strong><br>Removed names, units and dates before any notes went into a tool.</p></div>
+      <div><span class="stepn">2</span><p><strong>First-pass coding</strong><br>An AI assistant proposed 23 codes from the de-identified notes.</p></div>
+      <div class="me"><span class="stepn">3</span><p><strong>Verify</strong><br>I checked each code against the original quote, dropped 6, split 2 and merged the rest into 6 themes.</p></div>
+      <div class="me"><span class="stepn">4</span><p><strong>Decide</strong><br>Severity, confidence and recommendations were written by me, not generated.</p></div>
+    </div>
+
+    <h3>Findings</h3>
+    <p class="prose small muted">Each finding follows the same template: what we saw, the evidence, why it matters and the opportunity. Open one to read it.</p>
+    <div id="findings"></div>
+  </div>
+</section>
+
+<!-- Prioritize -->
+<section class="block" id="prioritize">
+  <div class="wrap">
+    <span class="sec-no">5</span>
+    <h2>Prioritizing opportunities</h2>
+    <p class="prose">In a working session with product and design, we scored each opportunity for user impact (from frequency and severity in the research) and effort (from engineering estimates). The concept focused on the top-left quadrant first.</p>
+    <figure class="fig">
+      <div class="matrix-wrap">
+        <div>
+          <div class="matrix" id="matrix">
+            <div class="q q1">Do first</div><div class="q q2">Plan carefully</div>
+            <div class="q q3">Quick polish</div><div class="q q4">Revisit later</div>
+            <span class="axis-y">User impact →</span>
+            <span class="axis-x">Effort →</span>
+          </div>
+        </div>
+        <div class="matrix-detail" id="matrixDetail" aria-live="polite"></div>
+      </div>
+      <figcaption>Figure 5. Impact and effort scores for 7 opportunities. Select a dot for details. Green dots were included in the tested concept. <span class="sim">Simulated</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Concept -->
+<section class="block" id="concept">
+  <div class="wrap">
+    <span class="sec-no">6</span>
+    <h2>From findings to a concept</h2>
+    <p class="prose">The designer and I turned the top opportunities into a "Unit event" note: one entry point from the patient banner that gathers what used to live in four places. The screens below are the current-state and concept prototypes used in testing.</p>
+
+    <div class="seg" role="group" aria-label="Choose screen" style="margin:10px 0 18px">
+      <button type="button" data-mock="before" aria-pressed="true">Current screen</button>
+      <button type="button" data-mock="after" aria-pressed="false">Concept screen</button>
+    </div>
+
+    <div class="mock-grid">
+      <div class="mock-wrap">
+        <!-- BEFORE -->
+        <div class="ehr" id="mock-before">
+          <div class="ehr-chrome"><i></i><i></i><i></i><span>Unit EHR, Behavioral Health 4 West</span></div>
+          <div class="ehr-banner"><b>J. D.</b><span>34 y</span><span>MRN 00-48213</span><span>Room 412B</span><span class="flag">Q15 observation</span><span>Allergies: NKDA</span></div>
+          <div class="ehr-body">
+            <div class="ehr-nav">
+              <div>Summary</div><div>Orders</div><div>MAR</div><div>Flowsheets</div><div>Vitals</div>
+              <div class="on">Notes</div><div>Assessments</div><div class="sub">Safety</div><div class="sub">Incident report</div>
+              <div>Care plan</div><div>Observation log</div><div>Results</div><div>Discharge</div>
+            </div>
+            <div class="ehr-main">
+              <div class="crumb">Notes / New note</div>
+              <div class="ehr-err">Cannot sign. 3 required fields are missing: Location, Witness, Restraint used (Y/N).</div>
+              <div class="row">
+                <div class="field"><label>Note type</label>
+                  <div class="dd">
+                    <div>Admission nursing note</div><div>Behavior note</div><div class="hi">Behavioral event note</div><div>Group therapy note</div><div>Incident follow-up</div><div>Milieu note</div><div>Nursing progress note</div><div>PRN effectiveness note</div>
+                  </div>
+                </div>
+                <div class="field"><label>Event time</label><div class="inp">__:__</div>
+                  <label style="margin-top:8px">Location</label><div class="inp miss">Select</div>
+                </div>
+              </div>
+              <div class="field"><label>Narrative</label><div class="ta">Pt became loud and pacing in day room ~10:40, verbal redirection attempted, PRN given per order (see MAR)…</div></div>
+              <div class="row">
+                <div class="field"><label>Witness</label><div class="inp miss">Select</div></div>
+                <div class="field"><label>Restraint used</label><div class="inp miss">Select</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="ehr-foot"><span class="req">No draft saved</span><span><span class="btn sec">Cancel</span> <span class="btn pri">Sign</span></span></div>
+          <button class="hs" type="button" data-hs="b1" style="left:150px;top:300px" aria-label="Annotation 1">1</button>
+          <button class="hs" type="button" data-hs="b2" style="left:310px;top:150px" aria-label="Annotation 2">2</button>
+          <button class="hs" type="button" data-hs="b3" style="left:640px;top:108px" aria-label="Annotation 3">3</button>
+          <button class="hs" type="button" data-hs="b4" style="left:470px;top:430px" aria-label="Annotation 4">4</button>
+        </div>
+
+        <!-- AFTER -->
+        <div class="ehr" id="mock-after" hidden>
+          <div class="ehr-chrome"><i></i><i></i><i></i><span>Unit EHR, Behavioral Health 4 West</span></div>
+          <div class="ehr-banner"><b>J. D.</b><span>34 y</span><span>MRN 00-48213</span><span>Room 412B</span><span class="flag">Q15 observation</span><span class="spacer"></span><span style="background:#F2C14E;color:#3A2A00;border-radius:999px;padding:2px 9px;font-weight:700;font-size:11px">2 unfinished notes</span><span style="background:#fff;color:#24456E;border-radius:5px;padding:4px 10px;font-weight:800">+ Unit event</span></div>
+          <div class="ehr-body" style="grid-template-columns:1fr">
+            <div class="ehr-main">
+              <div class="crumb">Unit event / Agitation</div>
+              <div class="field"><label>Event type</label>
+                <div class="evchips"><span class="sel">Agitation</span><span>Fall</span><span>Self-harm risk</span><span>Elopement attempt</span><span>Medical concern</span><span>More types</span></div>
+              </div>
+              <div class="row">
+                <div class="field"><label>Time</label><div class="inp auto">10:40 (from first action)</div></div>
+                <div class="field"><label>Location</label><div class="inp auto">Day room (last observation)</div></div>
+                <div class="field"><label>Staff present</label><div class="inp auto">D. Reyes, M. Hill</div></div>
+              </div>
+              <div class="row">
+                <div class="field"><label>What happened</label><div class="ta">Pt loud and pacing in day room, refusing redirection. Staff offered quiet room and PRN…</div></div>
+                <div class="field"><label>Interventions</label>
+                  <div class="checks"><span>☑ Verbal de-escalation</span><span>☑ Offered PRN</span><span>☑ Moved to quiet room</span><span>☐ Restraint used</span><span>☐ Seclusion</span><span>☐ Physician notified</span></div>
+                </div>
+              </div>
+              <div class="field"><label>PRN linked from MAR</label>
+                <div class="prn"><span><strong>Hydroxyzine 25 mg PO</strong>, given 10:42 by D. Reyes</span><span class="remind">Reassess by 11:42, reminder set</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ehr-foot"><span class="req"><b>3 of 3</b> required fields done · Draft saved 10:51</span><span><span class="btn sec">Save draft</span> <span class="btn pri">Sign note</span></span></div>
+          <button class="hs" type="button" data-hs="a1" style="left:690px;top:42px" aria-label="Annotation 1">1</button>
+          <button class="hs" type="button" data-hs="a2" style="left:600px;top:110px" aria-label="Annotation 2">2</button>
+          <button class="hs" type="button" data-hs="a3" style="left:350px;top:160px" aria-label="Annotation 3">3</button>
+          <button class="hs" type="button" data-hs="a4" style="left:440px;top:322px" aria-label="Annotation 4">4</button>
+          <button class="hs" type="button" data-hs="a5" style="left:250px;top:368px" aria-label="Annotation 5">5</button>
+        </div>
+      </div>
+      <ul class="notes-list" id="annotations" aria-live="polite"></ul>
+    </div>
+    <p class="cap">Figure 6. Prototype screens built for testing. Select a numbered marker or note to connect each design choice to the research behind it. Medication shown is illustrative.</p>
+
+    <h3>Workflow before and after</h3>
+    <div class="flowcompare">
+      <div class="flowcol">
+        <p class="small muted" style="margin:0">Current</p>
+        <div class="tot">8 steps, 6.2 min</div>
+        <ol>
+          <li>Open patient chart</li><li>Find the right note type</li><li>Write event narrative</li><li>Go to MAR to record PRN</li>
+          <li>Re-enter time, location and staff in incident form</li><li>Update observation flowsheet</li><li>Sign, hit required-field error, go back</li><li>Set own reminder for PRN reassessment</li>
+        </ol>
+      </div>
+      <div class="flowcol" style="border-color:var(--teal)">
+        <p class="small muted" style="margin:0">Concept</p>
+        <div class="tot" style="color:var(--teal)">5 steps, 3.4 min</div>
+        <ol>
+          <li>Start "Unit event" from the patient banner</li><li>Pick event type (time, location, staff prefill)</li><li>Write what happened and check interventions</li>
+          <li>Confirm the PRN pulled from the MAR</li><li>Review inline requirements and sign; reassessment reminder is set automatically</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testing -->
+<section class="block" id="testing">
+  <div class="wrap">
+    <span class="sec-no">7</span>
+    <h2>Usability testing</h2>
+    <div class="two">
+      <div class="prose">
+        <p>I ran moderated sessions with 6 participants (3 RNs, 3 techs) on a baseline prototype of the current workflow, then two rounds on the concept. Each session used the same three tasks, written in clinical language without naming any buttons.</p>
+        <ol class="small">
+          <li><strong>Document an event.</strong> "A patient just became agitated in the day room and you gave a PRN. Document what happened."</li>
+          <li><strong>Resume after an interruption.</strong> Mid-task, the moderator calls the participant away for 2 minutes, then asks them to finish.</li>
+          <li><strong>Record PRN follow-up.</strong> "It's now an hour later. Record whether the PRN was effective."</li>
+        </ol>
+      </div>
+      <div>
+        <h4 style="margin-top:0">What I measured</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Metric</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>Time on task</td><td>Direct cost to a shift</td></tr>
+              <tr><td>Task completion</td><td>Whether the note was signed with required fields</td></tr>
+              <tr><td>Errors per session</td><td>Wrong note type, missing fields, backtracking</td></tr>
+              <tr><td>SEQ (1–7)</td><td>Perceived ease right after each task</td></tr>
+              <tr><td>SUS (0–100)</td><td>Overall usability, compared with the 68 benchmark</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3>What changed between rounds</h3>
+    <div class="changes">
+      <div class="change"><strong>Unfinished notes</strong><p class="r1">Round 1: drafts saved but lived in a menu; 2 of 6 didn't find them.</p><p class="r2">Round 2: a badge on the patient banner. 6 of 6 resumed.</p></div>
+      <div class="change"><strong>Event types</strong><p class="r1">Round 1: a list of 14 types slowed selection by about 20 seconds.</p><p class="r2">Round 2: 5 common types as chips, the rest under "More types."</p></div>
+      <div class="change"><strong>PRN link</strong><p class="r1">Round 1: the "Attach order" label confused 3 of 6 participants.</p><p class="r2">Round 2: renamed to "PRN linked from MAR," with the reminder shown inline.</p></div>
+    </div>
+
+    <figure class="fig">
+      <div class="shift-head">
+        <h4 style="margin:0">Results by round</h4>
+        <div class="seg" role="group" aria-label="Choose metric" id="metricSeg">
+          <button type="button" data-metric="time" aria-pressed="true">Time on task</button>
+          <button type="button" data-metric="completion" aria-pressed="false">Completion</button>
+          <button type="button" data-metric="seq" aria-pressed="false">Ease</button>
+          <button type="button" data-metric="errors" aria-pressed="false">Errors</button>
+        </div>
+      </div>
+      <div class="chart-box short"><canvas id="testChart" role="img" aria-label="Usability test results by round"></canvas></div>
+      <figcaption id="testCaption">Figure 7. Average minutes per task, n = 6 per round. <span class="sim">Simulated</span></figcaption>
+    </figure>
+
+    <figure class="fig">
+      <h4 style="margin-top:0">System Usability Scale</h4>
+      <div class="sus" id="sus"></div>
+      <figcaption>Figure 8. Mean SUS score per round. The vertical line marks the commonly cited average of 68. <span class="sim">Simulated</span></figcaption>
+    </figure>
+
+    <div class="quotes">
+      <figure><p class="quote">"It already knew where we were and who was there. I just wrote what happened."</p><figcaption>P1, registered nurse, round 2</figcaption></figure>
+      <figure><p class="quote">"I saw the yellow badge and knew my note was still there."</p><figcaption>P5, behavioral health tech, round 2</figcaption></figure>
+      <figure><p class="quote">"The reminder is the part I'd fight to keep."</p><figcaption>P3, registered nurse, round 2</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Research ops -->
+<section class="block" id="ops">
+  <div class="wrap">
+    <span class="sec-no">8</span>
+    <h2>Research operations</h2>
+    <p class="prose">So the next study doesn't start from a blank page, I turned this project's documents into reusable templates and logged every insight in a lightweight repository that product and design can search.</p>
+
+    <h3>Reusable templates</h3>
+    <div class="tabs" role="tablist" aria-label="Research templates" id="tplTabs">
+      <button role="tab" id="tt-brief" aria-selected="true" aria-controls="tp-brief">Research brief</button>
+      <button role="tab" id="tt-guide" aria-selected="false" aria-controls="tp-guide" tabindex="-1">Discussion guide</button>
+      <button role="tab" id="tt-test" aria-selected="false" aria-controls="tp-test" tabindex="-1">Test script</button>
+      <button role="tab" id="tt-find" aria-selected="false" aria-controls="tp-find" tabindex="-1">Finding format</button>
+    </div>
+    <div class="tabpanel doc" role="tabpanel" id="tp-brief" aria-labelledby="tt-brief">
+      <dl>
+        <dt>Background</dt><dd>Staff report that documenting unit events takes too long and often happens at the end of shift.</dd>
+        <dt>Decision to inform</dt><dd>Which parts of event documentation to redesign first for the next release.</dd>
+        <dt>Research questions</dt><dd><ol><li>Where does time go when documenting an event?</li><li>What causes notes to be delayed or abandoned?</li><li>Which required information do staff struggle to provide, and why?</li></ol></dd>
+        <dt>Assumptions</dt><dd>Listed with the evidence that would confirm or reject each.</dd>
+        <dt>Methods and n</dt><dd>Interviews (8), contextual inquiry (4), usability testing (2 × 6).</dd>
+        <dt>Participants</dt><dd>RNs, techs, social work, charge nurse; mix of shifts and tenure.</dd>
+        <dt>Timeline</dt><dd>Week 1 interviews and inquiry; week 2 synthesis and concept; week 3 testing and readout.</dd>
+      </dl>
+    </div>
+    <div class="tabpanel doc" role="tabpanel" id="tp-guide" aria-labelledby="tt-guide" hidden>
+      <dl>
+        <dt>Warm-up (5 min)</dt><dd>Tell me about your role and a typical shift on the unit.</dd>
+        <dt>Recent event (15 min)</dt><dd><ul><li>Walk me through the last time a patient had an event you documented.</li><li>Where were you when you started the note? Where did you finish it?</li><li>What happened between starting and finishing?</li></ul></dd>
+        <dt>Workarounds (10 min)</dt><dd><ul><li>Do you keep any notes outside the EHR? Tell me about that.</li><li>What do you do when you're not sure which note type to use?</li></ul></dd>
+        <dt>Medication follow-up (10 min)</dt><dd>How do you keep track of PRN reassessments during a busy shift?</dd>
+        <dt>Wrap-up (5 min)</dt><dd>If you could change one thing about documenting events, what would it be?</dd>
+      </dl>
+    </div>
+    <div class="tabpanel doc" role="tabpanel" id="tp-test" aria-labelledby="tt-test" hidden>
+      <dl>
+        <dt>Intro</dt><dd>"We're testing the system, not you. Please think out loud."</dd>
+        <dt>Task wording</dt><dd>Written as a clinical scenario. No button or menu names in the prompt.</dd>
+        <dt>Success criteria</dt><dd>Note signed with all required fields, correct event type, PRN linked.</dd>
+        <dt>Measures</dt><dd>Time on task, completion, errors, SEQ after each task, SUS at the end.</dd>
+        <dt>Interruption protocol</dt><dd>Moderator calls the participant away at a set point for 2 minutes, then says "Please finish your note."</dd>
+        <dt>Debrief</dt><dd>What felt different from how you chart today?</dd>
+      </dl>
+    </div>
+    <div class="tabpanel doc" role="tabpanel" id="tp-find" aria-labelledby="tt-find" hidden>
+      <dl>
+        <dt>Finding</dt><dd>One sentence describing what we saw.</dd>
+        <dt>Evidence</dt><dd>Counts, task metrics and 1–2 representative quotes.</dd>
+        <dt>Impact</dt><dd>Effect on staff time, patient safety, compliance or handoff.</dd>
+        <dt>Opportunity</dt><dd>A direction to explore, not a finished design.</dd>
+        <dt>Confidence</dt><dd>High, medium or low, with the reason (sample size, method, role coverage).</dd>
+      </dl>
+    </div>
+
+    <h3>Insight repository</h3>
+    <div class="repo-tools">
+      <input type="search" id="repoSearch" placeholder="Search insights, e.g. PRN, draft, required" aria-label="Search insights">
+      <select id="repoTheme" aria-label="Filter by theme"><option value="">All themes</option></select>
+    </div>
+    <p class="repo-count" id="repoCount" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Insight</th><th>Theme</th><th>Roles</th><th>Source</th><th>Confidence</th></tr></thead>
+        <tbody id="repoBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Sharing -->
+<section class="block" id="sharing">
+  <div class="wrap">
+    <span class="sec-no">9</span>
+    <h2>Sharing findings</h2>
+    <p class="prose">Different people needed different formats, so I shared the same findings three ways.</p>
+    <div class="deliver">
+      <div><h4>One-page summary</h4><p class="small">Four findings with evidence and confidence, written for product leadership and clinical stakeholders who had five minutes.</p></div>
+      <div><h4>20-minute readout</h4><p class="small">Walkthrough video clips (simulated), the time breakdown and the affinity board, followed by questions from engineering and the clinical informatics nurse.</p></div>
+      <div><h4>Working session</h4><p class="small">A 60-minute session with design and product to score opportunities on the impact and effort matrix and agree on what to test.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Reflection -->
+<section class="block" id="reflection">
+  <div class="wrap">
+    <span class="sec-no">10</span>
+    <h2>Reflection</h2>
+    <div class="two">
+      <div class="prose">
+        <h4 style="margin-top:0">What I learned</h4>
+        <p>The biggest shift came from timing the steps. Everyone, including me, assumed the narrative was the slow part. The data said navigation and re-entry were, which changed what we designed.</p>
+        <p>Staff didn't want less documentation. They wanted to know what was required up front and to trust that their work wouldn't disappear when a patient needed them.</p>
+        <h4>Limitations</h4>
+        <p>This is a simulated project. Participants, quotes and numbers are illustrative, built from my experience in behavioral health. Sample sizes are small, and prototype timing won't match a live EHR with real latency and logins.</p>
+      </div>
+      <div class="prose">
+        <h4 style="margin-top:0">What I'd do next</h4>
+        <ul>
+          <li>Validate the themes with real staff across day, evening and night shifts.</li>
+          <li>Interview the admin and clinical informatics users who configure note types and required fields, since they shape what frontline staff see.</li>
+          <li>Pair qualitative findings with product analytics: time from event to signed note, notes signed after shift end, and late PRN reassessments.</li>
+          <li>Run a concept test on bedside charting with tablets, the highest-effort opportunity we parked.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="index.html">Back to portfolio</a></p>
+    <p>Self-directed case study by Katrina Peli. All participants, quotes and metrics are simulated for portfolio purposes.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+  /* ---------- Scroll progress + active nav ---------- */
+  var bar = document.getElementById('progress');
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  function onScroll(){
+    var h = document.documentElement;
+    var pct = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = pct + '%';
+    var current = null;
+    navLinks.forEach(function(a){
+      var s = document.querySelector(a.getAttribute('href'));
+      if (s && s.getBoundingClientRect().top < 140) current = a;
+    });
+    navLinks.forEach(function(a){ a.classList.toggle('active', a === current); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  /* ---------- Shift timeline ---------- */
+  var careEvents = [
+    {t:60,  label:"Med pass"},
+    {t:135, label:"Group therapy"},
+    {t:220, label:"Agitation event, PRN given (10:40)"},
+    {t:280, label:"PRN reassessment due (11:40)"},
+    {t:360, label:"New admission"},
+    {t:440, label:"Observation level changed"},
+    {t:510, label:"Family phone call"},
+    {t:585, label:"Fall, no injury (16:45)"}
+  ];
+  var docs = {
+    current: [
+      {s:80,  d:6,  kind:"chart", label:"Med pass charted"},
+      {s:235, d:5,  kind:"bad",   label:"Event note started, then abandoned when called to the floor. Work lost."},
+      {s:280, d:3,  kind:"bad",   label:"PRN reassessment not charted. Done from memory at 18:20."},
+      {s:390, d:12, kind:"chart", label:"Admission note, partially completed"},
+      {s:630, d:90, kind:"late",  label:"Catch-up charting 17:30 to 19:00: event note rebuilt from memory, reassessment, fall note, observation changes"}
+    ],
+    proposed: [
+      {s:75,  d:5,  kind:"chart", label:"Med pass charted"},
+      {s:228, d:4,  kind:"chart", label:"Unit event started; draft saved automatically when called away"},
+      {s:252, d:4,  kind:"chart", label:"Draft resumed from the banner badge and signed"},
+      {s:282, d:2,  kind:"chart", label:"PRN reassessment charted from the reminder"},
+      {s:385, d:12, kind:"chart", label:"Admission note"},
+      {s:445, d:3,  kind:"chart", label:"Observation change logged"},
+      {s:520, d:3,  kind:"chart", label:"Family call note"},
+      {s:595, d:6,  kind:"chart", label:"Fall event note"},
+      {s:690, d:20, kind:"late",  label:"End-of-shift review, 18:30 to 18:50"}
+    ]
+  };
+  var colors = {chart:"#2E6DB4", bad:"#A9433A", late:"#A8661A"};
+  var svg = document.getElementById('shiftSvg');
+  var readout = document.getElementById('shiftReadout');
+  var X0 = 70, X1 = 980;
+  function x(t){ return X0 + (t/720)*(X1-X0); }
+  function hm(t){ var m = 420 + t; var h = Math.floor(m/60), mm = m%60; return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm; }
+
+  function drawShift(mode){
+    var out = '';
+    out += '<text x="0" y="58" font-size="13" fill="#56677B" font-family="Public Sans, sans-serif">Patient care</text>';
+    out += '<text x="0" y="128" font-size="13" fill="#56677B" font-family="Public Sans, sans-serif">Charting</text>';
+    for (var h=0; h<=12; h++){
+      var xx = x(h*60);
+      out += '<line x1="'+xx+'" y1="22" x2="'+xx+'" y2="160" stroke="#E4EAF0" />';
+      if (h%2===0) out += '<text x="'+xx+'" y="182" font-size="12" text-anchor="middle" fill="#56677B" font-family="Public Sans, sans-serif">'+hm(h*60)+'</text>';
+    }
+    out += '<rect x="'+x(630)+'" y="22" width="'+(x(720)-x(630))+'" height="138" fill="#A8661A" opacity="0.06" />';
+    out += '<line x1="'+X0+'" y1="54" x2="'+X1+'" y2="54" stroke="#C9D3DD" />';
+    out += '<line x1="'+X0+'" y1="124" x2="'+X1+'" y2="124" stroke="#C9D3DD" />';
+    careEvents.forEach(function(e,i){
+      out += '<circle class="sm" tabindex="0" data-i="c'+i+'" cx="'+x(e.t)+'" cy="54" r="7" fill="#13243B" stroke="#fff" stroke-width="2" style="cursor:pointer"><title>'+hm(e.t)+' '+esc(e.label)+'</title></circle>';
+    });
+    docs[mode].forEach(function(d,i){
+      var w = Math.max(6, x(d.s+d.d)-x(d.s));
+      out += '<rect class="sm" tabindex="0" data-i="d'+i+'" x="'+x(d.s)+'" y="112" width="'+w+'" height="24" rx="3" fill="'+colors[d.kind]+'" style="cursor:pointer"><title>'+hm(d.s)+' '+esc(d.label)+'</title></rect>';
+    });
+    svg.innerHTML = out;
+    svg.querySelectorAll('.sm').forEach(function(el){
+      function show(){
+        var id = el.getAttribute('data-i');
+        var item = id[0]==='c' ? careEvents[+id.slice(1)] : docs[mode][+id.slice(1)];
+        var t = id[0]==='c' ? item.t : item.s;
+        readout.innerHTML = '<strong>'+hm(t)+'</strong> '+esc(item.label);
+      }
+      el.addEventListener('mouseenter', show); el.addEventListener('focus', show); el.addEventListener('click', show);
+    });
+    document.getElementById('lateNum').textContent = mode==='current' ? '90 min' : '20 min';
+    document.getElementById('lateLbl').textContent = mode==='current' ? 'charting after 17:30' : 'projected, from test timings';
+    readout.textContent = mode==='current'
+      ? 'Two notes are lost or overdue before noon, and everything lands in the last 90 minutes.'
+      : 'Notes are written within minutes of each event, so end of shift becomes a short review.';
+  }
+  document.querySelectorAll('[data-shift]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-shift]').forEach(function(o){ o.setAttribute('aria-pressed', o===b ? 'true':'false'); });
+      drawShift(b.getAttribute('data-shift'));
+    });
+  });
+  drawShift('current');
+
+  /* ---------- Generic tabs ---------- */
+  function setupTabs(list){
+    var tabs = list.querySelectorAll('[role="tab"]');
+    tabs.forEach(function(tab, idx){
+      tab.addEventListener('click', function(){ select(tab); });
+      tab.addEventListener('keydown', function(e){
+        var n = null;
+        if (e.key==='ArrowRight') n = tabs[(idx+1)%tabs.length];
+        if (e.key==='ArrowLeft') n = tabs[(idx-1+tabs.length)%tabs.length];
+        if (n){ e.preventDefault(); select(n); n.focus(); }
+      });
+    });
+    function select(tab){
+      tabs.forEach(function(t){
+        var on = t===tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+  }
+  document.querySelectorAll('[role="tablist"]').forEach(setupTabs);
+
+  /* ---------- Workflow stepper ---------- */
+  var steps = [
+    {name:"Open patient chart", sec:25, pain:false, obs:"Straightforward. Staff search by room number more often than by name.", quote:null},
+    {name:"Find the right note type", sec:70, pain:true, obs:"Staff scrolled a 14-item note list. Techs hesitated between \"Behavior note\" and \"Behavioral event note\"; one chose wrong and had to start over.", quote:"Is it a behavior note or an event? I pick one and hope. (P4, tech)"},
+    {name:"Write event narrative", sec:80, pain:false, obs:"Fast and confident. This is the part staff know best.", quote:null},
+    {name:"Go to the MAR to record the PRN", sec:50, pain:true, obs:"Leaving the note to open the MAR cleared the unsaved narrative in 2 of 4 sessions.", quote:"The MAR knows I gave it. Why do I type it again? (P3, RN)"},
+    {name:"Re-enter time, location and staff", sec:45, pain:true, obs:"The incident form asks for details already written in the narrative and the MAR.", quote:"I type the time and room in three different places. (P1, RN)"},
+    {name:"Update observation flowsheet", sec:40, pain:false, obs:"Familiar task, but in a separate area of the chart.", quote:null},
+    {name:"Sign, hit error, go back", sec:42, pain:true, obs:"Required fields only appeared at sign. Every participant hit at least one error.", quote:"It only tells me what's missing when I hit sign. (P1, RN)"},
+    {name:"Set own PRN reassessment reminder", sec:20, pain:true, obs:"Staff wrote the due time on paper or relied on memory. Nothing in the EHR prompted the reassessment.", quote:"The reassessment is on me to remember. (P3, RN)"}
+  ];
+  var stepsEl = document.getElementById('steps');
+  var detailEl = document.getElementById('stepDetail');
+  steps.forEach(function(s,i){
+    var li = document.createElement('li');
+    li.innerHTML = '<button type="button" class="'+(s.pain?'pain':'')+'" aria-pressed="false"><span class="n">'+(i+1)+'</span><span>'+esc(s.name)+'</span><span class="t">'+s.sec+' s</span></button>';
+    li.firstChild.addEventListener('click', function(){ showStep(i); });
+    stepsEl.appendChild(li);
+  });
+  function showStep(i){
+    var s = steps[i];
+    stepsEl.querySelectorAll('button').forEach(function(b,j){ b.setAttribute('aria-pressed', j===i); });
+    detailEl.innerHTML =
+      '<p class="small muted" style="margin:0 0 4px">Step '+(i+1)+' of 8, average '+s.sec+' seconds</p>'+
+      '<h4>'+esc(s.name)+'</h4>'+
+      (s.pain ? '<span class="chip part">Pain point</span>' : '<span class="chip ok">Works well</span>')+
+      '<p class="obs">'+esc(s.obs)+'</p>'+
+      (s.quote ? '<blockquote>'+esc(s.quote)+'</blockquote>' : '')+
+      '<p class="small muted" style="margin:0">Share of total task time: '+Math.round(s.sec/372*100)+'%</p>';
+  }
+  showStep(1);
+
+  /* ---------- Affinity board ---------- */
+  var themes = [
+    {name:"Finding the form", notes:[
+      ["Is it a behavior note or an event? I pick one and hope.","P4","BHT"],
+      ["I search the note list every single time.","P7","SW"],
+      ["Half the note types aren't for us, but we still see them.","P5","BHT"]]},
+    {name:"Typing it twice", notes:[
+      ["I type the time and room in three different places.","P1","RN"],
+      ["The MAR knows I gave it. Why do I type it again?","P3","RN"],
+      ["Same staff names on every form.","P6","BHT"]]},
+    {name:"Interruptions", notes:[
+      ["I get two sentences in and someone's calling my name.","P5","BHT"],
+      ["Came back and the note was just gone.","P2","RN"],
+      ["I keep notes on a paper towel until I can sit down.","P6","BHT"]]},
+    {name:"Required fields", notes:[
+      ["It only tells me what's missing when I hit sign.","P1","RN"],
+      ["I send notes back because one box is empty.","P8","CN"],
+      ["I don't mind the fields. I mind finding out late.","P7","SW"]]},
+    {name:"Medication follow-up", notes:[
+      ["The reassessment is on me to remember.","P3","RN"],
+      ["Nights can't tell if the PRN worked.","P2","RN"],
+      ["Late reassessments are my most common audit flag.","P8","CN"]]},
+    {name:"End of shift", notes:[
+      ["The last hour is all charting.","P1","RN"],
+      ["By 6:30 I'm writing from memory.","P4","BHT"],
+      ["Handoff is only as good as what got charted.","P8","CN"]]}
+  ];
+  var board = document.getElementById('board');
+  board.innerHTML = themes.map(function(t){
+    return '<div class="col"><h4>'+esc(t.name)+' <span class="count">('+t.notes.length+')</span></h4>'+
+      t.notes.map(function(n){ return '<div class="note" data-role="'+n[2]+'">"'+esc(n[0])+'"<span class="who">'+n[1]+', '+({RN:'RN',BHT:'Tech',SW:'Social work',CN:'Charge nurse'}[n[2]])+'</span></div>'; }).join('')+
+      '</div>';
+  }).join('');
+  document.querySelectorAll('#roleFilters button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var r = b.getAttribute('data-role');
+      document.querySelectorAll('#roleFilters button').forEach(function(o){ o.setAttribute('aria-pressed', o===b); });
+      board.querySelectorAll('.note').forEach(function(n){
+        n.classList.toggle('dim', r!=='all' && n.getAttribute('data-role')!==r);
+      });
+    });
+  });
+
+  /* ---------- Findings ---------- */
+  var findings = [
+    {t:"One event, four places to chart", ev:"7 of 8 participants; average 4 screens per event in walkthroughs. Navigation was 39% of task time.", im:"Notes are delayed or split, and reviewers can't see the whole event in one place.", op:"A single \"Unit event\" entry point that gathers narrative, interventions, PRN and observation changes.", c:"High"},
+    {t:"Interruptions erase work", ev:"5 of 8 had lost a note; 1 of 6 resumed a note in baseline testing. Techs keep paper scratch notes.", im:"Notes are rebuilt from memory hours later, reducing accuracy.", op:"Save drafts automatically and show unfinished notes where staff will see them.", c:"High"},
+    {t:"The same facts are entered twice", ev:"6 of 8; time, location and staff typed in up to three places. Re-entry was 12% of task time.", im:"Extra time and inconsistent details between the note, MAR and incident form.", op:"Prefill time, location and staff from the first action and the last observation.", c:"High"},
+    {t:"Required fields show up too late", ev:"5 of 8; every walkthrough hit at least one sign-time error, averaging 42 seconds to fix.", im:"Frustration and returned notes; the charge nurse sends incomplete notes back.", op:"Show requirements inline as staff work, with a running count.", c:"High"},
+    {t:"PRN reassessment depends on memory", ev:"All 4 nurses (including the charge nurse); late reassessments named as a top audit flag.", im:"The next shift can't tell whether a medication worked, which affects follow-up dosing decisions.", op:"Link the PRN from the MAR to the note and set the reassessment reminder automatically.", c:"Medium (nurses only, n = 4)"}
+  ];
+  document.getElementById('findings').innerHTML = findings.map(function(f,i){
+    return '<details class="finding"'+(i===0?' open':'')+'><summary><span class="fn">F'+(i+1)+'</span><span class="ft">'+esc(f.t)+'</span><span class="chev" aria-hidden="true">▸</span></summary>'+
+      '<dl class="fbody"><div><dt>Evidence</dt><dd>'+esc(f.ev)+'</dd></div><div><dt>Impact</dt><dd>'+esc(f.im)+'</dd></div>'+
+      '<div><dt>Opportunity</dt><dd>'+esc(f.op)+'</dd></div><div><dt>Confidence</dt><dd>'+esc(f.c)+'</dd></div></dl></details>';
+  }).join('');
+
+  /* ---------- Matrix ---------- */
+  var opps = [
+    {id:"A", name:"Single \"Unit event\" entry point", impact:9, effort:4, ship:true, why:"Addresses F1 directly. Reuses existing note components, so engineering rated it moderate effort."},
+    {id:"B", name:"Auto-save drafts and unfinished-notes badge", impact:8, effort:3, ship:true, why:"Addresses F2. The highest impact for the lowest cost in the set."},
+    {id:"C", name:"Prefill time, location and staff", impact:7, effort:2, ship:true, why:"Addresses F3. Data already exists in observation rounds."},
+    {id:"D", name:"Inline required-field guidance", impact:6, effort:2, ship:true, why:"Addresses F4. Front-end change only."},
+    {id:"E", name:"Automatic PRN reassessment reminder", impact:8, effort:5, ship:true, why:"Addresses F5 and medication follow-up. Needs a notification rule, but no new integration."},
+    {id:"F", name:"Pull PRN details from the MAR into the note", impact:7, effort:7, ship:true, why:"Higher effort because it touches the medication record. Tested as a prototype to check value before building."},
+    {id:"G", name:"Bedside charting on tablets", impact:6, effort:9, ship:false, why:"Strong request from techs, but needs device rollout and security review. Parked for a separate study."}
+  ];
+  var matrix = document.getElementById('matrix');
+  var mDetail = document.getElementById('matrixDetail');
+  opps.forEach(function(o){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot ' + (o.ship ? 'ship' : 'later');
+    b.textContent = o.id;
+    b.style.left = ((o.effort - 0.5) / 10 * 100) + '%';
+    b.style.bottom = ((o.impact - 0.5) / 10 * 100) + '%';
+    b.setAttribute('aria-label', o.name + ', impact ' + o.impact + ', effort ' + o.effort);
+    b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function(){ showOpp(o, b); });
+    matrix.appendChild(b);
+  });
+  function showOpp(o, btn){
+    matrix.querySelectorAll('.dot').forEach(function(d){ d.setAttribute('aria-pressed', d===btn); });
+    mDetail.innerHTML = '<p class="small muted" style="margin:0 0 4px">Opportunity '+o.id+'</p><h4>'+esc(o.name)+'</h4>'+
+      '<p class="small"><strong>Impact</strong> '+o.impact+'/10 &nbsp; <strong>Effort</strong> '+o.effort+'/10</p>'+
+      '<p class="small">'+esc(o.why)+'</p>'+
+      (o.ship ? '<span class="chip ok">In tested concept</span>' : '<span class="chip part">Parked</span>');
+  }
+  showOpp(opps[1], matrix.querySelectorAll('.dot')[1]);
+
+  /* ---------- Mockups + annotations ---------- */
+  var ann = {
+    before: [
+      {k:"b1", t:"Incident report is buried", d:"It sits under Assessments > Safety, not Notes, where 6 of 8 expected it. (F1)"},
+      {k:"b2", t:"14 note types, similar names", d:"\"Behavior note\" and \"Behavioral event note\" were confused in every tech session. (F1)"},
+      {k:"b3", t:"Errors only at sign", d:"Three required fields surface after the user tries to sign. (F4)"},
+      {k:"b4", t:"No draft", d:"Closing or leaving the screen discards the note. (F2)"}
+    ],
+    after: [
+      {k:"a1", t:"Entry point and unfinished notes", d:"\"+ Unit event\" lives on the patient banner, next to a badge for drafts. (F1, F2)"},
+      {k:"a2", t:"Five common event types", d:"Common types as chips; the rest under \"More types.\" Added after round 1. (F1)"},
+      {k:"a3", t:"Prefilled details", d:"Time, location and staff come from the first action and last observation, shaded so staff can check them. (F3)"},
+      {k:"a4", t:"PRN linked with reminder", d:"Pulled from the MAR with the reassessment time set automatically. (F5)"},
+      {k:"a5", t:"Requirements as you go", d:"A running count of required fields and an autosave timestamp. (F2, F4)"}
+    ]
+  };
+  var annEl = document.getElementById('annotations');
+  var mockMode = 'before';
+  function renderAnn(){
+    annEl.innerHTML = ann[mockMode].map(function(a,i){
+      return '<li><button type="button" data-k="'+a.k+'" aria-pressed="false"><span class="b">'+(i+1)+'</span><span><strong>'+esc(a.t)+'</strong><span class="d">'+esc(a.d)+'</span></span></button></li>';
+    }).join('');
+    annEl.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ pick(b.getAttribute('data-k')); }); });
+  }
+  function pick(k){
+    document.querySelectorAll('.hs').forEach(function(h){ h.setAttribute('aria-pressed', h.getAttribute('data-hs')===k); });
+    annEl.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k')===k); });
+  }
+  document.querySelectorAll('.hs').forEach(function(h){ h.addEventListener('click', function(){ pick(h.getAttribute('data-hs')); }); });
+  document.querySelectorAll('[data-mock]').forEach(function(b){
+    b.addEventListener('click', function(){
+      mockMode = b.getAttribute('data-mock');
+      document.querySelectorAll('[data-mock]').forEach(function(o){ o.setAttribute('aria-pressed', o===b); });
+      document.getElementById('mock-before').hidden = mockMode!=='before';
+      document.getElementById('mock-after').hidden = mockMode!=='after';
+      renderAnn();
+    });
+  });
+  renderAnn();
+
+  /* ---------- SUS ---------- */
+  var sus = [["Baseline",52,"#A9433A"],["Concept v1",68,"#2E6DB4"],["Concept v2",78,"#157A74"]];
+  document.getElementById('sus').innerHTML = sus.map(function(s){
+    return '<div class="sus-row"><span>'+s[0]+'</span><div class="sus-track"><div class="sus-fill" style="width:'+s[1]+'%;background:'+s[2]+'"></div><div class="sus-mark" style="left:68%"></div></div><b>'+s[1]+'</b></div>';
+  }).join('');
+
+  /* ---------- Repository ---------- */
+  var repo = [
+    ["INS-01","Staff open 3 to 4 screens to chart a single unit event.","Navigation","RN, BHT, SW","Interviews, inquiry","High"],
+    ["INS-02","Techs see nursing note types and are unsure which to pick.","Navigation","BHT","Interviews","Medium"],
+    ["INS-03","Time, location and staff are typed in up to 3 places per event.","Re-entry","RN, BHT","Inquiry","High"],
+    ["INS-04","PRN details are re-typed although they already exist in the MAR.","Re-entry","RN","Interviews","High"],
+    ["INS-05","Unsaved notes are lost when staff are called away.","Interruptions","RN, BHT","Interviews, baseline test","High"],
+    ["INS-06","Techs keep paper scratch notes as a backup.","Interruptions","BHT","Interviews","Medium"],
+    ["INS-07","Required fields only surface at sign, adding about 40 seconds per event.","Required fields","All","Inquiry","High"],
+    ["INS-08","Staff accept required fields when they can see them up front.","Required fields","RN, SW, CN","Interviews","Medium"],
+    ["INS-09","PRN reassessment relies on memory; late entries are a top audit flag.","Medication follow-up","RN, CN","Interviews","Medium"],
+    ["INS-10","Drafts hidden in a menu were missed by 2 of 6 participants.","Interruptions","RN, BHT","Usability round 1","High"],
+    ["INS-11","A 14-item event list slowed selection; grouping into 5 chips fixed it.","Navigation","All","Usability rounds 1 and 2","High"],
+    ["INS-12","Catch-up charting fills the last 60 to 90 minutes of a shift.","End of shift","RN, BHT","Inquiry, interviews","Medium"]
+  ];
+  var themeSel = document.getElementById('repoTheme');
+  Array.from(new Set(repo.map(function(r){ return r[2]; }))).forEach(function(t){
+    var o = document.createElement('option'); o.value = t; o.textContent = t; themeSel.appendChild(o);
+  });
+  var search = document.getElementById('repoSearch');
+  function renderRepo(){
+    var q = search.value.trim().toLowerCase(), th = themeSel.value;
+    var rows = repo.filter(function(r){
+      return (!th || r[2]===th) && (!q || r.join(' ').toLowerCase().indexOf(q) > -1);
+    });
+    document.getElementById('repoBody').innerHTML = rows.length ? rows.map(function(r){
+      return '<tr><td>'+r[0]+'</td><td>'+esc(r[1])+'</td><td><span class="chip role">'+esc(r[2])+'</span></td><td>'+esc(r[3])+'</td><td>'+esc(r[4])+'</td><td>'+(r[5]==='High'?'<span class="chip ok">High</span>':'<span class="chip part">Medium</span>')+'</td></tr>';
+    }).join('') : '<tr><td colspan="6">No insights match. Try "PRN", "draft" or clear the theme filter.</td></tr>';
+    document.getElementById('repoCount').textContent = 'Showing ' + rows.length + ' of ' + repo.length + ' insights';
+  }
+  search.addEventListener('input', renderRepo); themeSel.addEventListener('change', renderRepo); renderRepo();
+
+  /* ---------- Charts ---------- */
+  if (typeof Chart === 'undefined') {
+    document.querySelectorAll('canvas').forEach(function(c){
+      c.parentNode.innerHTML = '<p class="small muted">Chart could not load. Check your connection and refresh.</p>';
+    });
+    return;
+  }
+  Chart.defaults.font.family = '"Public Sans", sans-serif';
+  Chart.defaults.color = '#56677B';
+
+  new Chart(document.getElementById('painChart'), {
+    type:'bar',
+    data:{
+      labels:["Too many screens for one event","Hard to find the right form","Same info entered twice","Charting pushed to end of shift","Lost work after interruption","Required fields unclear until sign","PRN reassessment easy to miss"],
+      datasets:[
+        {label:"Nurses (RN + charge)", data:[4,2,4,3,2,2,4], backgroundColor:"#2E6DB4"},
+        {label:"Behavioral health techs", data:[2,3,2,3,3,2,0], backgroundColor:"#157A74"},
+        {label:"Social work", data:[1,1,0,0,0,1,0], backgroundColor:"#A8661A"}
+      ]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      scales:{x:{stacked:true, max:8, ticks:{stepSize:1}, title:{display:true,text:"Participants (of 8)"}}, y:{stacked:true, grid:{display:false}}},
+      plugins:{legend:{position:'bottom'}, tooltip:{callbacks:{footer:function(items){ var s=0; items[0].chart.data.datasets.forEach(function(d){ s+=d.data[items[0].dataIndex]; }); return 'Total: '+s+' of 8'; }}}}
+    }
+  });
+
+  var tasks = ["Document an event","Resume after interruption","Record PRN follow-up"];
+  var series = [["Baseline","#A9433A"],["Concept v1","#2E6DB4"],["Concept v2","#157A74"]];
+  var metrics = {
+    time:{labels:tasks, data:[[6.2,4.8,2.9],[4.1,1.6,1.5],[3.4,0.9,1.2]], y:"Minutes", cap:"Figure 7. Average minutes per task, n = 6 per round. Lower is better."},
+    completion:{labels:tasks, data:[[3,1,4],[5,4,5],[6,6,6]], y:"Participants (of 6)", max:6, cap:"Figure 7. Participants who completed each task with all required fields, out of 6."},
+    seq:{labels:tasks, data:[[3.0,2.4,3.9],[5.0,4.6,5.3],[5.8,6.1,5.6]], y:"SEQ score (1 to 7)", max:7, cap:"Figure 7. Single Ease Question after each task, 1 (very hard) to 7 (very easy)."},
+    errors:{labels:["All three tasks"], data:[[2.8],[1.3],[0.7]], y:"Errors per session", cap:"Figure 7. Average errors per session across all tasks. Lower is better."}
+  };
+  var testChart = new Chart(document.getElementById('testChart'), {
+    type:'bar',
+    data:{labels:[], datasets:[]},
+    options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{grid:{display:false}}, y:{beginAtZero:true, title:{display:true, text:""}}}}
+  });
+  function setMetric(k){
+    var m = metrics[k];
+    testChart.data.labels = m.labels;
+    testChart.data.datasets = series.map(function(s,i){ return {label:s[0], data:m.data[i], backgroundColor:s[1], borderRadius:4}; });
+    testChart.options.scales.y.title.text = m.y;
+    testChart.options.scales.y.max = m.max;
+    testChart.update();
+    document.getElementById('testCaption').innerHTML = esc(m.cap) + ' <span class="sim">Simulated</span>';
+  }
+  document.querySelectorAll('#metricSeg button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#metricSeg button').forEach(function(o){ o.setAttribute('aria-pressed', o===b); });
+      setMetric(b.getAttribute('data-metric'));
+    });
+  });
+  setMetric('time');
+})();
+</script>
 </body>
 </html>
